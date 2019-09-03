@@ -1,0 +1,22 @@
+{
+  "name": "emx",
+  "version": "1.0.0",
+  "description": "An Everything Bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sattishh/Emx.git"
+  },
+  "author": "Sattish",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sattishh/Emx/issues"
+  },
+  "homepage": "https://github.com/Sattishh/Emx#readme",
+  "dependencies": {
+    "discord.js": "^11.5.1"
+  }
+}
