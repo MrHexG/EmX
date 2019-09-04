@@ -18,14 +18,7 @@ client.on('message', message => {
         message.channel.sendMessage(`Hello, I'm a bot in progress right now but if you wish to add me to your server, that's fine! do _invite`);
 
     }
-    if (message.content.startsWith("_help")) {
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", "help.txt");
-        xhr.onload = function () {
-            message.channel.sendMessage(`Here are my commands!`)
-            message.channel.sendMessage(xhr.responseText)
-        }
-    }
+   
     if (message.content.startsWith("_cat")) {
         message.channel.sendMessage(Cat8ball())
     }
