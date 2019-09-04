@@ -14,7 +14,7 @@ client.on("ready", () => {
 });
 
 client.on('message', message => {
-    if (message.content.startsWith("_EmX")) {
+   if (message.content ==='_EmX') {
         message.channel.sendMessage(`Hello, I'm a bot in progress right now but if you wish to add me to your server, that's fine! do _invite. You can also learn more about my commands by doing _help`);
     }
     
@@ -26,10 +26,10 @@ client.on('message', message => {
 
         return rand[Math.floor(Math.random() * rand.length)];
     }
-    if (message.content.startsWith("_Cat")) {
+    if (message.content ==='_Cat') {
         message.channel.sendMessage(Cat8ball())
     }
-    if (message.content.startsWith("_cat")) {
+    if (message.content ==='_cat') {
         message.channel.sendMessage(Cat8ball())
     }
     function Dog8ball() {
@@ -37,27 +37,27 @@ client.on('message', message => {
         return Rand[Math.floor(Math.random() * rand.length)];
     }
 
-    if (message.channel.content.startsWith("_Dog")) {
+    if (message.channel.content ==='_Dog') {
         message.channel.sendMessage(Dog8ball())
     }
-    if (message.channel.content.startsWith("_dog")) {
+    if (message.channel.content === '_dog') {
         message.channel.sendMessage(Dog8ball())
     }
     function Random() {
         var Random = ['http://bit.ly/2jZ2B1c', 'http://bit.ly/2khlyMY', 'http://bit.ly/2lwkfd8', 'http://bit.ly/2ktyorc', 'http://bit.ly/2k3ACO4', 'http://bit.ly/2kirdlV', 'http://bit.ly/2jYvV89', 'http://bit.ly/2ktWjab', 'http://bit.ly/2lXLgX9', 'http://bit.ly/2lwJ3BK', 'Fun Fact: This Cat beat my maker up! http://bit.ly/2ktz9Ay', 'http://bit.ly/2kqGEZb', 'http://bit.ly/2lXLgX9','http://bit.ly/2k24CK8'];
         return Random[Math.floor(Math.random() * rand.length)];
     }
-    if (message.channel.content.startsWith("_random")) {
+    if (message.channel.content === '_random') {
         message.channel.sendMessage(Random())
     }
-    if (message.channel.content.startsWith("_Random")) {
+    if (message.channel.content === '_Random') {
         message.channel.sendMessage(Random())
     }
 
-    if (message.channel.content.startsWith("_rand")) {
+    if (message.channel.content ==='_rand') {
         message.channel.sendMessage(Random())
     }
-    if (message.channel.content.startsWith("_Rand")) {
+    if (message.channel.content === '_Rand') {
         message.channel.sendMessage(Random())
     }
 });
