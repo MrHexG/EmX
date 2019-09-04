@@ -33,8 +33,8 @@ client.on('message', message => {
         message.channel.sendMessage(Cat8ball())
     }
     function Dog8ball() {
-        var Rand = ['http://bit.ly/2k3xYI8', 'http://bit.ly/2kttQB9', 'http://bit.ly/2jYth2d', 'http://bit.ly/2lCAeGp', 'http://bit.ly/2khbx2i', 'http://bit.ly/2k20Znu ', 'http://bit.ly/2jXMFfB', 'http://bit.ly/2lDfH4z', 'https://bravo.ly/2lwiNaG'];
-        return Rand[Math.floor(Math.random() * rand.length)];
+        var james_charles = ['http://bit.ly/2k3xYI8', 'http://bit.ly/2kttQB9', 'http://bit.ly/2jYth2d', 'http://bit.ly/2lCAeGp', 'http://bit.ly/2khbx2i', 'http://bit.ly/2k20Znu ', 'http://bit.ly/2jXMFfB', 'http://bit.ly/2lDfH4z', 'https://bravo.ly/2lwiNaG'];
+        return james_charles[Math.floor(Math.random() * james_charles.length)];
     }
 
     if (message.channel.content ==='_Dog') {
@@ -45,7 +45,7 @@ client.on('message', message => {
     }
     function Random() {
         var Random = ['http://bit.ly/2jZ2B1c', 'http://bit.ly/2khlyMY', 'http://bit.ly/2lwkfd8', 'http://bit.ly/2ktyorc', 'http://bit.ly/2k3ACO4', 'http://bit.ly/2kirdlV', 'http://bit.ly/2jYvV89', 'http://bit.ly/2ktWjab', 'http://bit.ly/2lXLgX9', 'http://bit.ly/2lwJ3BK', 'Fun Fact: This Cat beat my maker up! http://bit.ly/2ktz9Ay', 'http://bit.ly/2kqGEZb', 'http://bit.ly/2lXLgX9','http://bit.ly/2k24CK8'];
-        return Random[Math.floor(Math.random() * rand.length)];
+        return Random[Math.floor(Math.random() * Random.length)];
     }
     if (message.channel.content === '_random') {
         message.channel.sendMessage(Random())
