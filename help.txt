@@ -1,9 +1,0 @@
-```Hello! I'm an everything bot under development by Sattish#2011
-My prefix is _ (One Underscore)
-_EmX will tell you a little bit about myself.
-_invite will send you my invite link so that you can add me to your server!
-_Cat will send a randomized cat image. (Note: It is randomized, therefore, there might be an image that may repeat.)
-_Dog will send a randomized dog image. (Note: It is randomzied, therefore, there might be an image that may repeat.)
-_Random will send a randomized image from the internet. (Note: It is randomized, therefore, there might be an image that may repeat.)
-
-That's all the commands for now! I'll see you around!```
