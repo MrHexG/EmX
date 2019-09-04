@@ -37,27 +37,27 @@ client.on('message', message => {
         return james_charles[Math.floor(Math.random() * james_charles.length)];
     }
 
-    if (message.channel.content ==='_Dog') {
+    if (message.content ==='_Dog') {
         message.channel.sendMessage(Dog8ball())
     }
-    if (message.channel.content === '_dog') {
+    if (message.content === '_dog') {
         message.channel.sendMessage(Dog8ball())
     }
     function Random() {
         var Random = ['http://bit.ly/2jZ2B1c', 'http://bit.ly/2khlyMY', 'http://bit.ly/2lwkfd8', 'http://bit.ly/2ktyorc', 'http://bit.ly/2k3ACO4', 'http://bit.ly/2kirdlV', 'http://bit.ly/2jYvV89', 'http://bit.ly/2ktWjab', 'http://bit.ly/2lXLgX9', 'http://bit.ly/2lwJ3BK', 'Fun Fact: This Cat beat my maker up! http://bit.ly/2ktz9Ay', 'http://bit.ly/2kqGEZb', 'http://bit.ly/2lXLgX9','http://bit.ly/2k24CK8'];
         return Random[Math.floor(Math.random() * Random.length)];
     }
-    if (message.channel.content === '_random') {
+    if (message.content === '_random') {
         message.channel.sendMessage(Random())
     }
-    if (message.channel.content === '_Random') {
+    if (message.content === '_Random') {
         message.channel.sendMessage(Random())
     }
 
-    if (message.channel.content ==='_rand') {
+    if (message.content ==='_rand') {
         message.channel.sendMessage(Random())
     }
-    if (message.channel.content === '_Rand') {
+    if (message.content === '_Rand') {
         message.channel.sendMessage(Random())
     }
 });
