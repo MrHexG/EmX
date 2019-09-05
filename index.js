@@ -17,6 +17,25 @@ client.on('message', message => {
    if (message.content ==='_EmX') {
         message.channel.sendMessage(`Hello, I'm a bot in progress right now but if you wish to add me to your server, that's fine! do _invite. You can also learn more about my commands by doing _help`);
     }
+    if (message.content === '_help') {
+        const exampleEmbed = new Discord.RichEmbed()
+            .setColor('#C0C0C0')
+            .setTitle('Help')
+            .setDescription('Here are the bot commands!')
+            .setThumbnail('https://ibb.co/JRvCkb3')
+            .addField('_EmX', 'Simply describes the bot')
+            .addBlankField()
+            .addField('_invite', 'Gives you an invite link to bring the bot to your server', true)
+            .addBlankField()
+            .addField('_Dog', 'Sends a randomly generated picture of a doggo', true)
+            .addBlankField()
+            .addField('_Cat', 'Sends a randomly generated picture of a cat', true)
+            .addBlankField
+            .addField('_Random', 'Sends a randomly generated picture of any random picture in the internet', true)
+            .setImage('https://ibb.co/JRvCkb3')
+            .setFooter('Bot created by Sattish#2011', 'https://ibb.co/JRvCkb3');
+        message.channel.sendMessage(exampleEmbed)
+    }
     
     if (message.content === '_invite') {
         message.channel.sendMessage(`https://discordapp.com/api/oauth2/authorize?client_id=612536352751353886&permissions=67584&redirect_uri=https%3A%2F%2Fdiscordapp.com%2Fapi%2Foauth2%2Fauthorize%3Fclient_id%3D612536352751353886%26permissions%3D8%26scope%3Dbot&scope=bot`)
