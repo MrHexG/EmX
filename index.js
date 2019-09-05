@@ -23,6 +23,7 @@ client.on('message', message => {
             .setTitle('Help')
             .setDescription('Here are the bot commands!')
             .setThumbnail('https://i.ibb.co/gMS6gX4/mono.png')
+            .addBlankField()
             .addField('_EmX', 'Simply describes the bot')
             .addBlankField()
             .addField('_invite', 'Gives you an invite link to bring the bot to your server', true)
@@ -32,7 +33,6 @@ client.on('message', message => {
             .addField('_Cat', 'Sends a randomly generated picture of a cat', true)
             .addBlankField()
             .addField('_Random', 'Sends a randomly generated picture of any random picture in the internet', true)
-            .setImage('https://i.ibb.co/gMS6gX4/mono.png')
             .setFooter('Bot created by Sattish#2011', 'https://i.ibb.co/gMS6gX4/mono.png');
         message.channel.sendMessage(exampleEmbed)
     }
