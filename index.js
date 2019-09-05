@@ -30,7 +30,7 @@ client.on('message', message => {
             .addField('_Dog', 'Sends a randomly generated picture of a doggo', true)
             .addBlankField()
             .addField('_Cat', 'Sends a randomly generated picture of a cat', true)
-            .addBlankField
+            .addBlankField()
             .addField('_Random', 'Sends a randomly generated picture of any random picture in the internet', true)
             .setImage('https://ibb.co/JRvCkb3')
             .setFooter('Bot created by Sattish#2011', 'https://ibb.co/JRvCkb3');
