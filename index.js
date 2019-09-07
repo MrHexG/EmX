@@ -48,6 +48,16 @@ client.on('message', message => {
             .addField('_Invite | _invite')
         message.channel.sendMessage(InviteEmbed)
     }
+    if (message.content === '_help Tree') {
+        const TreeEmbed = new Discord.RichEmbed()
+            .setColor('#800080')
+            .setTitle('Help on how to water a tree')
+            .setDescription('Are you really asking a bot for help on watering a tree? **Amateur**')
+            .addField('Aliases')
+            .addBlankField()
+            .addField('_Tree | _tree')
+        message.channel.sendMessage(TreeEmbed)
+    }
     function Cat8ball() {
         var rand = ['http://bit.ly/2k0cr31', 'http://bit.ly/2lwabAZ', 'http://bit.ly/2lw5pTU', 'http://bit.ly/2lw5DKK', 'http://bit.ly/2jURKW0', 'http://bit.ly/2kfOhlg', 'http://bit.ly/2kpdVUB', 'http://bit.ly/2jWmtlx', 'http://bit.ly/2lPAXnQ', 'http://bit.ly/2ltsu9Z', 'http://bit.ly/2lzSDDO', 'http://bit.ly/2lttRFF'];
 
