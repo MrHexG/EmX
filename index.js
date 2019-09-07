@@ -102,10 +102,10 @@ client.on('message', message => {
         // return rand[Math.floor(Math.random() * rand.length)];
         fetch('https://api.thecatapi.com/v1/images/search')
             .then(res => res.json())
-            .then(data => {return data[0].url})
+            .then(data => message.channel.sendMessage(data[0].url))
     }
     if (message.content.toLowerCase() === '_cat') {
-        message.channel.sendMessage(Cat8ball())
+        Cat8ball()
     }
     function Dog8ball() {
         var james_charles = ['http://bit.ly/2k3xYI8', 'http://bit.ly/2kttQB9', 'http://bit.ly/2jYth2d', 'http://bit.ly/2lCAeGp', 'http://bit.ly/2khbx2i', 'http://bit.ly/2k20Znu ', 'http://bit.ly/2jXMFfB', 'http://bit.ly/2lDfH4z', 'https://bravo.ly/2lwiNaG'];
