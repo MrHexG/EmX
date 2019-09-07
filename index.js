@@ -98,8 +98,6 @@ client.on('message', message => {
         message.channel.sendMessage(InvEmbed)
     }
     function Cat8ball() {
-        // var rand = ['http://bit.ly/2k0cr31', 'http://bit.ly/2lwabAZ', 'http://bit.ly/2lw5pTU', 'http://bit.ly/2lw5DKK', 'http://bit.ly/2jURKW0', 'http://bit.ly/2kfOhlg', 'http://bit.ly/2kpdVUB', 'http://bit.ly/2jWmtlx', 'http://bit.ly/2lPAXnQ', 'http://bit.ly/2ltsu9Z', 'http://bit.ly/2lzSDDO', 'http://bit.ly/2lttRFF'];
-        // return rand[Math.floor(Math.random() * rand.length)];
         fetch('https://api.thecatapi.com/v1/images/search')
             .then(res => res.json())
             .then(data => message.channel.sendMessage(data[0].url))
@@ -108,12 +106,13 @@ client.on('message', message => {
         Cat8ball()
     }
     function Dog8ball() {
-        var james_charles = ['http://bit.ly/2k3xYI8', 'http://bit.ly/2kttQB9', 'http://bit.ly/2jYth2d', 'http://bit.ly/2lCAeGp', 'http://bit.ly/2khbx2i', 'http://bit.ly/2k20Znu ', 'http://bit.ly/2jXMFfB', 'http://bit.ly/2lDfH4z', 'https://bravo.ly/2lwiNaG'];
-        return james_charles[Math.floor(Math.random() * james_charles.length)];
+        fetch('https://api.thedogapi.com/v1/images/search')
+            .then(res => res.json())
+            .then(data => message.channel.sendMessage(data[0].url))
     }
 
     if (message.content.toLowerCase() === '_dog') {
-        message.channel.sendMessage(Dog8ball())
+        Dog8ball()
     }
     function Random() {
         var Random = ['http://bit.ly/2jZ2B1c', 'http://bit.ly/2khlyMY', 'http://bit.ly/2lwkfd8', 'http://bit.ly/2ktyorc', 'http://bit.ly/2k3ACO4', 'http://bit.ly/2kirdlV', 'http://bit.ly/2jYvV89', 'http://bit.ly/2ktWjab', 'http://bit.ly/2lXLgX9', 'http://bit.ly/2lwJ3BK', 'Fun Fact: This Cat beat my maker up! http://bit.ly/2ktz9Ay', 'http://bit.ly/2kqGEZb', 'http://bit.ly/2lXLgX9', 'http://bit.ly/2k24CK8'];
