@@ -58,6 +58,28 @@ client.on('message', message => {
             .addField('_Tree | _tree')
         message.channel.sendMessage(TreeEmbed)
     }
+    if (message.content === '_help Dog') {
+
+        const DogEmbed = new Discord.RichEmbed()
+            .setColor('#800080')
+            .setTitle('Help about Doggos')
+            .setDescription('Bot sends a randomized picture of a doggo from the internet! If a picture shows up again, thats because its a randomized system and the bot could choose any photos at all!')
+            .addField('Aliases')
+            .addBlankField()
+            .addField('_Dog | _dog')
+        message.channel.sendMessage(DogEmbed)
+    }
+    if (message.content === '_help Cat') {
+
+        const CatEmbed = new Discord.RichEmbed()
+            .setColor('#800080')
+            .setTitle('Help about Fluff Cats')
+            .setDescription('Bot sends a randomized picture of a cattos from the internet! If a picture shows up again, thats because its a randomized system and the bot could choose any photos at all!')
+            .addField('Aliases')
+            .addBlankField()
+            .addField('_Cat | _cat')
+        message.channel.sendMessage(CatEmbed)
+    }
     function Cat8ball() {
         var rand = ['http://bit.ly/2k0cr31', 'http://bit.ly/2lwabAZ', 'http://bit.ly/2lw5pTU', 'http://bit.ly/2lw5DKK', 'http://bit.ly/2jURKW0', 'http://bit.ly/2kfOhlg', 'http://bit.ly/2kpdVUB', 'http://bit.ly/2jWmtlx', 'http://bit.ly/2lPAXnQ', 'http://bit.ly/2ltsu9Z', 'http://bit.ly/2lzSDDO', 'http://bit.ly/2lttRFF'];
 
