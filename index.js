@@ -101,13 +101,13 @@ client.on('message', message => {
            }
     
     if (message.content === '_invite') {
-         if (message.content === '_help Cat') {
+        
                
     const InvEmbed = new Discord.RichEmbed()
         .setColor('#800080')
         .setTitle('Heres the link!')
         .setDescription('https://discordapp.com/api/oauth2/authorize?client_id=612536352751353886&permissions=67584&redirect_uri=https%3A%2F%2Fdiscordapp.com%2Fapi%2Foauth2%2Fauthorize%3Fclient_id%3D612536352751353886%26permissions%3D8%26scope%3Dbot&scope=bot')
-       
+       message.channel.sendMessage(InvEmbed)
     }
       if (message.content === '_Invite') {
        message.channel.sendMessage(InvEmbed)
