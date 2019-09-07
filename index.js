@@ -38,14 +38,15 @@ client.on('message', message => {
             .setFooter('Bot created by Sattish#2011', 'https://i.ibb.co/gMS6gX4/mono.png');
         message.channel.sendMessage(exampleEmbed)
     }
-    if (message.content === '_help EmX') {
+   
         const EmXEmbed = new Discord.RichEmbed()
         .setColor('#800080')
         .setTitle('Help about EmX')
         .setDescription('Describes the bot in simple words, thats it, do you really have to ask for this? :unamused:')
+        if (message.content === '_help EmX') {
         message.channel.sendMessage(EmXEmbed)
     }
-    if (message.content === '_help Invite') {
+    
     const InviteEmbed = new Discord.RichEmbed()
         .setColor('#800080')
         .setTitle('Help about Invitation')
@@ -53,9 +54,10 @@ client.on('message', message => {
         .addField('Aliases', '', true)
         .addBlankField()
         .addField('_Invite | _invite', '', true)
+    if (message.content === '_help Invite') {
         message.channel.sendMessage(InviteEmbed)
     }
-        if (message.content === '_help Tree') {
+        
     const TreeEmbed = new Discord.RichEmbed()
         .setColor('#800080')
         .setTitle('Help on how to water a tree')
@@ -63,9 +65,10 @@ client.on('message', message => {
         .addField('Aliases', '', true)
         .addBlankField()
         .addField('_Tree | _tree', '', true)
+    if (message.content === '_help Tree') {
         message.channel.sendMessage(TreeEmbed)
     }
-        if (message.content === '_help Dog') {
+       
                
     const DogEmbed = new Discord.RichEmbed()
         .setColor('#800080')
@@ -74,9 +77,10 @@ client.on('message', message => {
         .addField('Aliases','', true)
         .addBlankField()
         .addField('_Dog | _dog')
+     if (message.content === '_help Dog') {
     message.channel.sendMessage(DogEmbed)
     }
-      if (message.content === '_help Cat') {
+      
                
     const CatEmbed = new Discord.RichEmbed()
         .setColor('#800080')
@@ -85,10 +89,11 @@ client.on('message', message => {
         .addField('Aliases', '', true)
         .addBlankField()
         .addField('_Cat | _cat', '', true)
+    if (message.content === '_help Cat') {
     message.channel.sendMessage(CatEmbed)
       }
           
-           if (message.content === '_help Random') {
+          
                
     const RandEmbed = new Discord.RichEmbed()
         .setColor('#800080')
@@ -97,17 +102,19 @@ client.on('message', message => {
         .addField('Aliases', '', true)
         .addBlankField()
         .addField('_Random | _random | _Rand | _rand', '', true)
+     if (message.content === '_help Random') {
     message.channel.sendMessage(RandEmbed)
            }
     
-    if (message.content === '_invite') {
+    
         
                
     const InvEmbed = new Discord.RichEmbed()
         .setColor('#800080')
         .setTitle('Heres the link!')
         .setDescription('https://discordapp.com/api/oauth2/authorize?client_id=612536352751353886&permissions=67584&redirect_uri=https%3A%2F%2Fdiscordapp.com%2Fapi%2Foauth2%2Fauthorize%3Fclient_id%3D612536352751353886%26permissions%3D8%26scope%3Dbot&scope=bot')
-       message.channel.sendMessage(InvEmbed)
+       if (message.content === '_invite') {
+    message.channel.sendMessage(InvEmbed)
     }
       if (message.content === '_Invite') {
        message.channel.sendMessage(InvEmbed)
