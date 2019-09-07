@@ -102,7 +102,7 @@ client.on('message', message => {
         // return rand[Math.floor(Math.random() * rand.length)];
         fetch('https://api.thecatapi.com/v1/images/search')
             .then(res => res.json())
-            .then(data => console.log(data[0].url))
+            .then(data => {return data[0].url})
     }
     if (message.content.toLowerCase() === '_cat') {
         message.channel.sendMessage(Cat8ball())
