@@ -129,7 +129,7 @@ client.on('message', message => {
         var Random = ['http://bit.ly/2jZ2B1c', 'http://bit.ly/2khlyMY', 'http://bit.ly/2lwkfd8', 'http://bit.ly/2ktyorc', 'http://bit.ly/2k3ACO4', 'http://bit.ly/2kirdlV', 'http://bit.ly/2jYvV89', 'http://bit.ly/2ktWjab', 'http://bit.ly/2lXLgX9', 'http://bit.ly/2lwJ3BK', 'Fun Fact: This Cat beat my maker up! http://bit.ly/2ktz9Ay', 'http://bit.ly/2kqGEZb', 'http://bit.ly/2lXLgX9', 'http://bit.ly/2k24CK8'];
         return Random[Math.floor(Math.random() * Random.length)];
     }
-    if (message.content.toLowerCase() === '_random' || message.content.toLowerCase === '_rand'){
+    if (message.content.toLowerCase() === '_random' || message.content.toLowerCase() === '_rand'){
         message.channel.sendMessage(Random())
     }
     if (message.content.toLowerCase() === '_tree') {
