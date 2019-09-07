@@ -21,7 +21,7 @@ client.on('message', message => {
         const exampleEmbed = new Discord.RichEmbed()
             .setColor('#800080')
             .setTitle('Help')
-            .setDescription('Here are the bot commands! Use ```_help command name``` for help on usage. **Case Sensitive**')
+            .setDescription('Here are the bot commands! Use ``_help command name`` for help on usage. **Case Sensitive**')
             .setThumbnail('https://i.ibb.co/gMS6gX4/mono.png')
             .addBlankField()
             .addField('_EmX', 'Simply describes the bot')
