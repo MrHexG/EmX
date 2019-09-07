@@ -50,9 +50,9 @@ client.on('message', message => {
         .setColor('#800080')
         .setTitle('Help about Invitation')
         .setDescription('Bot sends a link which will allow you to bring the bot to your server!')
-        .addField('Aliases')
+        .addField('Aliases', '', true)
         .addBlankField()
-        .addField('_Invite | _invite')
+        .addField('_Invite | _invite', '', true)
         message.channel.sendMessage(InviteEmbed)
     }
         if (message.content === '_help Tree') {
@@ -60,9 +60,9 @@ client.on('message', message => {
         .setColor('#800080')
         .setTitle('Help on how to water a tree')
         .setDescription('Are you really asking a bot for help on watering a tree? **Amateur**')
-        .addField('Aliases')
+        .addField('Aliases', '', true)
         .addBlankField()
-        .addField('_Tree | _tree')
+        .addField('_Tree | _tree', '', true)
         message.channel.sendMessage(TreeEmbed)
     }
         if (message.content === '_help Dog') {
@@ -71,7 +71,7 @@ client.on('message', message => {
         .setColor('#800080')
         .setTitle('Help about Doggos')
         .setDescription('Bot sends a randomized picture of a doggo from the internet! If a picture shows up again, thats because its a randomized system and the bot could choose any photos at all!')
-        .addField('Aliases')
+        .addField('Aliases','', true)
         .addBlankField()
         .addField('_Dog | _dog')
     message.channel.sendMessage(DogEmbed)
@@ -82,9 +82,9 @@ client.on('message', message => {
         .setColor('#800080')
         .setTitle('Help about Fluff Cats')
         .setDescription('Bot sends a randomized picture of a cattos from the internet! If a picture shows up again, thats because its a randomized system and the bot could choose any photos at all!')
-        .addField('Aliases')
+        .addField('Aliases', '', true)
         .addBlankField()
-        .addField('_Cat | _cat')
+        .addField('_Cat | _cat', '', true)
     message.channel.sendMessage(CatEmbed)
       }
           
@@ -94,9 +94,9 @@ client.on('message', message => {
         .setColor('#800080')
         .setTitle('Help about Random pictures')
         .setDescription('Bot sends a randomized picture from the internet! If a picture shows up again, thats because its a randomized system and the bot could choose any photos at all!')
-        .addField('Aliases')
+        .addField('Aliases', '', true)
         .addBlankField()
-        .addField('_Random | _random | _Rand | _rand')
+        .addField('_Random | _random | _Rand | _rand', '', true)
     message.channel.sendMessage(RandEmbed)
            }
     
