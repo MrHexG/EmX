@@ -28,6 +28,8 @@ client.on('message', message => {
             .addBlankField()
             .addField('_invite', 'Gives you an invite link to bring the bot to your server', true)
             .addBlankField()
+            .addField('_tree', 'Plants a tree at will', true)
+            .addBlankField()
             .addField('_Dog', 'Sends a randomly generated picture of a doggo', true)
             .addBlankField()
             .addField('_Cat', 'Sends a randomly generated picture of a cat', true)
@@ -79,6 +81,16 @@ client.on('message', message => {
     if (message.content === '_Rand') {
         message.channel.sendMessage(Random())
     }
+        if (message.content === '_tree') {
+        message.channel.sendMessage(`A tree was watered! Thanks!`)
+        message.channel.sendMessage(`https://tenor.com/view/clown-gif-10162552`)
+    }
+        if (message.content === '_Tree') {
+        message.channel.sendMessage(`A tree was watered! Thanks!`)
+        message.channel.sendMessage(`https://tenor.com/view/clown-gif-10162552`)
+    }
+
+
 });
 
 
