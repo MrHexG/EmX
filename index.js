@@ -142,14 +142,14 @@ client.on('message', message => {
     if (message.content === '_Rand') {
         message.channel.sendMessage(Random())
     }
-    if (message.content === '_tree') {
+    if (message.content.toLowerCase() === '_tree') {
         message.channel.sendMessage(`A tree was watered! Thanks!`)
         message.channel.sendMessage(`https://tenor.com/view/clown-gif-10162552`)
     }
-    if (message.content === '_Tree') {
-        message.channel.sendMessage(`A tree was watered! Thanks!`)
-        message.channel.sendMessage(`https://tenor.com/view/clown-gif-10162552`)
-    }
+    // if (message.content === '_Tree') {
+    //     message.channel.sendMessage(`A tree was watered! Thanks!`)
+    //     message.channel.sendMessage(`https://tenor.com/view/clown-gif-10162552`)
+    // }
 
 
 });
