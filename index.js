@@ -51,9 +51,6 @@ client.on('message', message => {
         .setColor('#800080')
         .setTitle('Help about Invitation')
         .setDescription('Bot sends a link which will allow you to bring the bot to your server!')
-        .addField('Aliases', '', true)
-        .addBlankField()
-        .addField('_Invite | _invite', '', true)
     if (message.content === '_help Invite') {
         message.channel.sendMessage(InviteEmbed)
     }
@@ -62,9 +59,7 @@ client.on('message', message => {
         .setColor('#800080')
         .setTitle('Help on how to water a tree')
         .setDescription('Are you really asking a bot for help on watering a tree? **Amateur**')
-        .addField('Aliases', '', true)
-        .addBlankField()
-        .addField('_Tree | _tree', '', true)
+       
     if (message.content === '_help Tree') {
         message.channel.sendMessage(TreeEmbed)
     }
