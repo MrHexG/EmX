@@ -80,6 +80,17 @@ client.on('message', message => {
             .addField('_Cat | _cat')
         message.channel.sendMessage(CatEmbed)
     }
+    if (message.content === '_help Random') {
+
+        const RandEmbed = new Discord.RichEmbed()
+            .setColor('#800080')
+            .setTitle('Help about Random pictures')
+            .setDescription('Bot sends a randomized picture from the internet! If a picture shows up again, thats because its a randomized system and the bot could choose any photos at all!')
+            .addField('Aliases')
+            .addBlankField()
+            .addField('_Random | _random | _Rand | _rand')
+        message.channel.sendMessage(RandEmbed)
+    }
     function Cat8ball() {
         var rand = ['http://bit.ly/2k0cr31', 'http://bit.ly/2lwabAZ', 'http://bit.ly/2lw5pTU', 'http://bit.ly/2lw5DKK', 'http://bit.ly/2jURKW0', 'http://bit.ly/2kfOhlg', 'http://bit.ly/2kpdVUB', 'http://bit.ly/2jWmtlx', 'http://bit.ly/2lPAXnQ', 'http://bit.ly/2ltsu9Z', 'http://bit.ly/2lzSDDO', 'http://bit.ly/2lttRFF'];
 
