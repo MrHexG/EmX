@@ -1,4 +1,6 @@
 const Discord = require("discord.js");
+const fetch = require('node-fetch');
+
 const client = new Discord.Client();
 
 client.on("ready", () => {
@@ -96,9 +98,11 @@ client.on('message', message => {
         message.channel.sendMessage(InvEmbed)
     }
     function Cat8ball() {
-        var rand = ['http://bit.ly/2k0cr31', 'http://bit.ly/2lwabAZ', 'http://bit.ly/2lw5pTU', 'http://bit.ly/2lw5DKK', 'http://bit.ly/2jURKW0', 'http://bit.ly/2kfOhlg', 'http://bit.ly/2kpdVUB', 'http://bit.ly/2jWmtlx', 'http://bit.ly/2lPAXnQ', 'http://bit.ly/2ltsu9Z', 'http://bit.ly/2lzSDDO', 'http://bit.ly/2lttRFF'];
-
-        return rand[Math.floor(Math.random() * rand.length)];
+        // var rand = ['http://bit.ly/2k0cr31', 'http://bit.ly/2lwabAZ', 'http://bit.ly/2lw5pTU', 'http://bit.ly/2lw5DKK', 'http://bit.ly/2jURKW0', 'http://bit.ly/2kfOhlg', 'http://bit.ly/2kpdVUB', 'http://bit.ly/2jWmtlx', 'http://bit.ly/2lPAXnQ', 'http://bit.ly/2ltsu9Z', 'http://bit.ly/2lzSDDO', 'http://bit.ly/2lttRFF'];
+        // return rand[Math.floor(Math.random() * rand.length)];
+        fetch('https://api.thecatapi.com/v1/images/search')
+            .then(res => res.json())
+            .then(data => console.log(data[0].url))
     }
     if (message.content.toLowerCase() === '_cat') {
         message.channel.sendMessage(Cat8ball())
@@ -115,7 +119,7 @@ client.on('message', message => {
         var Random = ['http://bit.ly/2jZ2B1c', 'http://bit.ly/2khlyMY', 'http://bit.ly/2lwkfd8', 'http://bit.ly/2ktyorc', 'http://bit.ly/2k3ACO4', 'http://bit.ly/2kirdlV', 'http://bit.ly/2jYvV89', 'http://bit.ly/2ktWjab', 'http://bit.ly/2lXLgX9', 'http://bit.ly/2lwJ3BK', 'Fun Fact: This Cat beat my maker up! http://bit.ly/2ktz9Ay', 'http://bit.ly/2kqGEZb', 'http://bit.ly/2lXLgX9', 'http://bit.ly/2k24CK8'];
         return Random[Math.floor(Math.random() * Random.length)];
     }
-    if (message.content.toLowerCase() === '_random' || message.content.toLowerCase() === '_rand'){
+    if (message.content.toLowerCase() === '_random' || message.content.toLowerCase() === '_rand') {
         message.channel.sendMessage(Random())
     }
     if (message.content.toLowerCase() === '_tree') {
