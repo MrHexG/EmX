@@ -94,7 +94,7 @@ client.on('message', message => {
         const InvEmbed = new Discord.RichEmbed()
             .setColor('#800080')
             .setTitle('Heres the link!')
-            .setDescription('https://discordapp.com/api/oauth2/authorize?client_id=612536352751353886&permissions=67584&redirect_uri=https%3A%2F%2Fdiscordapp.com%2Fapi%2Foauth2%2Fauthorize%3Fclient_id%3D612536352751353886%26permissions%3D8%26scope%3Dbot&scope=bot')
+            .setDescription('https://discordapp.com/api/oauth2/authorize?client_id=612536352751353886&permissions=523328&scope=bot')
         message.channel.sendMessage(InvEmbed)
     }
     function Cat8ball() {
