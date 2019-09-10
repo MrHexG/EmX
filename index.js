@@ -153,7 +153,7 @@ client.on('message', message => {
     }
     async function waterTree(user) {
         const last_tree = await Tree.findOne({ user_id: user });
-        if (isWateringAllowed(last_tree.planted_time)) {
+        if (!last_tree || isWateringAllowed(last_tree.planted_time)) {
             var tree = new Tree({
                 user_id: user,
                 planted_time: Date.now()
