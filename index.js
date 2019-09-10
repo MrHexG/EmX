@@ -1,6 +1,7 @@
 const Discord = require("discord.js");
 const fetch = require('node-fetch');
 const mongoose = require('mongoose');
+const moment = require('moment');
 
 mongoose.connect(process.env.mongo_conn_string, { useNewUrlParser: true });
 const client = new Discord.Client();
@@ -139,20 +140,29 @@ client.on('message', message => {
     if (message.content.toLowerCase() === '_random' || message.content.toLowerCase() === '_rand') {
         message.channel.sendMessage(Random())
     }
-    function plantTree(user) {
+    function waterTree(user) {
         var tree = new Tree({
             user_id: user,
             planted_time: Date.now()
         })
         tree.save(function (err, tree) {
             if (err) return console.error(err);
-            message.reply(user + ', you have planted a tree')
+            message.reply(', thank you for watering a tree. You will be able to water again in 12 hours')
         });
+    }
+    function getLastWateredTree(user) {
+        Tree.findOne({user_id: user}, function(err, tree){
+            return tree;
+        })
+    }
+    function checkTimeLimit(start_time){
+        console.log(moment().subtract(start_time, new Date()).hours());
     }
     if (message.content.toLowerCase() === '_tree') {
         // message.channel.sendMessage(`A tree was watered! Thanks!`)
         // message.channel.sendMessage(`https://tenor.com/view/clown-gif-10162552`)
-        plantTree(message.author.id);
+        checkTimeLimit(getLastWateredTree().planted_time);
+        //waterTree(message.author.id);
     }
 });
 
