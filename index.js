@@ -156,7 +156,7 @@ client.on('message', message => {
             });
         }
         else {
-            message.reply(', not enough time has passed since your last watering. You will be able to water again in' + (12 - moment.duration(moment(new Date()).diff(moment(start_time))).asHours()) + 'hours');
+            message.reply(', not enough time has passed since your last watering. You will be able to water again in' + (12 - moment.duration(moment(new Date()).diff(moment(last_tree.planted_time))).asHours()) + 'hours');
         }
     }
     function isWateringAllowed(start_time) {
