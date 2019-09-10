@@ -1,6 +1,8 @@
 const Discord = require("discord.js");
 const fetch = require('node-fetch');
+const mongoose = require('mongoose');
 
+mongoose.connect(process.env.mongo_conn_string, {useNewUrlParser: true});
 const client = new Discord.Client();
 
 client.on("ready", () => {
