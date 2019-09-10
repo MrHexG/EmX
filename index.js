@@ -2,14 +2,24 @@ const Discord = require("discord.js");
 const fetch = require('node-fetch');
 const mongoose = require('mongoose');
 
-mongoose.connect(process.env.mongo_conn_string, {useNewUrlParser: true});
+mongoose.connect(process.env.mongo_conn_string, { useNewUrlParser: true });
 const client = new Discord.Client();
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
-  console.log('DB connected!')
+db.once('open', function () {
+    console.log('DB connected!')
 });
+
+//DB setup
+var treeSchema = new mongoose.Schema({
+    user_id: String,
+    planted_time: Date
+});
+treeSchema.methods.timeBeforeNextPlant = function () {
+    console.log(this.planted_time);
+}
+var Tree = mongoose.model('Tree', treeSchema);
 
 client.on("ready", () => {
     console.log("I am ready!");
@@ -129,9 +139,20 @@ client.on('message', message => {
     if (message.content.toLowerCase() === '_random' || message.content.toLowerCase() === '_rand') {
         message.channel.sendMessage(Random())
     }
+    function plantTree(user) {
+        var tree = new Tree({
+            user_id: user,
+            planted_time: Date.now()
+        })
+        tree.save(function (err, tree) {
+            if (err) return console.error(err);
+            message.channel.sendMessage(user + ', you have planted a tree')
+        });
+    }
     if (message.content.toLowerCase() === '_tree') {
-        message.channel.sendMessage(`A tree was watered! Thanks!`)
-        message.channel.sendMessage(`https://tenor.com/view/clown-gif-10162552`)
+        // message.channel.sendMessage(`A tree was watered! Thanks!`)
+        // message.channel.sendMessage(`https://tenor.com/view/clown-gif-10162552`)
+        plantTree(message.author.id);
     }
 });
 
