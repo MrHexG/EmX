@@ -3,7 +3,7 @@ const fetch = require('node-fetch');
 const mongoose = require('mongoose');
 const moment = require('moment');
 
-mongoose.connect(process.env.mongo_conn_string, { useNewUrlParser: true });
+mongoose.connect(process.env.mongo_conn_string || 'mongodb+srv://emx_db:0pBfRLn1SxL257kq@emx-l9d4w.gcp.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true });
 const client = new Discord.Client();
 
 var db = mongoose.connection;
@@ -22,6 +22,9 @@ treeSchema.methods.getPlantedTime = function () {
 }
 var Tree = mongoose.model('Tree', treeSchema);
 
+
+
+// waterTree('375615842777432064');
 client.on("ready", () => {
     console.log("I am ready!");
     client.user.setStatus('dnd');
@@ -140,23 +143,27 @@ client.on('message', message => {
     if (message.content.toLowerCase() === '_random' || message.content.toLowerCase() === '_rand') {
         message.channel.sendMessage(Random())
     }
-    function waterTree(user) {
-        var tree = new Tree({
-            user_id: user,
-            planted_time: Date.now()
-        })
-        tree.save(function (err, tree) {
-            if (err) return console.error(err);
-            message.reply(', thank you for watering a tree. You will be able to water again in 12 hours')
-        });
+    async function waterTree(user) {
+        const last_tree = await Tree.findOne({ user_id: user });
+        if (isWateringAllowed(last_tree.planted_time)) {
+            var tree = new Tree({
+                user_id: user,
+                planted_time: Date.now()
+            })
+            tree.save(function (err, tree) {
+                if (err) return console.error(err);
+                message.reply(', thank you for watering a tree. You will be able to water again in 12 hours')
+            });
+        }
+        else {
+            message.reply(', not enough time has passed since your last watering. You will be able to water again in' + (12 - moment.duration(moment(new Date()).diff(moment(start_time))).asHours()) + 'hours');
+        }
     }
-    function getLastWateredTree(user) {
-        Tree.findOne({user_id: user}, function(err, tree){
-            return tree;
-        })
+    function isWateringAllowed(start_time) {
+        return (moment.duration(moment(new Date()).diff(moment(start_time))).asHours() > 12);
     }
-    function checkTimeLimit(start_time){
-        console.log(moment().subtract(start_time, new Date()).hours());
+    function getHHMMTime(start_time){
+        return moment.duration(moment(new Date()).diff(moment(start_time))).asHours()
     }
     if (message.content.toLowerCase() === '_tree') {
         // message.channel.sendMessage(`A tree was watered! Thanks!`)
