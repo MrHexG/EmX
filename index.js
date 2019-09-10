@@ -143,6 +143,14 @@ client.on('message', message => {
     if (message.content.toLowerCase() === '_random' || message.content.toLowerCase() === '_rand') {
         message.channel.sendMessage(Random())
     }
+    function timeConvert(n) {
+        var num = n;
+        var hours = (num / 60);
+        var rhours = Math.floor(hours);
+        var minutes = (hours - rhours) * 60;
+        var rminutes = Math.round(minutes);
+        return rhours + " hour(s) and " + rminutes + " minute(s).";
+    }
     async function waterTree(user) {
         const last_tree = await Tree.findOne({ user_id: user });
         if (isWateringAllowed(last_tree.planted_time)) {
@@ -156,13 +164,13 @@ client.on('message', message => {
             });
         }
         else {
-            message.reply(', not enough time has passed since your last watering. You will be able to water again in' + (12 - moment.duration(moment(new Date()).diff(moment(last_tree.planted_time))).asHours()) + 'hours');
+            message.reply(', not enough time has passed since your last watering. You will be able to water again in' + timeConvert(720 - moment.duration(moment(new Date()).diff(moment(last_tree.planted_time))).asMinutes()));
         }
     }
     function isWateringAllowed(start_time) {
         return (moment.duration(moment(new Date()).diff(moment(start_time))).asHours() > 12);
     }
-    function getHHMMTime(start_time){
+    function getHHMMTime(start_time) {
         return moment.duration(moment(new Date()).diff(moment(start_time))).asHours()
     }
     if (message.content.toLowerCase() === '_tree') {
