@@ -151,7 +151,7 @@ client.on('message', message => {
         var rminutes = Math.round(minutes);
         return rhours + " hour(s) and " + rminutes + " minute(s).";
     }
-    async function waterTree(user) {
+  async function waterTree(user) {
         const last_tree = await Tree.findOne({ user_id: user });
         if (!last_tree || isWateringAllowed(last_tree.planted_time)) {
             var tree = new Tree({
