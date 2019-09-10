@@ -17,8 +17,8 @@ var treeSchema = new mongoose.Schema({
     user_id: String,
     planted_time: Date
 });
-treeSchema.methods.timeBeforeNextPlant = function () {
-    console.log(this.planted_time);
+treeSchema.methods.getPlantedTime = function () {
+    return this.planted_time;
 }
 var Tree = mongoose.model('Tree', treeSchema);
 
@@ -161,7 +161,7 @@ client.on('message', message => {
     if (message.content.toLowerCase() === '_tree') {
         // message.channel.sendMessage(`A tree was watered! Thanks!`)
         // message.channel.sendMessage(`https://tenor.com/view/clown-gif-10162552`)
-        checkTimeLimit(getLastWateredTree().planted_time);
+        checkTimeLimit(getLastWateredTree().getPlantedTime());
         //waterTree(message.author.id);
     }
 });
