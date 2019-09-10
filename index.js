@@ -5,6 +5,12 @@ const mongoose = require('mongoose');
 mongoose.connect(process.env.mongo_conn_string, {useNewUrlParser: true});
 const client = new Discord.Client();
 
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  console.log('DB connected!')
+});
+
 client.on("ready", () => {
     console.log("I am ready!");
     client.user.setStatus('dnd');
