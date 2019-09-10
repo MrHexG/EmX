@@ -146,7 +146,7 @@ client.on('message', message => {
         })
         tree.save(function (err, tree) {
             if (err) return console.error(err);
-            message.channel.sendMessage(user + ', you have planted a tree')
+            message.reply(user + ', you have planted a tree')
         });
     }
     if (message.content.toLowerCase() === '_tree') {
