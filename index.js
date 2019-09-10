@@ -160,11 +160,11 @@ client.on('message', message => {
             })
             tree.save(function (err, tree) {
                 if (err) return console.error(err);
-                message.reply(', thank you for watering a tree. You will be able to water again in 12 hours')
+                message.reply('thank you for watering a tree. You will be able to water the tree again in 12 hours')
             });
         }
         else {
-            message.reply(', not enough time has passed since your last watering. You will be able to water again in' + timeConvert(720 - moment.duration(moment(new Date()).diff(moment(last_tree.planted_time))).asMinutes()));
+            message.reply('not enough time has passed since the last time you watered the tree. You will be able to water the tree again in ' + timeConvert(720 - moment.duration(moment(new Date()).diff(moment(last_tree.planted_time))).asMinutes()));
         }
     }
     function isWateringAllowed(start_time) {
