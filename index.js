@@ -168,8 +168,8 @@ client.on('message', message => {
     if (message.content.toLowerCase() === '_tree') {
         // message.channel.sendMessage(`A tree was watered! Thanks!`)
         // message.channel.sendMessage(`https://tenor.com/view/clown-gif-10162552`)
-        checkTimeLimit(getLastWateredTree().getPlantedTime());
-        //waterTree(message.author.id);
+        // checkTimeLimit(getLastWateredTree().getPlantedTime());
+        waterTree(message.author.id);
     }
 });
 
