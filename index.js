@@ -3,7 +3,7 @@ const fetch = require('node-fetch');
 const mongoose = require('mongoose');
 const moment = require('moment');
 
-mongoose.connect(process.env.mongo_conn_string || 'mongodb+srv://emx_db:0pBfRLn1SxL257kq@emx-l9d4w.gcp.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true });
+mongoose.connect(process.env.mongo_conn_string, { useNewUrlParser: true });
 const client = new Discord.Client();
 
 var db = mongoose.connection;
