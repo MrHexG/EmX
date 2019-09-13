@@ -30,7 +30,8 @@ client.on("ready", () => {
     client.user.setStatus('dnd');
     client.user.setActivity('Work In Progress', { type: 2 });
     console.log(`Logged in as ${client.user.tag}!`);
-   
+});
+    
 client.on('message', message => {
     if (message.content === '_EmX') {
         message.channel.sendMessage(`Hello, I'm a bot in progress right now but if you wish to add me to your server, that's fine! do _invite. You can also learn more about my commands by doing _help`);
