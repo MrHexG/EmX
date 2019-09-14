@@ -163,6 +163,6 @@ client.on('message', message => {
         // checkTimeLimit(getLastWateredTree().getPlantedTime());
         waterTree(message.author.id);
     }
+    });
 });
-
 client.login(process.env.token);
