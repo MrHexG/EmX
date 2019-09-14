@@ -152,6 +152,7 @@ client.on('message', message => {
         }
     }
     function isWateringAllowed(start_time) {
+        console.log(moment.duration(moment(new Date()).diff(moment(start_time))).asHours());
         return (moment.duration(moment(new Date()).diff(moment(start_time))).asHours() > 12);
     }
     function getHHMMTime(start_time) {
