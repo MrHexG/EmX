@@ -135,7 +135,7 @@ client.on('message', message => {
         return rhours + " hour(s) and " + rminutes + " minute(s).";
     }
     async function waterTree(user) {
-        const last_tree = await Tree.findOne({ user_id: user }, { sort: { 'created_at' : -1 } });
+        const last_tree = await Tree.findOne({ user_id: user }).sort({created_at: -1});
         console.log(isWateringAllowed(last_tree.planted_time));
         if (!last_tree || isWateringAllowed(last_tree.planted_time)) {
             var tree = new Tree({
