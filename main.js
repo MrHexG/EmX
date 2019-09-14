@@ -25,7 +25,7 @@ var Tree = mongoose.model('Tree', treeSchema);
 
 
 
-// waterTree('375615842777432064');
+
 client.on("ready", () => {
     console.log("I am ready!");
     client.user.setStatus('dnd');
@@ -136,6 +136,7 @@ client.on('message', message => {
     }
     async function waterTree(user) {
         const last_tree = await Tree.findOne({ user_id: user });
+        console.log(isWateringAllowed(last_tree.planted_time));
         if (!last_tree || isWateringAllowed(last_tree.planted_time)) {
             var tree = new Tree({
                 user_id: user,
@@ -164,4 +165,6 @@ client.on('message', message => {
     }
     });
 });
+
+// waterTree('375615842777432064');
 client.login(process.env.token);
