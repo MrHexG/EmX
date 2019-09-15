@@ -37,7 +37,27 @@ client.on('message', message => {
         message.channel.sendMessage(`Hello, I'm a bot in progress right now but if you wish to add me to your server, that's fine! do _invite. You can also learn more about my commands by doing _help`);
     }
     
-       
+       if (message.content === '_help') {
+        const exampleEmbed = new Discord.RichEmbed()
+            .setColor('#800080')
+            .setTitle('Help')
+            .setDescription('Here are the bot commands! Use ``_help command name`` for help on usage. **Case Sensitive**')
+            .setThumbnail('https://i.ibb.co/gMS6gX4/mono.png')
+            .addBlankField()
+            .addField('_EmX', 'Simply describes the bot')
+            .addBlankField()
+            .addField('_Invite', 'Gives you an invite link to bring the bot to your server', true)
+            .addBlankField()
+            .addField('_Tree', 'Plants a tree at will', true)
+            .addBlankField()
+            .addField('_Dog', 'Sends a randomly generated picture of a doggo', true)
+            .addBlankField()
+            .addField('_Cat', 'Sends a randomly generated picture of a cat', true)
+            .addBlankField()
+            .addField('_Random', 'Sends a randomly generated picture of any random picture in the internet', true)
+            .setFooter('Bot created by Sattish#2011', 'https://i.ibb.co/gMS6gX4/mono.png');
+        message.channel.sendMessage(exampleEmbed)
+    }
         
     
     if (message.content === '_help Invite') {
