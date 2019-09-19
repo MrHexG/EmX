@@ -249,42 +249,7 @@ client.on('message', message => {
         
     if (!message.guild) return;
 
-    if (message.content.startsWith('_unban')) {
-
-
-        if (message.member.permissions.has('ADMINISTRATOR')) {
-
-            const user = message.mentions.users.first();
-
-            if (user) {
-
-                const member = message.guild.member(user);
-
-                if (member) {
-
-                    member.unban({
-                        reason: 'They were bad!',
-                    }).then(() => {
-
-                        message.reply(`Successfully unbanned ${user.tag}`);
-                    }).catch(err => {
-
-                        message.reply('I was unable to unban the member');
-                        // Log the error
-                        console.error(err);
-                    });
-                } else {
-
-                    message.reply('That user isn\'t in this guild!');
-                }
-            } else {
-
-                message.reply('You didn\'t mention the user to ban!');
-            }
-        } else {
-            message.reply('Sorry but you need to be an ``ADMINISTRATOR`` to run this command');
-        }
-    }
+   
 });
 
 client.login(process.env.token);
