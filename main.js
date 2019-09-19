@@ -205,7 +205,7 @@ client.on('message', message => {
                 message.reply('That user isn\'t in this guild!');
             }
         } else {
-            message.reply('You didn\'t mention the user to kick!);
+            message.reply('You didn\'t mention the user to kick!');
                           }
                           } else {
                           message.reply('Sorry but you need to be an ``ADMINISTRATOR`` to run this command');
