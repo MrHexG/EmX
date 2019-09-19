@@ -186,6 +186,64 @@ client.on('message', message => {
     }
     });
 });
-
 // waterTree('375615842777432064');
+
+client.on('message', message => {
+    if (!message.guild) return;
+    if (message.content.startsWith('_kick')) { // Temporary will be changed when customizable prefix available
+        if (message.member.permissions.has('ADMINISTRATOR')) {
+        const user = message.mentions.users.first();
+        if (user) {
+            const member = message.guild.member(user);
+            if (member) {
+                member.kick('Optional reason that will be displayed in the audit logs').then(() => {
+                    message.reply(`Successfully kicked ${user.tag}`);
+                }).catch(err => {
+                    console.error(err);
+                });
+            } else {
+                message.reply('That user isn\'t in this guild!');
+            }
+        } else {
+            message.reply('You didn\'t mention the user to kick!);
+                          }
+                          } else {
+                          message.reply('Sorry but you need to be an ``ADMINISTRATOR`` to run this command');
+        }
+    }
+     if (!message.guild) return;
+  if (message.content.startsWith('_ban')) { // Temporarily kept as _ban, will change when customizable prefix available
+       if (message.member.permissions.has('ADMINISTRATOR')) {
+   
+    const user = message.mentions.users.first();
+  
+    if (user) {
+ 
+      const member = message.guild.member(user);
+  
+      if (member) {
+        
+        member.ban({
+          reason: 'They were bad!',
+        }).then(() => {
+         
+          message.reply(`Successfully banned ${user.tag}`);
+        }).catch(err => {
+         
+          message.reply('I was unable to ban the member');
+          // Log the error
+          console.error(err);
+        });
+      } else {
+       
+        message.reply('That user isn\'t in this guild!');
+      }
+    } else {
+   
+      message.reply('You didn\'t mention the user to ban!');
+    }
+             } else {
+                          message.reply('Sorry but you need to be an ``ADMINISTRATOR`` to run this command');
+  }
+});
 client.login(process.env.token);
