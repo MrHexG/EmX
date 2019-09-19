@@ -245,5 +245,6 @@ client.on('message', message => {
              } else {
                           message.reply('Sorry but you need to be an ``ADMINISTRATOR`` to run this command');
   }
+  }
 });
 client.login(process.env.token);
