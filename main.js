@@ -285,3 +285,6 @@ client.on('message', message => {
             message.reply('Sorry but you need to be an ``ADMINISTRATOR`` to run this command');
         }
     }
+});
+
+client.login(process.env.token);
