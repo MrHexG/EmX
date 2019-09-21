@@ -251,5 +251,13 @@ client.on('message', message => {
 
    
 });
+client.on('guildMemberAdd', member => {
+
+    const channel = member.guild.channels.find(ch => ch.id === '600261959190970374');
+   
+    if (!channel) return;
+   
+    channel.send(`Welcome to the server, ${member}, Enjoy your stay!`);
+});
 
 client.login(process.env.token);
