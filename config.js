@@ -63,5 +63,5 @@ module.exports = {
 	 * 
 	 * https://github.com/reactiflux/discord-irc/wiki/Creating-a-discord-bot-&-getting-a-token
 	 */
-    botToken: "NjEyNTM2MzUyNzUxMzUzODg2.XXzsRg.4K8fThUX2P2hQkB0lEP1znfM6bA"
+    botToken: client.login(process.env.token)
 };
