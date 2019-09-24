@@ -75,7 +75,6 @@ client.on('message', message => {
             .setFooter('Bot created by Sattish#2011', 'https://i.ibb.co/gMS6gX4/mono.png');
         message.channel.sendMessage(exampleEmbed)
     }
-
     if (message.content === '_help Invite') {
         const InviteEmbed = new Discord.RichEmbed()
             .setColor('#800080')
@@ -330,4 +329,4 @@ client.on('guildMemberAdd', member => {
     if (!channel) return;
     channel.send(`Welcome to the server, ${member}, Enjoy your stay!`);
 });
-client.login('NjIyMDEyMDg4OTkwMDQwMDc1.XXz44g.Q9ToywUN7qZ6q1j6GwWv4a8-lHU');
+client.login(process.env.token);
