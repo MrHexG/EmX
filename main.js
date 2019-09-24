@@ -2,7 +2,6 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const fs = require('fs');
 const db = require('./dbHandler.js')
-const config = require('./config.json');
 const fetch = require('node-fetch');
 const moment = require('moment');
 const mongoose = require('mongoose');
