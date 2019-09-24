@@ -31,6 +31,7 @@ client.on("ready", () => {
     client.user.setStatus('dnd');
     client.user.setActivity('Work In Progress', { type: 2 });
     console.log(`Logged in as ${client.user.tag}!`);
+    console.log(`Your bot is in ${client.guilds.size} servers!`);
    
 client.on('message', message => {
     if (message.content === '_EmX') {
