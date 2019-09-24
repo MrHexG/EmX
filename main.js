@@ -1,19 +1,20 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const fs = require('fs');
-
+const db = require('./dbHandler.js')
+const config = require('./config.json');
 const fetch = require('node-fetch');
-const mongoose = require('mongoose');
 const moment = require('moment');
+const mongoose = require('mongoose');
 
-mongoose.connect(process.env.mongo_conn_string || 'mongodb+srv://emx_db:0pBfRLn1SxL257kq@emx-l9d4w.gcp.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true });
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function () {
-    console.log('DB connected!')
-});
+// mongoose.connect(process.env.mongo_conn_string || 'mongodb+srv://emx_db:0pBfRLn1SxL257kq@emx-l9d4w.gcp.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true });
+// var db = mongoose.connection;
+// db.on('error', console.error.bind(console, 'connection error:'));
+// db.once('open', function () {
+//     console.log('DB connected!')
+// });
 
-//DB setup
+// //DB setup
 var treeSchema = new mongoose.Schema({
     user_id: String,
     planted_time: Date
@@ -23,23 +24,58 @@ treeSchema.methods.getPlantedTime = function () {
 }
 var Tree = mongoose.model('Tree', treeSchema);
 
-
-
+// var guildSettings = new mongoose.Schema({
+//     guild_id: String,
+//     prefix: String,
+//     disabled: Array
+// });
+// var GuildSettings = mongoose.model('GuildSettings', guildSettings);
 
 client.on("ready", () => {
     console.log("I am ready!");
     client.user.setStatus('dnd');
     client.user.setActivity('Work In Progress', { type: 2 });
     console.log(`Logged in as ${client.user.tag}!`);
-   
+    console.log(`Your bot is in ${client.guilds.size} servers!`);
+    // Update guild-settings.json to reflect any servers that the bot joined or left while it was offline
+    let change = false;
+    // If the bot is in any servers that aren't in guild-settings.json, add them
+    (client.guilds).forEach((guild) => {
+        if (guild !== undefined && !db.guildRetrieve(guild)) {
+            db.guildCreate(guild)
+            change = true;
+        }
+    })
+});
+
+
 client.on('message', message => {
     if (message.content === '_EmX') {
         message.channel.sendMessage(`Hello, I'm a bot in progress right now but if you wish to add me to your server, that's fine! do _invite. You can also learn more about my commands by doing _help`);
     }
-    
-       
-        
-    
+
+    if (message.content === '_help') {
+        const exampleEmbed = new Discord.RichEmbed()
+            .setColor('#800080')
+            .setTitle('Help')
+            .setDescription('Here are the bot commands! Use ``_help command name`` for help on usage. **Case Sensitive**')
+            .setThumbnail('https://i.ibb.co/gMS6gX4/mono.png')
+            .addBlankField()
+            .addField('_EmX', 'Simply describes the bot')
+            .addBlankField()
+            .addField('_Invite', 'Gives you an invite link to bring the bot to your server', true)
+            .addBlankField()
+            .addField('_Tree', 'Plants a tree at will', true)
+            .addBlankField()
+            .addField('_Dog', 'Sends a randomly generated picture of a doggo', true)
+            .addBlankField()
+            .addField('_Cat', 'Sends a randomly generated picture of a cat', true)
+            .addBlankField()
+            .addField('_Random', 'Sends a randomly generated picture of any random picture in the internet', true)
+            .setFooter('Bot created by Sattish#2011', 'https://i.ibb.co/gMS6gX4/mono.png');
+        message.channel.sendMessage(exampleEmbed)
+    }
+
     if (message.content === '_help Invite') {
         const InviteEmbed = new Discord.RichEmbed()
             .setColor('#800080')
@@ -132,12 +168,17 @@ client.on('message', message => {
         var rhours = Math.floor(hours);
         var minutes = (hours - rhours) * 60;
         var rminutes = Math.round(minutes);
+        if (rminutes == 60) {
+            rhours++;
+            rminutes = 0;
+        }
         return rhours + " hour(s) and " + rminutes + " minute(s).";
     }
     async function waterTree(user) {
-        const last_tree = await Tree.findOne({ user_id: user }).sort({created_at: -1});
-        console.log(isWateringAllowed(last_tree.planted_time));
-        if (!last_tree || isWateringAllowed(last_tree.planted_time)) {
+        const last_tree = await Tree.find({ user_id: user }).limit(1).sort({ _id: -1 });
+        // console.log(isWateringAllowed(last_tree.planted_time));
+        if (isWateringAllowed(last_tree)) {
+            console.log("Can water")
             var tree = new Tree({
                 user_id: user,
                 planted_time: Date.now()
@@ -148,12 +189,12 @@ client.on('message', message => {
             });
         }
         else {
-            message.reply('not enough time has passed since the last time you watered the tree. You will be able to water the tree again in ' + timeConvert(720 - moment.duration(moment(new Date()).diff(moment(last_tree.planted_time))).asMinutes()));
+            message.reply('not enough time has passed since the last time you watered the tree. You will be able to water the tree again in ' + timeConvert(720 - moment.duration(moment(new Date()).diff(moment(last_tree[0].planted_time))).asMinutes()));
         }
     }
-    function isWateringAllowed(start_time) {
-        console.log(moment.duration(moment(new Date()).diff(moment(start_time))).asHours());
-        return (moment.duration(moment(new Date()).diff(moment(start_time))).asHours() > 12);
+    function isWateringAllowed(tree) {
+        if (JSON.stringify(tree) == JSON.stringify([])) return true;
+        return (moment.duration(moment(new Date()).diff(moment(tree[0].planted_time))).asHours() > 12);
     }
     function getHHMMTime(start_time) {
         return moment.duration(moment(new Date()).diff(moment(start_time))).asHours()
@@ -164,8 +205,129 @@ client.on('message', message => {
         // checkTimeLimit(getLastWateredTree().getPlantedTime());
         waterTree(message.author.id);
     }
-    });
+    // Karthik is smart
 });
 
-// waterTree('375615842777432064');
-client.login(process.env.token);
+//more async functions yayy
+// async function guildCreate(guild) {
+//     const g = await GuildSettings.findOne({ guild_id: guild.id });
+//     if (g == null) {
+//         var new_guild = new GuildSettings({
+//             guild_id: guild.id,
+//             prefix: config.prefix,
+//             disabled: []
+//         });
+//         new_guild.save(function (err, new_guild) {
+//             console.log('guild added to DB');
+//         })
+//     }
+// }
+// async function guildDelete(guild) {
+//     await GuildSettings.findOneAndRemove({ guild_id: guild.id });
+// }
+
+// async function guildRetrieve(guild) {
+//     return await GuildSettings.findOne({ guild_id: guild.id });
+// }
+client.on("guildCreate", (guild) => {
+    // If the bot joins a server, add it to guild-settings.json and initialize its settings to the default
+    db.guildCreate(guild);
+});
+
+client.on("guildDelete", (guild) => {
+    // If the bot leaves a server, remove it from guild-settings.json
+    db.guildDelete(guild);
+})
+
+client.on('error', (error) => {
+    // Handle client error event
+    console.log('Error in main:\n' + error);
+})
+
+client.on('message', (message) => {
+    const thisGuild = db.guildRetrieve(message.guild);
+    if (!message.guild) return;
+    // Ignore messages sent by the bot
+    if (message.author.bot) {
+        return;
+    }
+
+    // Ignore messages that don't start with prefix
+    if (!message.content.startsWith(thisGuild.prefix)) {
+        return;
+    }
+
+    // Listen for commands
+    let params = message.content.substring(thisGuild.prefix.length).trim().split(' ');
+    let command = params.shift();
+
+    if (thisGuild.disabled.includes(command) && !message.member.permissions.has('ADMINISTRATOR')) {
+        return;
+    }
+
+    if (message.content.startsWith('_kick')) { // Temporary will be changed when customizable prefix available
+        if (message.member.permissions.has('ADMINISTRATOR')) {
+            const user = message.mentions.users.first();
+            if (user) {
+                const member = message.guild.member(user);
+                if (member) {
+                    member.kick('Optional reason that will be displayed in the audit logs').then(() => {
+                        message.reply(`Successfully kicked ${user.tag}`);
+                    }).catch(err => {
+                        console.error(err);
+                    });
+                } else {
+                    message.reply('That user isn\'t in this guild!');
+                }
+            } else {
+                message.reply('You didn\'t mention the user to kick!');
+            }
+        } else {
+            message.reply('Sorry but you need to be an ``ADMINISTRATOR`` to run this command');
+        }
+    }
+
+    if (message.content.startsWith('_ban')) { // Temporarily kept as _ban, will change when customizable prefix available
+        if (message.member.permissions.has('ADMINISTRATOR')) {
+            const user = message.mentions.users.first();
+            if (user) {
+                const member = message.guild.member(user);
+                if (member) {
+                    member.ban({
+                        reason: 'They were bad!',
+                    }).then(() => {
+                        message.reply(`Successfully banned ${user.tag}`);
+                    }).catch(err => {
+                        message.reply('I was unable to ban the member');
+                        // Log the error
+                        console.error(err);
+                    });
+                } else {
+                    message.reply('That user isn\'t in this guild!');
+                }
+            } else {
+                message.reply('You didn\'t mention the user to ban!');
+            }
+        } else {
+            message.reply('Sorry but you need to be an ``ADMINISTRATOR`` to run this command');
+        }
+    }
+
+    try {
+        let commandFile = require(`./commands/${command}.js`);
+        commandFile.run(params, message);
+    } catch (e) {
+        if (e.code === 'MODULE_NOT_FOUND') {
+            // Don't report commands that don't exist as this can clash with other bots if prefix is shared
+        } else {
+            message.channel.send('Error: please check the console for more details');
+            console.log(e);
+        }
+    }
+});
+client.on('guildMemberAdd', member => {
+    const channel = member.guild.channels.find(ch => ch.id === '600261959190970374');
+    if (!channel) return;
+    channel.send(`Welcome to the server, ${member}, Enjoy your stay!`);
+});
+client.login('NjIyMDEyMDg4OTkwMDQwMDc1.XXz44g.Q9ToywUN7qZ6q1j6GwWv4a8-lHU');
