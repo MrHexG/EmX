@@ -26,11 +26,12 @@ var guildSettings = new mongoose.Schema({
 var GuildSettings = mongoose.model('GuildSettings', guildSettings);
 
 async function guildCreate(guild) {
+    console.log('guild create triggered');
     const g = await GuildSettings.findOne({ guild_id: guild.id });
     if (g == null) {
         var new_guild = new GuildSettings({
             guild_id: guild.id,
-            prefix: config.prefix,
+            prefix: '-',
             disabled: []
         });
         new_guild.save(function (err, new_guild) {
@@ -40,6 +41,7 @@ async function guildCreate(guild) {
 }
 module.exports.guildCreate = guildCreate;
 async function guildDelete(guild) {
+    console.log('guild delete triggered');
     await GuildSettings.findOneAndRemove({ guild_id: guild.id });
 }
 module.exports.guildDelete = guildDelete;
