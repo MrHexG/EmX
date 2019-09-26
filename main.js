@@ -129,13 +129,21 @@ client.on('message', message => {
     }
     if (message.content.toLowerCase() === '_invite') {
 
-
         const InvEmbed = new Discord.RichEmbed()
             .setColor('#800080')
             .setTitle('Heres the link!')
             .setDescription('https://discordapp.com/api/oauth2/authorize?client_id=612536352751353886&permissions=523328&scope=bot')
         message.channel.sendMessage(InvEmbed)
     }
+    if (message.content.toLowerCase() === '_support') {
+
+        const InvEmbed = new Discord.RichEmbed()
+            .setColor('#800080')
+            .setTitle('Heres the link!')
+            .setDescription('https://discord.gg/8guM3Yx')
+        message.channel.sendMessage(InvEmbed)
+    }
+    
     function Cat8ball() {
         fetch('https://api.thecatapi.com/v1/images/search')
             .then(res => res.json())
@@ -183,8 +191,8 @@ client.on('message', message => {
             })
             tree.save(function (err, tree) {
                 if (err) return console.error(err);
-                message.reply('thank you for watering a tree. You will be able to water the tree again in 12 hours')
-                message.reply(WaterTree8ball())
+                message.reply(`thank you for watering a tree. You will be able to water the tree again in 12 hours ${WaterTree8ball()}`)
+                
             });
         }
         else {
