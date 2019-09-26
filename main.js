@@ -184,12 +184,19 @@ client.on('message', message => {
             tree.save(function (err, tree) {
                 if (err) return console.error(err);
                 message.reply('thank you for watering a tree. You will be able to water the tree again in 12 hours')
+                message.reply(WaterTree8ball())
             });
         }
         else {
             message.reply('not enough time has passed since the last time you watered the tree. You will be able to water the tree again in ' + timeConvert(720 - moment.duration(moment(new Date()).diff(moment(last_tree[0].planted_time))).asMinutes()));
         }
     }
+    function WaterTree8ball() {
+        var watertree = ['https://tenor.com/view/clown-gif-10162552', 'https://tenor.com/view/sprinkle-watering-grow-money-tree-crook-gif-14984898', 'https://tenor.com/view/water-plants-weed-green-watering-gif-5490565'];
+        return watertree[Math.floor(Math.random() * watertree.length)];
+    }
+    
+   
     function isWateringAllowed(tree) {
         if (JSON.stringify(tree) == JSON.stringify([])) return true;
         return (moment.duration(moment(new Date()).diff(moment(tree[0].planted_time))).asHours() > 12);
