@@ -52,7 +52,25 @@ client.on('message', message => {
     if (message.content === '_EmX') {
         message.channel.sendMessage(`Hello, I'm a bot in progress right now but if you wish to add me to your server, that's fine! do _invite. You can also learn more about my commands by doing _help`);
     }
-
+    
+if (message.content.startsWith('_avatar')) {
+        if (!message.mentions.users.size) {
+        
+        return message.channel.send(`Your avatar: ${message.author.displayAvatarURL}`);
+        
+        }
+        
+        
+        
+        const avatarList = message.mentions.users.map(user => {
+        
+        return `${user.username}\'s avatar: ${user.displayAvatarURL}`;
+        
+        });
+        
+    
+        message.channel.send(avatarList);
+        }
     if (message.content === '_help') {
         const exampleEmbed = new Discord.RichEmbed()
             .setColor('#800080')
