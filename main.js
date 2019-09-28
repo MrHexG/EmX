@@ -113,7 +113,7 @@ if (message.content.startsWith('_avatar')) {
             .addField('_Random', 'Sends a randomly generated picture of any random picture in the internet', true)
             .addBlankField()
             .addField('_Avatar', 'Sends you your avatar if no member mentioned, if mentioned, it will send that person\'s avatar', true)
-            .setFooter('Bot created by Sattish#2011', 'https://i.ibb.co/gMS6gX4/mono.png');
+            .setFooter('Bot created by Sattish#2011 & TheKarlos#4296', 'https://i.ibb.co/gMS6gX4/mono.png');
         message.channel.sendMessage(exampleEmbed)
     }
     if (message.content === '_help Invite') {
