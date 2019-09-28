@@ -71,6 +71,26 @@ if (message.content.startsWith('_avatar')) {
     
         message.channel.send(avatarList);
         }
+    
+    if (message.content.startsWith('_Avatar')) {
+        if (!message.mentions.users.size) {
+        
+        return message.channel.send(`Your avatar: ${message.author.displayAvatarURL}`);
+        
+        }
+        
+        
+        
+        const avatarList = message.mentions.users.map(user => {
+        
+        return `${user.username}\'s avatar: ${user.displayAvatarURL}`;
+        
+        });
+        
+    
+        message.channel.send(avatarList);
+        }
+    
     if (message.content === '_help') {
         const exampleEmbed = new Discord.RichEmbed()
             .setColor('#800080')
@@ -82,13 +102,17 @@ if (message.content.startsWith('_avatar')) {
             .addBlankField()
             .addField('_Invite', 'Gives you an invite link to bring the bot to your server', true)
             .addBlankField()
-            .addField('_Tree', 'Plants a tree at will', true)
+            .addField('_Support', 'Gives you an invite link to the support server if you have any questions.', true)
+            .addBlankField()
+            .addField('_Tree', 'Plants a tree at will, only available every 12 hours!', true)
             .addBlankField()
             .addField('_Dog', 'Sends a randomly generated picture of a doggo', true)
             .addBlankField()
             .addField('_Cat', 'Sends a randomly generated picture of a cat', true)
             .addBlankField()
             .addField('_Random', 'Sends a randomly generated picture of any random picture in the internet', true)
+            .addBlankField()
+            .addField('_Avatar', 'Sends you your avatar if no member mentioned, if mentioned, it will send that person\'s avatar', true)
             .setFooter('Bot created by Sattish#2011', 'https://i.ibb.co/gMS6gX4/mono.png');
         message.channel.sendMessage(exampleEmbed)
     }
@@ -101,6 +125,16 @@ if (message.content.startsWith('_avatar')) {
             .addBlankField()
             .addField('_Invite | _invite')
         message.channel.sendMessage(InviteEmbed)
+    }
+     if (message.content === '_help Support') {
+        const SupportingEmbed = new Discord.RichEmbed()
+            .setColor('#800080')
+            .setTitle('Help about Support Server')
+            .setDescription('Bot sends a link which will send you to the support server where you can ask your questions')
+            .addField('Aliases')
+            .addBlankField()
+            .addField('_Support | _support')
+        message.channel.sendMessage(SupportingEmbed)
     }
     if (message.content === '_help Tree') {
         const TreeEmbed = new Discord.RichEmbed()
@@ -145,6 +179,17 @@ if (message.content.startsWith('_avatar')) {
             .addField('_Random | _random | _Rand | _rand')
         message.channel.sendMessage(RandEmbed)
     }
+     if (message.content === '_help Avatar') {
+
+        const AvaEmbed = new Discord.RichEmbed()
+            .setColor('#800080')
+            .setTitle('Help about Avatar command')
+            .setDescription('If no user mentioned, it will send your avatar and if a user in the server is mentioned, it will send their avatar.')
+            .addField('Aliases')
+            .addBlankField()
+            .addField('_Avatar | _avatar')
+        message.channel.sendMessage(AvaEmbed)
+    }
     if (message.content.toLowerCase() === '_invite') {
 
         const InvEmbed = new Discord.RichEmbed()
@@ -155,11 +200,11 @@ if (message.content.startsWith('_avatar')) {
     }
     if (message.content.toLowerCase() === '_support') {
 
-        const InvEmbed = new Discord.RichEmbed()
+        const SupportEmbed = new Discord.RichEmbed()
             .setColor('#800080')
             .setTitle('Heres the link!')
             .setDescription('https://discord.gg/8guM3Yx')
-        message.channel.sendMessage(InvEmbed)
+        message.channel.sendMessage(SupportEmbed)
     }
     
     function Cat8ball() {
