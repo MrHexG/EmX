@@ -33,7 +33,7 @@ var Tree = mongoose.model('Tree', treeSchema);
 client.on("ready", () => {
     console.log("I am ready!");
     client.user.setStatus('dnd');
-    client.user.setActivity('Work In Progress', { type: 2 });
+    client.user.setActivity('_help | _invite', { type: 3 });
     console.log(`Logged in as ${client.user.tag}!`);
     console.log(`Your bot is in ${client.guilds.size} servers!`);
     // Update guild-settings.json to reflect any servers that the bot joined or left while it was offline
