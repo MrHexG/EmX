@@ -406,4 +406,39 @@ client.on('guildMemberAdd', member => {
     if (!channel) return;
     channel.send(`Welcome to the server, ${member}, Enjoy your stay!`);
 });
+
+client.on("messageDelete", message => {// message logs
+
+    const logchannel = message.guild.channels.find(channel => channel.name === "message-logs");
+    const user = message.author
+    if(!logchannel) return
+    let deleteEmbed = new Discord.RichEmbed()
+    .setTitle("⚠️ A message was deleted!")
+    .addField("Sent by User", user.tag)
+    .addField("Deleted Message", `${message}`) 
+    .addField("Deleted In", `${message.guild.channels.get(message.channel.id).toString()}` + ` (${message.channel.id})`)
+    .setFooter(`Author ID: ${user.id}| Message ID: ${message.id}`, client.user.avatarURL)
+    .setColor("#FF0000")
+    logchannel.send(deleteEmbed)
+});
+
+client.on("messageUpdate", function(oldMessage, newMessage){
+
+  if(oldMessage.content == newMessage.content) return
+    const user = newMessage.author;
+
+  let logsChannel = oldMessage.guild.channels.find(channel => channel.name === "message-logs");
+
+    if(!logsChannel) return
+
+    let messageEditEmbed = new Discord.RichEmbed()
+    .setTitle("⚠️ A message was edited!")
+    .addField("Sent by User", user.tag)
+    .addField("Before", oldMessage.content)
+    .addField("After", newMessage.content)
+    .addField("Edited In", `${oldMessage.guild.channels.get(oldMessage.channel.id).toString()}` + ` (${oldMessage.channel.id})`)
+    .setFooter(`Author ID: ${user.id}| Message ID: ${oldMessage.id}`, client.user.avatarURL)
+    .setColor("#FFFF00")
+    return logsChannel.send(messageEditEmbed)
+});
 client.login(process.env.token);
