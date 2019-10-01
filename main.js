@@ -113,6 +113,8 @@ if (message.content.startsWith('_avatar')) {
             .addField('_Random', 'Sends a randomly generated picture of any random picture in the internet', true)
             .addBlankField()
             .addField('_Avatar', 'Sends you your avatar if no member mentioned, if mentioned, it will send that person\'s avatar', true)
+            .addBlankField()
+            .addField('Message Logs', 'The bot logs all edited and deleted messages into a channel, please make a channel called message-logs to access this!', true)
             .setFooter('Bot created by Sattish#2011 & TheKarlos#4296', 'https://i.ibb.co/gMS6gX4/mono.png');
         message.channel.sendMessage(exampleEmbed)
     }
