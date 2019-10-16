@@ -343,7 +343,7 @@ client.on('message', (message) => {
         return;
     }
 
-    if (message.content.startsWith('_kick')) { // Temporary will be changed when customizable prefix available
+    if (message.content.startsWith('_kickk')) { // Temporary will be changed when customizable prefix available
         if (message.member.permissions.has('ADMINISTRATOR')) {
             const user = message.mentions.users.first();
             if (user) {
@@ -365,7 +365,7 @@ client.on('message', (message) => {
         }
     }
 
-    if (message.content.startsWith('_ban')) { // Temporarily kept as _ban, will change when customizable prefix available
+    if (message.content.startsWith('_bann')) { // Temporarily kept as _ban, will change when customizable prefix available
         if (message.member.permissions.has('ADMINISTRATOR')) {
             const user = message.mentions.users.first();
             if (user) {
