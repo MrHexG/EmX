@@ -231,7 +231,7 @@ if (message.content.startsWith('_avatar')) {
         message.channel.sendMessage(Josua())  
     }
     function Josua() {
-    var Josua = [' ', ' ', ' ', ' ', ' ']
+    var Josua = ['https://i.imgur.com/0PfxLFn.jpg', 'https://i.imgur.com/lv5rwu3.jpg', 'https://i.imgur.com/fL5ssch.jpg', 'https://i.imgur.com/ydNN86H.jpg', 'https://i.imgur.com/bQmntav.jpg']
     return Josua[Math.floor(Math.random() * Josua.length)];
         
     }
