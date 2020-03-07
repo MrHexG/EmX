@@ -52,6 +52,7 @@ client.on('message', message => {
     if (message.content === '_EmX') {
         message.channel.sendMessage(`Hello, I'm a bot in progress right now but if you wish to add me to your server, that's fine! do _invite. You can also learn more about my commands by doing _help`);
     }
+        
     
 if (message.content.startsWith('_avatar')) {
         if (!message.mentions.users.size) {
@@ -226,6 +227,15 @@ if (message.content.startsWith('_avatar')) {
     if (message.content.toLowerCase() === '_dog') {
         Dog8ball()
     }
+    if (message.content.toLowerCase() === '_josua') {
+        message.channel.sendMessage(Josua())  
+    }
+    function Josua() {
+    var Josua = [' ', ' ', ' ', ' ', ' ']
+    return Josua[Math.floor(Math.random() * Josua.length)];
+        
+    }
+        
     function Random() {
         var Random = ['http://bit.ly/2jZ2B1c', 'http://bit.ly/2khlyMY', 'http://bit.ly/2lwkfd8', 'http://bit.ly/2ktyorc', 'http://bit.ly/2k3ACO4', 'http://bit.ly/2kirdlV', 'http://bit.ly/2jYvV89', 'http://bit.ly/2ktWjab', 'http://bit.ly/2lXLgX9', 'http://bit.ly/2lwJ3BK', 'Fun Fact: This Cat beat my maker up! http://bit.ly/2ktz9Ay', 'http://bit.ly/2kqGEZb', 'http://bit.ly/2lXLgX9', 'http://bit.ly/2k24CK8'];
         return Random[Math.floor(Math.random() * Random.length)];
