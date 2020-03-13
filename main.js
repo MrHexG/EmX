@@ -33,7 +33,7 @@ var Tree = mongoose.model('Tree', treeSchema);
 client.on("ready", () => {
     let guild = client.users.size
     console.log(guild)
-let statuses = [`Try _cat :smirk:`,';help | ;invite'];
+let statuses = ['Try _cat & _dog',';help | ;invite'];
     setInterval(function(){
         let status = statuses[Math.floor(Math.random()*statuses.length)];
         // using setPresence()
