@@ -31,11 +31,16 @@ var Tree = mongoose.model('Tree', treeSchema);
 // var GuildSettings = mongoose.model('GuildSettings', guildSettings);
 
 client.on("ready", () => {
-    console.log("I am ready!");
-    client.user.setStatus('dnd');
-    client.user.setActivity('_help | _invite', { type: 3 });
-    console.log(`Logged in as ${client.user.tag}!`);
-    console.log(`Your bot is in ${client.guilds.size} servers!`);
+    let guild = client.users.size
+    console.log(guild)
+let statuses = [`Try _cat :smirk:`,';help | ;invite'];
+    setInterval(function(){
+        let status = statuses[Math.floor(Math.random()*statuses.length)];
+        // using setPresence()
+        client.user.setPresence({ game: { name:status},status: 'dnd' });
+        // client.user.setPresence({ activity: { name: status }, status:'online' });
+
+    }, 10000) // Runs interval every 10 seconds
     // Update guild-settings.json to reflect any servers that the bot joined or left while it was offline
     let change = false;
     // If the bot is in any servers that aren't in guild-settings.json, add them
