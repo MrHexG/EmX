@@ -245,7 +245,7 @@ if (message.content.startsWith('_avatar')) {
     }
     function Daniel() {
         var daniel = ['https://i.imgur.com/zjGCgPj.jpg','https://i.imgur.com/gsPwCRV.jpg','https://i.imgur.com/sV2QPi4.jpg','https://i.imgur.com/l5Apozj.jpg','https://i.imgur.com/3MbRKuN.jpg','https://i.imgur.com/j7g7J4T.jpg','https://i.imgur.com/OnuC3dt.jpg','https://i.imgur.com/tHwgRld.jpg','https://i.imgur.com/Ram0h3G.jpg','https://i.imgur.com/86EJF3e.jpg','https://i.imgur.com/AH6njyk.jpg','https://i.imgur.com/gB3zhlR.jpg']
-        return Daniel[Math.floor(Math.random() * Daniel.length)];
+        return daniel[Math.floor(Math.random() * daniel.length)];
     }
         
     function Random() {
