@@ -114,9 +114,9 @@ let statuses = ['try _cat & _dog 😏','_help | _invite'];
         }
     })
 });
+    client.on('message', function(message) {
 
 
-client.on('message', message => {
     var msg = message.content;
     msg = msg.toLowerCase();
     if (msg == prefix+'topic'){
@@ -139,8 +139,8 @@ client.on('message', message => {
     //Take guesses here
     if (gameOn === true){
 
-        // Check if it is alhpabetical, eight characaters long, is not !solve, and starts with prefix
-        if (msg.includes("guess") && alphaCheck(msg.charAt(7)) !== null && msg.length === 8 && msg.charAt(0) === prefix && !msg.includes("!solve")){
+        // Check if it is alhpabetical, eight characaters long, is not _solve, and starts with prefix
+        if (msg.includes("guess") && alphaCheck(msg.charAt(7)) !== null && msg.length === 8 && msg.charAt(0) === prefix && !msg.includes("_solve")){
             var guess = msg.charAt(7);
             //Check if duplicate
             var doubleFlag = checkIfGuessed(guessedList, guess);
@@ -229,7 +229,7 @@ client.on('message', message => {
         } else if (msg.includes("solve") && msg.charAt(0) === prefix && msg.charAt(msg.length-1) == "'"){
             //Make sure there are only two quotes in the solve string
             if (findTwoQuotes(msg) === true){
-                var solv = msg.split("!solve ");
+                var solv = msg.split("_solve ");
                 solv = solv + '';
                 solv = solv.split("'")[1];
 
@@ -394,42 +394,42 @@ client.on('message', message => {
             helperTopic = helperTopic + topics[8];
         // Dynamic Topic
         } else if (msg.startsWith(prefix+"topic")){
-            if ((msg == "!topic pokemon kanto") || (msg == "!topic kanto")){
+            if ((msg == "_topic pokemon kanto") || (msg == "_topic kanto")){
                 randNum = Math.floor(Math.random() * 151);
                 playWord = util.pokemon[randNum]
                 console.log(playWord);
                 gameOn = true;
      
                 helperTopic = helperTopic + topics[9]+" (Kanto)";
-            } else if ((msg == "!topic pokemon johto") || (msg == "!topic johto")){
+            } else if ((msg == "_topic pokemon johto") || (msg == "_topic johto")){
                 randNum = Math.floor(Math.random() * 100) + 151;
                 playWord = util.pokemon[randNum]
                 console.log(playWord);
                 gameOn = true;
      
                 helperTopic = helperTopic + topics[9]+" (Johto)";
-            } else if ((msg == "!topic pokemon hoenn") || (msg == "!topic hoenn")){
+            } else if ((msg == "_topic pokemon hoenn") || (msg == "_topic hoenn")){
                 randNum = Math.floor(Math.random() * 136) + 251;
                 playWord = util.pokemon[randNum]
                 console.log(playWord);
                 gameOn = true;
      
                 helperTopic = helperTopic + topics[9]+" (Hoenn)";
-            } else if ((msg == "!topic pokemon sinnoh") || (msg == "!topic sinnoh")){
+            } else if ((msg == "_topic pokemon sinnoh") || (msg == "_topic sinnoh")){
                  randNum = Math.floor(Math.random() * 107) + 386;
                  playWord = util.pokemon[randNum]
                  console.log(playWord);
                  gameOn = true;
      
                 helperTopic = helperTopic + topics[9]+" (Sinnoh)";
-            } else if ((msg == "!topic pokemon unova") || (msg == "!topic unova")){
+            } else if ((msg == "_topic pokemon unova") || (msg == "_topic unova")){
                 randNum = Math.floor(Math.random() * 156) + 492;                 
                 playWord = util.pokemon[randNum]
                 console.log(playWord);
                 gameOn = true;
      
                 helperTopic = helperTopic + topics[9]+" (Unova)";
-            } else if ((msg == "!topic pokemon kalos") || (msg == "!topic kalos")){
+            } else if ((msg == "_topic pokemon kalos") || (msg == "_topic kalos")){
                 console.log(util.pokemon[720]+" and "+util.pokemon[721])
                 randNum = Math.floor(Math.random() * 72) +649;                 
                 playWord = util.pokemon[randNum]
@@ -437,7 +437,7 @@ client.on('message', message => {
                 gameOn = true;
      
                 helperTopic = helperTopic + topics[9]+" (Kalos)";
-            } else if ((msg == "!topic pokemon alola") || (msg == "!topic alola")){
+            } else if ((msg == "_topic pokemon alola") || (msg == "_topic alola")){
                 console.log(util.pokemon[806]+"Is pokemon")
                 randNum = Math.floor(Math.random() * 86) +721;                 
                 playWord = util.pokemon[randNum]
@@ -471,7 +471,8 @@ client.on('message', message => {
             message.channel.sendEmbed(helperBoard);
         }
     }
-    
+});
+    client.on('message', message => {
     if (message.content === '_EmX') {
         message.channel.sendMessage(`Hello, I'm a bot in progress right now but if you wish to add me to your server, that's fine! do _invite. You can also learn more about my commands by doing _help`);
     }
