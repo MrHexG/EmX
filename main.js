@@ -471,86 +471,6 @@ client.on('message', message => {
             message.channel.sendEmbed(helperBoard);
         }
     }
-});
-
-// Functions
-function getPlayWord(topic, numWords){
-    var randomNum = Math.floor(Math.random() * numWords);
-    return topic[randomNum];
-}
-
-function resetGame(){
-    //botOn = false;
-    gameOn = false;
-    playWord = "";
-    boardWord = "";
-    damage = 0;
-    guessedList = "";
-    guessedList = []
-
-    missList = "Missed Guesses: ";
-    helperTopic = "Topic: ";
-}
-
-function findTwoQuotes(string){
-    var j;
-    var quotesFound = 0;
-    for (j = 0; j < string.length; j++){
-        if (string.charAt(j) === "'"){
-            quotesFound = quotesFound+1;
-        }
-    }
-    if (quotesFound === 2){
-        return true;
-    } else {
-        return false;
-    }
-}
-
-function badManners(){
-    const badManner = ["loser!", "idiot!", "bozo!", "moron!", "knucklehead!", "Einstein!", "nincompoop!", "nitwit!", "fool!"];
-    var rand = Math.floor(Math.random() * 9);
-    return badManner[rand];
-}
-
-//All functions below this comment were repurposed from my Oatmeal Bot
-function generateBoardWord(gameWord){
-    var i;
-    var bWord = "";
-    for (i = 0; i < gameWord.length; i++){
-        if (gameWord[i] === ' '){
-            bWord = bWord + ' ';
-        } else {
-            bWord = bWord + '-';
-        }
-    }
-
-    return bWord;
-}
-
-function alphaCheck(input){
-    return input.match("^[a-zA-Z]+$");    
-}
-
-function checkIfGuessed(gList, guess){
-    var j;
-    var doubleFlag = false;
-    if (gList.length !== undefined){
-        for (j = 0; j < gList.length; j++){
-            if (gList[j] === guess){
-                doubleFlag = true;
-            }
-        }
-    }
-
-    return doubleFlag;
-}
-
-
-function replaceAt(string, index, replace) {
-    return string.substring(0, index) + replace + string.substring(index + 1);
-}
-    
     
     if (message.content === '_EmX') {
         message.channel.sendMessage(`Hello, I'm a bot in progress right now but if you wish to add me to your server, that's fine! do _invite. You can also learn more about my commands by doing _help`);
@@ -989,4 +909,82 @@ client.on("messageUpdate", function(oldMessage, newMessage){
     .setColor("#FFFF00")
     return logsChannel.send(messageEditEmbed)
 });
+// Functions
+function getPlayWord(topic, numWords){
+    var randomNum = Math.floor(Math.random() * numWords);
+    return topic[randomNum];
+}
+
+function resetGame(){
+    //botOn = false;
+    gameOn = false;
+    playWord = "";
+    boardWord = "";
+    damage = 0;
+    guessedList = "";
+    guessedList = []
+
+    missList = "Missed Guesses: ";
+    helperTopic = "Topic: ";
+}
+
+function findTwoQuotes(string){
+    var j;
+    var quotesFound = 0;
+    for (j = 0; j < string.length; j++){
+        if (string.charAt(j) === "'"){
+            quotesFound = quotesFound+1;
+        }
+    }
+    if (quotesFound === 2){
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function badManners(){
+    const badManner = ["loser!", "idiot!", "bozo!", "moron!", "knucklehead!", "Einstein!", "nincompoop!", "nitwit!", "fool!"];
+    var rand = Math.floor(Math.random() * 9);
+    return badManner[rand];
+}
+
+//All functions below this comment were repurposed from my Oatmeal Bot
+function generateBoardWord(gameWord){
+    var i;
+    var bWord = "";
+    for (i = 0; i < gameWord.length; i++){
+        if (gameWord[i] === ' '){
+            bWord = bWord + ' ';
+        } else {
+            bWord = bWord + '-';
+        }
+    }
+
+    return bWord;
+}
+
+function alphaCheck(input){
+    return input.match("^[a-zA-Z]+$");    
+}
+
+function checkIfGuessed(gList, guess){
+    var j;
+    var doubleFlag = false;
+    if (gList.length !== undefined){
+        for (j = 0; j < gList.length; j++){
+            if (gList[j] === guess){
+                doubleFlag = true;
+            }
+        }
+    }
+
+    return doubleFlag;
+}
+
+
+function replaceAt(string, index, replace) {
+    return string.substring(0, index) + replace + string.substring(index + 1);
+}
+    
 client.login(process.env.token);
