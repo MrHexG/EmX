@@ -53,7 +53,7 @@ var bm ="";
 var correctAnswer = "";
 var mainMenu = new Discord.RichEmbed()
     .setTitle("Topic Select")
-    .setDescription("Please select a topic by typing in '!topic <number>' ")
+    .setDescription("Please select a topic by typing in '_topic <number>' ")
     .addField(reaction_numbers[1]+" "+topics[1], "-----------")
     .addField(reaction_numbers[2]+" "+topics[2], "-----------")
     .addField(reaction_numbers[3]+" "+topics[3], "-----------")
@@ -69,10 +69,10 @@ var mainMenu = new Discord.RichEmbed()
 
 var helpBoard = new Discord.RichEmbed()
     .setTitle("Help")
-    .addField("!topic <number>", "Starts a game with the chosen topic")
-    .addField("!topic <category>", "Starts a game with the chosen dynamic topic")
-    .addField("!guess <letter>", "Guesses a letter in the game")
-    .addField("!solve '<string>'", "Attempts to end the game by solving the word")
+    .addField("_topic <number>", "Starts a game with the chosen topic")
+    .addField("_topic <category>", "Starts a game with the chosen dynamic topic")
+    .addField("_guess <letter>", "Guesses a letter in the game")
+    .addField("_solve '<string>'", "Attempts to end the game by solving the word")
     .setColor('0022FF')
 
 // //DB setup
@@ -253,7 +253,7 @@ let statuses = ['try _cat & _dog 😏','_help | _invite'];
                 //It passed. Proceed to check
                 if (nonAlphaFlag === true && alreadyGuessed === false){
                     //Continue by checking length of solv + length of command + the two quotes
-                    // This will make sure it only accepts valid input <!solve ''> this ahs 9 chars
+                    // This will make sure it only accepts valid input <_solve ''> this ahs 9 chars
                     if ((solv.length + 9) === msg.length){
                         //Check if winner
                         if (solv === playWord){
