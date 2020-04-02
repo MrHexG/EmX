@@ -6,8 +6,6 @@ const fetch = require('node-fetch');
 const moment = require('moment');
 const mongoose = require('mongoose');
 const util = require('./util.json');
-//const fortnite = require('fortnite');
-//const ft = new fortnite(process.env.fortnite)
 
 // mongoose.connect(process.env.mongo_conn_string || 'mongodb+srv://emx_db:0pBfRLn1SxL257kq@emx-l9d4w.gcp.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true });
 // var db = mongoose.connection;
@@ -477,33 +475,6 @@ let statuses = ['try _cat & _dog 😏','_help | _invite'];
     if (message.content === '_EmX') {
         message.channel.sendMessage(`Hello, I'm a bot in progress right now but if you wish to add me to your server, that's fine! do _invite. You can also learn more about my commands by doing _help`);
     }
-   //if (message.content.startsWith('_fortnite')) {
-            
-     //   let userName = args[0]
-     //   let platformm = args[1]
-    
-    //    let data = ft.user(userName, platform).then(data => {
-    //    let stats = data.stats.lifetime;
-     //   let kills = stats.kills;
-     //   let kd = stats.kd
-     //   let matches = stats.matches
-     //   let wins = stats.wins
-      //  let top3 = stats.top_3
-      //  let top5 = stats.top_5
-      //  let top25 = stats.top_25
-        
-      //  let fort = new discord.RichEmbed()
-       // .setTitle(arg.join(' ') + '\'s lifetime Stats')
-      //  .setColor("RANDOM")
-      //  .setDescription(`Top 3: \`\`${top3} Wins\`\`\n Top 5: \`\`${top5} Wins\`\`\nTop 25: \`\`$(top25} Wins \`\``)
-      //  .addBlankField()
-      //  .addFIeld("Kills", kills, true)
-     //   .addField("K/D", kd, true)
-      //  .addField("Matches Played", matches, true)
-     //   message.channel.send(fort)
-        
-     // })
-//   }
 
 if (message.content.startsWith('_avatar')) {
         if (!message.mentions.users.size) {
@@ -946,8 +917,8 @@ function findTwoQuotes(string){
 }
 
 function badManners(){
-    const badManner = ["loser!", "idiot!", "bozo!", "moron!", "knucklehead!", "Einstein!", "nincompoop!", "nitwit!", "fool!"];
-    var rand = Math.floor(Math.random() * 9);
+    const badManner = ["nub!", "noob!", "bruh!"];
+    var rand = Math.floor(Math.random() * badManner.length);
     return badManner[rand];
 }
 
