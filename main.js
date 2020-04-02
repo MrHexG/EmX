@@ -133,7 +133,7 @@ let statuses = ['try _cat & _dog 😏','_help | _invite'];
         }
     }
 
-    if (msg == prefix+'help'){
+    if (msg == prefix+'help hangman'){
         message.channel.sendEmbed(helpBoard)
     }
 
