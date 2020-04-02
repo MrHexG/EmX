@@ -544,7 +544,7 @@ if (message.content.startsWith('_avatar')) {
         }
     
     if (message.content === '_help') {
-        const exampleEmbed = new Discord.RichEmbed()
+        const helpEmbed = new Discord.RichEmbed()
             .setColor('#800080')
             .setTitle('Help')
             .setDescription('Here are the bot commands! Use ``_help command name`` for help on usage. **Case Sensitive**')
@@ -567,8 +567,8 @@ if (message.content.startsWith('_avatar')) {
             .addField('_Avatar', 'Sends you your avatar if no member mentioned, if mentioned, it will send that person\'s avatar', true)
             .addBlankField()
             .addField('Message Logs', 'The bot logs all edited and deleted messages into a channel, please make a channel called message-logs to access this!', true)
-            .setFooter('Bot created by Sattish#2011 & TheKarlos#4296', 'https://i.ibb.co/gMS6gX4/mono.png');
-        message.channel.sendMessage(exampleEmbed)
+            .setFooter('Bot created by Sattish#2011 & TheKarlos#5992', 'https://i.ibb.co/gMS6gX4/mono.png');
+        message.channel.sendMessage(helpEmbed)
     }
     if (message.content === '_help Invite') {
         const InviteEmbed = new Discord.RichEmbed()
