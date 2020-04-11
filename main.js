@@ -621,7 +621,6 @@ if (message.content.startsWith('_avatar')) {
 
     function Covid() {
     fetch('https://covidapi.info/api/v1/country/IND/latest')
-    .then(response => response.text())
     .then(confirmed => message.channel.sendMessage(confirmed))
     .catch(error => console.log('error',error));
 }
