@@ -94,6 +94,8 @@ var Tree = mongoose.model('Tree', treeSchema);
 
 client.on("ready", () => {
     let guild = client.users.size
+    let server = client.guilds.size
+    console.log(server)
     console.log(guild)
 let statuses = ['try _cat & _dog 😏','_help | _invite'];
     setInterval(function(){
@@ -620,7 +622,7 @@ if (message.content.startsWith('_avatar')) {
     function Covid() {
     fetch('https://covidapi.info/api/v1/country/IND/latest')
     .then(response => response.text())
-    .then(result => message.channel.sendMessage(result))
+    .then(confirmed => message.channel.sendMessage(confirmed))
     .catch(error => console.log('error',error));
 }
 if (message.content.toLowerCase() === '_covid india') {
