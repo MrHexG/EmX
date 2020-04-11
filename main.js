@@ -619,9 +619,9 @@ if (message.content.startsWith('_avatar')) {
 
     function Covid() {
     fetch('https://covidapi.info/api/v1/country/IND/latest')
-    .then(res => res.json())
-    .then(result => message.channel.sendMessage(result[0].url))
-   
+    .then(response => response.text())
+    .then(result => message.channel.sendMessage(result))
+    .catch(error => console.log('error',error));
 }
 if (message.content.toLowerCase() === '_covid india') {
     Covid()
