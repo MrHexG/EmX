@@ -620,9 +620,9 @@ if (message.content.startsWith('_avatar')) {
     }
 
     function Covid() {
-    fetch('https://covidapi.info/api/v1/country/IND/latest/confirmed')
-    .then(response => response.text())
-    .then(confirmed => message.channel.sendMessage(response.confirmed))
+    fetch('https://covidapi.info/api/v1/country/IND/latest')
+    .then(response => response.json())
+    .then(result => message.channel.sendMessage(result[confirmed]))
     .catch(error => console.log('error',error));
 }
 if (message.content.toLowerCase() === '_covid india') {
