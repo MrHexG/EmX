@@ -6,8 +6,6 @@ const fetch = require('node-fetch');
 const moment = require('moment');
 const mongoose = require('mongoose');
 const util = require('./util.json');
-const { NovelCovid } = require('novelcovid');
-const track = new NovelCovid();
 
 // mongoose.connect(process.env.mongo_conn_string || 'mongodb+srv://emx_db:0pBfRLn1SxL257kq@emx-l9d4w.gcp.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true });
 // var db = mongoose.connection;
@@ -620,17 +618,9 @@ if (message.content.startsWith('_avatar')) {
     }
 
     function Covid() {
-
-    
-    var requestOptions = {
-    method: 'GET',
-    redirect: 'follow'
-    };
-
-    fetch("https://covidapi.info/api/v1/country/IND/latest", requestOptions)
-    .then(response => response.text())
-     .then(result => message.channel.sendMessage(result[0].url))
-    .catch(error => console.log('error', error));
+    fetch('https://covidapi.info/api/v1/country/IND/latest')
+    .then(res => res.json())
+    .then(result => message.channel.sendMessage(result[0].url))
    
 }
 if (message.content.toLowerCase() === '_covid india') {
