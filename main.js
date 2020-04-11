@@ -6,6 +6,8 @@ const fetch = require('node-fetch');
 const moment = require('moment');
 const mongoose = require('mongoose');
 const util = require('./util.json');
+const { NovelCovid } = require('novelcovid');
+const track = new NovelCovid();
 
 // mongoose.connect(process.env.mongo_conn_string || 'mongodb+srv://emx_db:0pBfRLn1SxL257kq@emx-l9d4w.gcp.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true });
 // var db = mongoose.connection;
@@ -473,7 +475,7 @@ let statuses = ['try _cat & _dog 😏','_help | _invite'];
 });
     client.on('message', message => {
     if (message.content === '_EmX') {
-        message.channel.sendMessage(`Hello, I'm a bot in progress right now but if you wish to add me to your server, that's fine! do _invite. You can also learn more about my commands by doing _help`);
+        message.channel.sendMessage(`Hello, I'm a bot in progress right now but if you wish to add me to your server,  do _invite. You can also learn more about my commands by doing _help`);
     }
 
 if (message.content.startsWith('_avatar')) {
@@ -482,9 +484,6 @@ if (message.content.startsWith('_avatar')) {
         return message.channel.send(`Your avatar: ${message.author.displayAvatarURL}`);
         
         }
-        
-        
-        
         const avatarList = message.mentions.users.map(user => {
         
         return `${user.username}\'s avatar: ${user.displayAvatarURL}`;
@@ -518,7 +517,7 @@ if (message.content.startsWith('_avatar')) {
         const helpEmbed = new Discord.RichEmbed()
             .setColor('#800080')
             .setTitle('Help')
-            .setDescription('Here are the bot commands! Use ``_help command name`` for help on usage. **Case Sensitive**')
+            .setDescription('Here are the bot commands! Use ``_help command name`` for help on usage.')
             .setThumbnail('https://i.ibb.co/gMS6gX4/mono.png')
             .addBlankField()
             .addField('_EmX', 'Simply describes the bot')
@@ -532,8 +531,6 @@ if (message.content.startsWith('_avatar')) {
             .addField('_Dog', 'Sends a randomly generated picture of a doggo', true)
             .addBlankField()
             .addField('_Cat', 'Sends a randomly generated picture of a cat', true)
-            .addBlankField()
-            .addField('_Random', 'Sends a randomly generated picture of any random picture in the internet', true)
             .addBlankField()
             .addField('_Avatar', 'Sends you your avatar if no member mentioned, if mentioned, it will send that person\'s avatar', true)
             .addBlankField()
@@ -593,17 +590,7 @@ if (message.content.startsWith('_avatar')) {
             .addField('_Cat | _cat')
         message.channel.sendMessage(CatEmbed)
     }
-    if (message.content === '_help Random') {
 
-        const RandEmbed = new Discord.RichEmbed()
-            .setColor('#800080')
-            .setTitle('Help about Random pictures')
-            .setDescription('Bot sends a randomized picture from the internet! If a picture shows up again, thats because its a randomized system and the bot could choose any photos at all!')
-            .addField('Aliases')
-            .addBlankField()
-            .addField('_Random | _random | _Rand | _rand')
-        message.channel.sendMessage(RandEmbed)
-    }
      if (message.content === '_help Avatar') {
 
         const AvaEmbed = new Discord.RichEmbed()
@@ -631,6 +618,19 @@ if (message.content.startsWith('_avatar')) {
             .setDescription('https://discord.gg/8guM3Yx')
         message.channel.sendMessage(SupportEmbed)
     }
+
+    
+    var requestOptions = {
+    method: 'GET',
+    redirect: 'follow'
+    };
+
+    fetch("https://covidapi.info/api/v1/country/IND/latest", requestOptions)
+    .then(response => response.text())
+     .then(result => console.log(result))
+    .catch(error => console.log('error', error));
+
+    
     
     function Cat8ball() {
         fetch('https://api.thecatapi.com/v1/images/search')
@@ -649,6 +649,7 @@ if (message.content.startsWith('_avatar')) {
     if (message.content.toLowerCase() === '_dog') {
         Dog8ball()
     }
+    
     if (message.content.toLowerCase() === '_josua') {
         message.channel.sendMessage(Josua())  
     }
@@ -782,7 +783,7 @@ client.on('message', (message) => {
         return;
     }
 
-    if (message.content.startsWith('_kick')) { // Temporary will be changed when customizable prefix available
+    if (message.content.startsWith('_kick')) { // Temporary, will be changed when customizable prefix available
         if (message.member.permissions.has('ADMINISTRATOR')) {
             const user = message.mentions.users.first();
             if (user) {
