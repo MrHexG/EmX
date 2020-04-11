@@ -619,6 +619,8 @@ if (message.content.startsWith('_avatar')) {
         message.channel.sendMessage(SupportEmbed)
     }
 
+    function Covid() {
+
     
     var requestOptions = {
     method: 'GET',
@@ -627,11 +629,14 @@ if (message.content.startsWith('_avatar')) {
 
     fetch("https://covidapi.info/api/v1/country/IND/latest", requestOptions)
     .then(response => response.text())
-     .then(result => console.log(result))
+     .then(result => message.channel.sendMessage(result[0].url))
     .catch(error => console.log('error', error));
+   
+}
+if (message.content.toLowerCase() === '_covid india') {
+    Covid()
+}
 
-    
-    
     function Cat8ball() {
         fetch('https://api.thecatapi.com/v1/images/search')
             .then(res => res.json())
