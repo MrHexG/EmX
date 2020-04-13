@@ -975,4 +975,4 @@ function replaceAt(string, index, replace) {
     return string.substring(0, index) + replace + string.substring(index + 1);
 }
     
-client.login("NjEyNTM2MzUyNzUxMzUzODg2.XpIAgQ.LkMf-tePk1vsbepqFwdoy3cWLeo");
+client.login(process.env.token);
