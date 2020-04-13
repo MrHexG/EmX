@@ -7,7 +7,7 @@ const moment = require('moment');
 const mongoose = require('mongoose');
 const util = require('./util.json');
 
-// mongoose.connect(process.env.mongo_conn_string || 'mongodb+srv://emx_db:0pBfRLn1SxL257kq@emx-l9d4w.gcp.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true });
+// mongoose.connect(process.env.mongo_conn_string, { useNewUrlParser: true });
 // var db = mongoose.connection;
 // db.on('error', console.error.bind(console, 'connection error:'));
 // db.once('open', function () {
