@@ -649,7 +649,7 @@ if (message.content.toLowerCase() === '_covid india') {
     function Cat8ball() {
         fetch('https://api.thecatapi.com/v1/images/search')
             .then(res => res.json())
-            .then(data => message.channel.sendMessage(data[1].url))
+            .then(data => message.channel.sendMessage(data[1].url)) // Send Message should show.
     }
     if (message.content.toLowerCase() === '_cat') {
         Cat8ball()
