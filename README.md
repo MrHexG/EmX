@@ -12,6 +12,9 @@ The following are some of the commands in this bot.
 * _Hangman - Play hangman with many different types of topics!
 * _covid <country> - Gives the latest stats of COVID-19 via this [COVID-19 API](https://github.com/backtrackbaba/covid-api)
 
+## Invite EmX
+To invite EmX to your server, just click this ---> [Invite](https://discordapp.com/oauth2/authorize?client_id=612536352751353886&permissions=523328&scope=bot)
+
 ## Hosting
 If you're choosing to host the bot on your own, the instructions below will help you. If you'd like to contribute and help me add more commands and ideas, contact me via Email (spshewkani@gmail.com) or [Discord](https://discord.io/SZYMusic). You can also create an Issue in the Issue tab to give me an idea or command that you'd like to see in the future.
 
