@@ -514,7 +514,7 @@ if (message.content.startsWith('_avatar')) {
         }
     
     if (message.content === '_help') {
-        const helpEmbed = new Discord.MessageEmbed()
+        const helpEmbed = new Discord.RichEmbed()
             .setColor('#800080')
             .setTitle('Help')
             .setDescription('Here are the bot commands! Use ``_help command name`` for help on usage.')
@@ -539,7 +539,7 @@ if (message.content.startsWith('_avatar')) {
         message.channel.send(helpEmbed)
     }
     if (message.content === '_help Invite') {
-        const InviteEmbed = new Discord.MessageEmbed()
+        const InviteEmbed = new Discord.RichEmbed()
             .setColor('#800080')
             .setTitle('Help about Invitation')
             .setDescription('Bot sends a link which will allow you to bring the bot to your server!')
@@ -549,7 +549,7 @@ if (message.content.startsWith('_avatar')) {
         message.channel.send(InviteEmbed)
     }
      if (message.content === '_help Support') {
-        const SupportingEmbed = new Discord.MessageEmbed()
+        const SupportingEmbed = new Discord.RichEmbed()
             .setColor('#800080')
             .setTitle('Help about Support Server')
             .setDescription('Bot sends a link which will send you to the support server where you can ask your questions')
@@ -559,7 +559,7 @@ if (message.content.startsWith('_avatar')) {
         message.channel.send(SupportingEmbed)
     }
     if (message.content === '_help Tree') {
-        const TreeEmbed = new Discord.MessageEmbed()
+        const TreeEmbed = new Discord.RichEmbed()
             .setColor('#800080')
             .setTitle('Help on how to water a tree')
             .setDescription('Are you really asking a bot for help on watering a tree? **Amateur**')
@@ -570,7 +570,7 @@ if (message.content.startsWith('_avatar')) {
     }
     if (message.content === '_help Dog') {
 
-        const DogEmbed = new Discord.MessageEmbed()
+        const DogEmbed = new Discord.RichEmbed()
             .setColor('#800080')
             .setTitle('Help about Doggos')
             .setDescription('Bot sends a randomized picture of a doggo from the internet! If a picture shows up again, thats because its a randomized system and the bot could choose any photos at all!')
@@ -581,7 +581,7 @@ if (message.content.startsWith('_avatar')) {
     }
     if (message.content === '_help Cat') {
 
-        const CatEmbed = new Discord.MessageEmbed()
+        const CatEmbed = new Discord.RichEmbed()
             .setColor('#800080')
             .setTitle('Help about Fluff Cats')
             .setDescription('Bot sends a randomized picture of a cattos from the internet! If a picture shows up again, thats because its a randomized system and the bot could choose any photos at all!')
@@ -593,7 +593,7 @@ if (message.content.startsWith('_avatar')) {
 
      if (message.content === '_help Avatar') {
 
-        const AvaEmbed = new Discord.MessageEmbed()
+        const AvaEmbed = new Discord.RichEmbed()
             .setColor('#800080')
             .setTitle('Help about Avatar command')
             .setDescription('If no user mentioned, it will send your avatar and if a user in the server is mentioned, it will send their avatar.')
@@ -604,7 +604,7 @@ if (message.content.startsWith('_avatar')) {
     }
     if (message.content.toLowerCase() === '_invite') {
 
-        const InvEmbed = new Discord.MessageEmbed()
+        const InvEmbed = new Discord.RichEmbed()
             .setColor('#800080')
             .setTitle('Heres the link!')
             .setDescription('https://discordapp.com/api/oauth2/authorize?client_id=612536352751353886&permissions=523328&scope=bot')
@@ -612,7 +612,7 @@ if (message.content.startsWith('_avatar')) {
     }
     if (message.content.toLowerCase() === '_support') {
 
-        const SupportEmbed = new Discord.MessageEmbed()
+        const SupportEmbed = new Discord.RichEmbed()
             .setColor('#800080')
             .setTitle('Heres the link!')
             .setDescription('https://discord.gg/8guM3Yx')
@@ -626,7 +626,7 @@ if (message.content.startsWith('_avatar')) {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const Chicken = new Discord.MessageEmbed()
+        const Chicken = new Discord.RichEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in India')
         .addField('Cases', `${result.confirmed}`, true)
