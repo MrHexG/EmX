@@ -514,7 +514,7 @@ if (message.content.startsWith('_avatar')) {
         }
     
     if (message.content === '_help') {
-        const helpEmbed = new Discord.RichEmbed()
+        const helpEmbed = new Discord.MessageEmbed()
             .setColor('#800080')
             .setTitle('Help')
             .setDescription('Here are the bot commands! Use ``_help command name`` for help on usage.')
@@ -536,103 +536,120 @@ if (message.content.startsWith('_avatar')) {
             .addBlankField()
             .addField('Message Logs', 'The bot logs all edited and deleted messages into a channel, please make a channel called message-logs to access this!', true)
             .setFooter('Bot created by Sattish#2011 & TheKarlos#5992', 'https://i.ibb.co/gMS6gX4/mono.png');
-        message.channel.sendMessage(helpEmbed)
+        message.channel.send(helpEmbed)
     }
     if (message.content === '_help Invite') {
-        const InviteEmbed = new Discord.RichEmbed()
+        const InviteEmbed = new Discord.MessageEmbed()
             .setColor('#800080')
             .setTitle('Help about Invitation')
             .setDescription('Bot sends a link which will allow you to bring the bot to your server!')
             .addField('Aliases')
             .addBlankField()
             .addField('_Invite | _invite')
-        message.channel.sendMessage(InviteEmbed)
+        message.channel.send(InviteEmbed)
     }
      if (message.content === '_help Support') {
-        const SupportingEmbed = new Discord.RichEmbed()
+        const SupportingEmbed = new Discord.MessageEmbed()
             .setColor('#800080')
             .setTitle('Help about Support Server')
             .setDescription('Bot sends a link which will send you to the support server where you can ask your questions')
             .addField('Aliases')
             .addBlankField()
             .addField('_Support | _support')
-        message.channel.sendMessage(SupportingEmbed)
+        message.channel.send(SupportingEmbed)
     }
     if (message.content === '_help Tree') {
-        const TreeEmbed = new Discord.RichEmbed()
+        const TreeEmbed = new Discord.MessageEmbed()
             .setColor('#800080')
             .setTitle('Help on how to water a tree')
             .setDescription('Are you really asking a bot for help on watering a tree? **Amateur**')
             .addField('Aliases')
             .addBlankField()
             .addField('_Tree | _tree')
-        message.channel.sendMessage(TreeEmbed)
+        message.channel.send(TreeEmbed)
     }
     if (message.content === '_help Dog') {
 
-        const DogEmbed = new Discord.RichEmbed()
+        const DogEmbed = new Discord.MessageEmbed()
             .setColor('#800080')
             .setTitle('Help about Doggos')
             .setDescription('Bot sends a randomized picture of a doggo from the internet! If a picture shows up again, thats because its a randomized system and the bot could choose any photos at all!')
             .addField('Aliases')
             .addBlankField()
             .addField('_Dog | _dog')
-        message.channel.sendMessage(DogEmbed)
+        message.channel.send(DogEmbed)
     }
     if (message.content === '_help Cat') {
 
-        const CatEmbed = new Discord.RichEmbed()
+        const CatEmbed = new Discord.MessageEmbed()
             .setColor('#800080')
             .setTitle('Help about Fluff Cats')
             .setDescription('Bot sends a randomized picture of a cattos from the internet! If a picture shows up again, thats because its a randomized system and the bot could choose any photos at all!')
             .addField('Aliases')
             .addBlankField()
             .addField('_Cat | _cat')
-        message.channel.sendMessage(CatEmbed)
+        message.channel.send(CatEmbed)
     }
 
      if (message.content === '_help Avatar') {
 
-        const AvaEmbed = new Discord.RichEmbed()
+        const AvaEmbed = new Discord.MessageEmbed()
             .setColor('#800080')
             .setTitle('Help about Avatar command')
             .setDescription('If no user mentioned, it will send your avatar and if a user in the server is mentioned, it will send their avatar.')
             .addField('Aliases')
             .addBlankField()
             .addField('_Avatar | _avatar')
-        message.channel.sendMessage(AvaEmbed)
+        message.channel.send(AvaEmbed)
     }
     if (message.content.toLowerCase() === '_invite') {
 
-        const InvEmbed = new Discord.RichEmbed()
+        const InvEmbed = new Discord.MessageEmbed()
             .setColor('#800080')
             .setTitle('Heres the link!')
             .setDescription('https://discordapp.com/api/oauth2/authorize?client_id=612536352751353886&permissions=523328&scope=bot')
-        message.channel.sendMessage(InvEmbed)
+        message.channel.send(InvEmbed)
     }
     if (message.content.toLowerCase() === '_support') {
 
-        const SupportEmbed = new Discord.RichEmbed()
+        const SupportEmbed = new Discord.MessageEmbed()
             .setColor('#800080')
             .setTitle('Heres the link!')
             .setDescription('https://discord.gg/8guM3Yx')
-        message.channel.sendMessage(SupportEmbed)
+        message.channel.send(SupportEmbed)
     }
 
-    function Covid() {
-    fetch('https://covidapi.info/api/v1/country/IND/latest')
+ function CovidIndia() {
+
+  fetch("https://covidapi.info/api/v1/country/IND/latest")
     .then(response => response.json())
-    .then(result => message.channel.sendMessage(result[confirmed]))
-    .catch(error => console.log('error',error));
-}
+    .then(data => {
+        date = Object.keys(data.result)[0]
+        result = data.result[date]
+        const Chicken = new Discord.MessageEmbed()
+        .setColor('#800080')
+        .setTitle('Covid-19 Latest Stats in India')
+        .addField('Cases', `${result.confirmed}`, true)
+        .addField('Recovered', `${result.recovered}`, true)
+        .addField('Deaths', `${result.deaths}`, true)
+        .setFooter('Updated thrice a day - Data from various different sources')
+        .setAuthor('Advice for the public (Click Me)', 'https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Libraries/Production+Library/31-01-20-coronavirus-digital-image-cdc1.jpg/image770x420cropped.jpg', 'https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public')
+        message.channel.send(Chicken)
+    
+    })
+    .catch(err => {
+        console.log('error')
+
+    })
+ }
 if (message.content.toLowerCase() === '_covid india') {
-    Covid()
+    CovidIndia()
 }
 
     function Cat8ball() {
         fetch('https://api.thecatapi.com/v1/images/search')
             .then(res => res.json())
-            .then(data => message.channel.sendMessage(data[0].url))
+            .then(data => message.channel.send(data[1].url))
     }
     if (message.content.toLowerCase() === '_cat') {
         Cat8ball()
@@ -640,7 +657,7 @@ if (message.content.toLowerCase() === '_covid india') {
     function Dog8ball() {
         fetch('https://api.thedogapi.com/v1/images/search')
             .then(res => res.json())
-            .then(data => message.channel.sendMessage(data[0].url))
+            .then(data => message.channel.send(data[0].url))
     }
 
     if (message.content.toLowerCase() === '_dog') {
@@ -648,7 +665,7 @@ if (message.content.toLowerCase() === '_covid india') {
     }
     
     if (message.content.toLowerCase() === '_josua') {
-        message.channel.sendMessage(Josua())  
+        message.channel.send(Josua())  
     }
     function Josua() {
     var Josua = ['https://i.imgur.com/uqWrcFg.jpg','https://i.imgur.com/0PfxLFn.jpg', 'https://i.imgur.com/lv5rwu3.jpg', 'https://i.imgur.com/fL5ssch.jpg', 'https://i.imgur.com/ydNN86H.jpg', 'https://i.imgur.com/bQmntav.jpg', 'https://i.imgur.com/nx0WQ80.png', 'https://i.imgur.com/XeUA4nc.png', 'https://i.imgur.com/slQpHbY.png', 'https://i.imgur.com/QutTMUS.png', 'https://i.imgur.com/jVQFCom.png', 'https://i.imgur.com/mUEYcT0.png', 'https://i.imgur.com/sOfoEuz.png', 'https://i.imgur.com/6FvtuWZ.png', 'https://i.imgur.com/BK7u8vp.png', 'https://i.imgur.com/D4EtAmW.png', 'https://i.imgur.com/umXHXhT.png', 'https://i.imgur.com/ueYmUxK.png']
@@ -656,7 +673,7 @@ if (message.content.toLowerCase() === '_covid india') {
         
     }
     if (message.content.toLowerCase() === '_daniel') {
-        message.channel.sendMessage(Daniel())   
+        message.channel.send(Daniel())   
     }
     function Daniel() {
         var daniel = ['https://i.imgur.com/2Gr08Pe.jpg','https://i.imgur.com/zjGCgPj.jpg','https://i.imgur.com/gsPwCRV.jpg','https://i.imgur.com/sV2QPi4.jpg','https://i.imgur.com/l5Apozj.jpg','https://i.imgur.com/3MbRKuN.jpg','https://i.imgur.com/j7g7J4T.jpg','https://i.imgur.com/OnuC3dt.jpg','https://i.imgur.com/tHwgRld.jpg','https://i.imgur.com/Ram0h3G.jpg','https://i.imgur.com/86EJF3e.jpg','https://i.imgur.com/AH6njyk.jpg','https://i.imgur.com/gB3zhlR.jpg']
@@ -668,7 +685,7 @@ if (message.content.toLowerCase() === '_covid india') {
         return Random[Math.floor(Math.random() * Random.length)];
     }
     if (message.content.toLowerCase() === '_random' || message.content.toLowerCase() === '_rand') {
-        message.channel.sendMessage(Random())
+        message.channel.send(Random())
     }
     function timeConvert(n) {
         var num = n;
@@ -958,4 +975,4 @@ function replaceAt(string, index, replace) {
     return string.substring(0, index) + replace + string.substring(index + 1);
 }
     
-client.login(process.env.token);
+client.login("NjEyNTM2MzUyNzUxMzUzODg2.XpIAgQ.LkMf-tePk1vsbepqFwdoy3cWLeo");
