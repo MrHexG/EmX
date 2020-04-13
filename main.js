@@ -649,7 +649,7 @@ if (message.content.toLowerCase() === '_covid india') {
     function Cat8ball() {
         fetch('https://api.thecatapi.com/v1/images/search')
             .then(res => res.json())
-            .then(data => message.channel.send(data[1].url))
+            .then(data => message.channel.sendMessage(data[1].url))
     }
     if (message.content.toLowerCase() === '_cat') {
         Cat8ball()
@@ -657,7 +657,7 @@ if (message.content.toLowerCase() === '_covid india') {
     function Dog8ball() {
         fetch('https://api.thedogapi.com/v1/images/search')
             .then(res => res.json())
-            .then(data => message.channel.send(data[0].url))
+            .then(data => message.channel.sendMessage(data[0].url))
     }
 
     if (message.content.toLowerCase() === '_dog') {
