@@ -613,17 +613,21 @@ if (message.content.startsWith('_avatar')) {
     fetch("https://covidapi.info/api/v1/global")
         .then(response => response.json())
         .then(data => {
-            date = Object.keys(data.result)[0]
-            result = data.result[date]
-            const CGlobal = new Discord.RichEmbed()
+            confirmed = data.result.confirmed
+            recovered = data.result.recovered
+            deaths = data.result.deaths
+        
+            
+
+           const CGlobal = new Discord.RichEmbed()
             .setColor('#800080')
             .setTitle("Covid-19 Latest Stats Globally")
-            .addField('Cases', `${result.confirmed}`, true)
-            .addField('Recovered', `${result.recovered}`, true)
-            .addField('Deaths', `${result.deaths}`, true)
+            .addField('Cases', `${confirmed}`, true)
+            .addField('Recovered', `${recovered}`, true)
+            .addField('Deaths', `${deaths}`, true)
             .setFooter('Updated daily @ UTC(00:00) - Data from various different sources')
-            .setAuthor('Advice for the public (Click Me)', 'https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Libraries/Production+Library/31-01-20-coronavirus-digital-image-cdc1.jpg/image770x420cropped.jpg', 'https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public')
-        message.channel.send(CGlobal)
+          .setAuthor('Advice for the public (Click Me)', 'https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Libraries/Production+Library/31-01-20-coronavirus-digital-image-cdc1.jpg/image770x420cropped.jpg', 'https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public')
+            message.channel.send(CGlobal)
         })
     }
     if (message.content.toLowerCase() === '_covid') {
