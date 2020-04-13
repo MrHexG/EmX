@@ -1101,20 +1101,32 @@ if (message.content.toLowerCase() === '_covid portugal') {
 }
     function Cat8ball() {
         fetch('https://api.thecatapi.com/v1/images/search')
-            .then(res => res.json())
-            .then(data => message.channel.sendMessage(data[1].url)) // Send Message should show.
-    }
+            .then(response => response.json())
+            .then(data => {
+               result = (data[0].url)
+               // console.log(result)
+               const CatEmbed = new Discord.RichEmbed()
+               .setColor('#800080')
+               .setTitle('Take this catto!')
+               .setImage(result)
+               message.channel.send(CatEmbed)
+            })
+         }
     if (message.content.toLowerCase() === '_cat') {
         Cat8ball()
     }
     function Dog8ball() {
         fetch('https://api.thedogapi.com/v1/images/search')
             .then(res => res.json())
-            .then(data => (data[0].url))
-            const CatEmbed = new Discord.RichEmbed()
+            .then(data => { 
+               result = (data[0].url)
+           
+             const DogEmbed = new Discord.RichEmbed()
             .setColor('#800080')
             .setTitle('Take this doggo!')
-            .setImage(data[0].url)
+            .setImage(result)
+            message.channel.send(DogEmbed)
+        })
     }
 
     if (message.content.toLowerCase() === '_dog') {
