@@ -561,25 +561,25 @@ if (message.content.startsWith('_avatar')) {
     }
     if (message.content === '_help Dog') {
 
-        const DogEmbed = new Discord.RichEmbed()
+        const HelpDogEmbed = new Discord.RichEmbed()
             .setColor('#800080')
             .setTitle('Help about Doggos')
             .setDescription('Bot sends a randomized picture of a doggo from the internet! If a picture shows up again, thats because its a randomized system and the bot could choose any photos at all!')
             .addField('Aliases')
             .addBlankField()
             .addField('_Dog | _dog')
-        message.channel.send(DogEmbed)
+        message.channel.send(HelpDogEmbed)
     }
     if (message.content === '_help Cat') {
 
-        const CatEmbed = new Discord.RichEmbed()
+        const HelpCatEmbed = new Discord.RichEmbed()
             .setColor('#800080')
             .setTitle('Help about Fluff Cats')
             .setDescription('Bot sends a randomized picture of a cattos from the internet! If a picture shows up again, thats because its a randomized system and the bot could choose any photos at all!')
             .addField('Aliases')
             .addBlankField()
             .addField('_Cat | _cat')
-        message.channel.send(CatEmbed)
+        message.channel.send(HelpCatEmbed)
     }
 
      if (message.content === '_help Avatar') {
@@ -1110,7 +1110,11 @@ if (message.content.toLowerCase() === '_covid portugal') {
     function Dog8ball() {
         fetch('https://api.thedogapi.com/v1/images/search')
             .then(res => res.json())
-            .then(data => message.channel.sendMessage(data[0].url))
+            .then(data => (data[0].url))
+            const CatEmbed = new Discord.RichEmbed()
+            .setColor('#800080')
+            .setTitle('Take this doggo!')
+            .setImage(data[0].url)
     }
 
     if (message.content.toLowerCase() === '_dog') {
