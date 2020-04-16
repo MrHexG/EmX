@@ -1142,20 +1142,34 @@ if (message.content.toLowerCase() === '_covid portugal') {
     }
     function Josua() {
     var Josua = ['https://i.imgur.com/uqWrcFg.jpg','https://i.imgur.com/0PfxLFn.jpg', 'https://i.imgur.com/lv5rwu3.jpg', 'https://i.imgur.com/fL5ssch.jpg', 'https://i.imgur.com/ydNN86H.jpg', 'https://i.imgur.com/bQmntav.jpg', 'https://i.imgur.com/nx0WQ80.png', 'https://i.imgur.com/XeUA4nc.png', 'https://i.imgur.com/slQpHbY.png', 'https://i.imgur.com/QutTMUS.png', 'https://i.imgur.com/jVQFCom.png', 'https://i.imgur.com/mUEYcT0.png', 'https://i.imgur.com/sOfoEuz.png', 'https://i.imgur.com/6FvtuWZ.png', 'https://i.imgur.com/BK7u8vp.png', 'https://i.imgur.com/D4EtAmW.png', 'https://i.imgur.com/umXHXhT.png', 'https://i.imgur.com/ueYmUxK.png']
-    return Josua[Math.floor(Math.random() * Josua.length)];
-        
+    var Josua1 = Josua[Math.floor(Math.random() * Josua.length)];
+        const Josh = new Discord.RichEmbed()
+        .setColor("#800080")
+        .setTitle("Here it is!")
+        .setImage(Josua1)
+        message.channel.send(Josh)
     }
     if (message.content.toLowerCase() === '_daniel') {
         message.channel.send(Daniel())   
     }
     function Daniel() {
         var daniel = ['https://i.imgur.com/2Gr08Pe.jpg','https://i.imgur.com/zjGCgPj.jpg','https://i.imgur.com/gsPwCRV.jpg','https://i.imgur.com/sV2QPi4.jpg','https://i.imgur.com/l5Apozj.jpg','https://i.imgur.com/3MbRKuN.jpg','https://i.imgur.com/j7g7J4T.jpg','https://i.imgur.com/OnuC3dt.jpg','https://i.imgur.com/tHwgRld.jpg','https://i.imgur.com/Ram0h3G.jpg','https://i.imgur.com/86EJF3e.jpg','https://i.imgur.com/AH6njyk.jpg','https://i.imgur.com/gB3zhlR.jpg']
-        return daniel[Math.floor(Math.random() * daniel.length)];
+        var dan = daniel[Math.floor(Math.random() * daniel.length)];
+        const Daniel = new Discord.RichEmbed()
+        .setColor("#800080")
+        .setTitle("Here it is!")
+        .setImage(dan)
+        message.channel.send(Daniel)
     }
         
     function Random() {
         var Random = ['http://bit.ly/2jZ2B1c', 'http://bit.ly/2khlyMY', 'http://bit.ly/2lwkfd8', 'http://bit.ly/2ktyorc', 'http://bit.ly/2k3ACO4', 'http://bit.ly/2kirdlV', 'http://bit.ly/2jYvV89', 'http://bit.ly/2ktWjab', 'http://bit.ly/2lXLgX9', 'http://bit.ly/2lwJ3BK', 'Fun Fact: This Cat beat my maker up! http://bit.ly/2ktz9Ay', 'http://bit.ly/2kqGEZb', 'http://bit.ly/2lXLgX9', 'http://bit.ly/2k24CK8'];
-        return Random[Math.floor(Math.random() * Random.length)];
+        var rand = Random[Math.floor(Math.random() * Random.length)];
+        const random = new Discord.RichEmbed()
+        .setColor("#800080")
+        .setTitle("Here it is!")
+        .setImage(rand)
+        message.channel.send(random)
     }
     if (message.content.toLowerCase() === '_random' || message.content.toLowerCase() === '_rand') {
         message.channel.send(Random())
