@@ -2402,7 +2402,10 @@ if (message.content.toLowerCase() === '_covid philippines')  {
     .addField('\u200b','Denmark', true)
     .addField('\u200b','Ecuador', true)
     .addField('\u200b','Egypt', true)
-    .addField('\u200b','Ethiopia', true)
+    message.channel.send(CList)
+  const CList2 = new Discord.RichEmbed()
+    .setColor('#800080')
+  .addField('\u200b','Ethiopia', true)
     .addField('\u200b','France', true)
     .addField('\u200b','Finland', true)
     .addField('\u200b','Germany', true)
@@ -2427,7 +2430,10 @@ if (message.content.toLowerCase() === '_covid philippines')  {
     .addField('\u200b','Kuwait', true)
     .addField('\u200b','Lebanon', true)
     .addField('\u200b','Libya', true)
-    .addField('\u200b','Malaysia', true)
+    message.channel.send(CList2)
+  const CList3 = new Discord.RichEmbed()
+    .setColor('#800080')
+  .addField('\u200b','Malaysia', true)
     .addField('\u200b','Maldives', true)
     .addField('\u200b','Malta', true)
     .addField('\u200b','Mexico', true)
@@ -2454,7 +2460,7 @@ if (message.content.toLowerCase() === '_covid philippines')  {
     .addField('\u200b','United Kingdom', true)
     .setFooter('If you\'d like more countries to be added, please DM Sattish#2011')
     .setAuthor('Advice for the public (Click Me)', 'https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Libraries/Production+Library/31-01-20-coronavirus-digital-image-cdc1.jpg/image770x420cropped.jpg', 'https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public')
- message.channel.send(CList)
+ message.channel.send(CList3)
  }
 
 if (message.content.toLowerCase() === '_covid list') {
