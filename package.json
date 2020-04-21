@@ -3,9 +3,7 @@
   "version": "2.0.0",
   "description": "An Everything Bot",
   "main": "main.js",
-  "scripts": {
-    
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Sattishh/Emx.git"
@@ -19,6 +17,7 @@
   "dependencies": {
     "async": "^2.6.1",
     "discord.js": "^11.5.1",
+    "isgd": "^1.1.3",
     "moment": "^2.24.0",
     "mongoose": "^5.7.0",
     "node-fetch": "^2.6.0",
