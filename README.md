@@ -1,5 +1,6 @@
-# EmX
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+<img align="right" src="https://i.ibb.co/gMS6gX4/mono.png" height="250" width="250">
+
+# EmX [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE) [![Support](https://img.shields.io/badge/support-Discord-blueviolet)](https://discord.io/SZYMusic)
 
 EmX is an open source discord bot made by discord.js language. It's a language inside of Javascript & node. It lets users interact with the Discord API. I made this bot to have fun & to provide miscellanous commands.
 
