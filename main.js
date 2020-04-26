@@ -526,11 +526,12 @@ if (message.content.startsWith('_avatar')) {
             .addField('_Dog', 'Sends a randomly generated picture of a doggo', true)
             .addField('_Cat', 'Sends a randomly generated picture of a cat', true)
             .addField('_help hangman','Gives more information on how to play hangman', true)
-            .addField('_covid <country>', 'Gives the latest stats of COVID-19 depending on which country is entered', true)
+            .addField('_help covid', 'Gives more information on how to interact with the COVID-19 API', true)
             .addField('Message Logs', 'The bot logs all edited and deleted messages into a channel, please make a channel called message-logs to access this!', true)
             .setFooter('Bot created by Sattish#2011 & TheKarlos#5992', 'https://i.ibb.co/gMS6gX4/mono.png');
         message.channel.send(helpEmbed)
     }
+    
     if (message.content === '_help Invite') {
         const InviteEmbed = new Discord.RichEmbed()
             .setColor('#800080')
@@ -594,6 +595,14 @@ if (message.content.startsWith('_avatar')) {
             .addBlankField()
             .addField('_Avatar | _avatar')
         message.channel.send(AvaEmbed)
+    }
+    if (message.content.toLowerCase() === '_help covid') {
+        const CovidHelp = new Discord.RichEmbed()
+        .setColor('#800080')
+        .setTitle("Help about Covid command")
+        .addField('_covid <country>','Gives latest COVID-19 Stats about the given country', true)
+        .addField('_covid list','Gives a list of all the countries in this API so far.')
+        .addField('\u200b','If you\'d like more countries to be added, please DM Sattish#2011', true)
     }
     if (message.content.toLowerCase() === '_invite') {
 
