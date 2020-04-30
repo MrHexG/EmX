@@ -6,6 +6,7 @@ const fetch = require('node-fetch');
 const moment = require('moment');
 const mongoose = require('mongoose');
 const util = require('./util.json');
+const HttpUtil = require('./http-util');
 
 
 // mongoose.connect(process.env.mongo_conn_string, { useNewUrlParser: true });
@@ -2480,6 +2481,9 @@ if (message.content.toLowerCase() === '_covid philippines')  {
 if (message.content.toLowerCase() === '_covid list') {
    CovidList()
  }
+
+ 
+ 
     function Cat8ball() {
         fetch('https://api.thecatapi.com/v1/images/search')
             .then(response => response.json())
@@ -2726,6 +2730,34 @@ client.on('guildMemberAdd', member => {
     if (!channel) return;
     channel.send(`Welcome to the server, ${member}, Enjoy your stay!`);
 });
+
+// For Urban Dictionary
+client.on('message', message => {
+    const args = message.content.trim().split(/ +/g);
+    const command = args.shift().toLowerCase();
+    const httpUtil = new HttpUtil();
+  
+    if(command === "_define") {
+      if (args.join(" ") < 1){
+        message.channel.send('Enter word[s] to define!');
+      } else {
+        httpUtil.httpsGetText('urbandictionary.com', `define.php?term=${args.join("+")}`)
+          .then((text) => {
+            let div_regex = /<div class="meaning">(.*?)<\/div>/g;
+            let msg = text.match(div_regex);
+  
+            if (msg === null) {
+              message.channel.send(`No result for query ${args.join(" ")}`);
+            } else {
+              let elem_regex = /<(.*?)>/g;
+              let sym_regex = /&(.*?);/g;
+              message.channel.send(msg[0].replace(elem_regex, "").replace(sym_regex, ""));
+            }
+          })
+          .catch(e => console.log(e));  
+      }   
+    }
+  });
 
 client.on("messageDelete", message => {// message logs
 
