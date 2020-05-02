@@ -3,6 +3,9 @@
 # EmX [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE) [![Support](https://img.shields.io/badge/support-Discord-blueviolet)](https://discord.io/SZYMusic) [![Quality](https://www.code-inspector.com/project/7148/score/svg)](https://frontend.code-inspector.com/public/project/7148/EmX/dashboard) [![Grade](https://www.code-inspector.com/project/7148/status/svg)](https://frontend.code-inspector.com/public/project/7148/EmX/dashboard)
 EmX is an open source discord bot made by discord.js language. It's a language inside of Javascript & node. It lets users interact with the Discord API. I made this bot to have fun & to provide miscellanous commands.
 
+## Star
+``PLEASE STAR THIS REPOSITORY TO SUPPORT ME & MY CODING. THANKS!``
+
 ## Commands
 The following are some of the commands in this bot.
 * _EmX - Simply describes the bot.
@@ -13,13 +16,15 @@ The following are some of the commands in this bot.
 * _Cat - Sends a randomly generated picture of a catto!
 * _Hangman - Play hangman with many different types of topics!
 * _covid <country> - Gives the latest stats of COVID-19 via this [COVID-19 API](https://github.com/backtrackbaba/covid-api)
-* _udefine <word> - Uses the Urban Dictionary API to define te word. (chooses the top result only)
+* _udefine <word> - Uses the Urban Dictionary API to define the word. (chooses the top result only)
 
 ## Invite EmX
 To invite EmX to your server, just click this ---> [Invite](https://discordapp.com/oauth2/authorize?client_id=612536352751353886&permissions=523328&scope=bot)
 
 ## Hosting
-If you're choosing to host the bot on your own, the instructions below will help you. If you'd like to contribute and help me add more commands and ideas, contact me via Email (spshewkani@gmail.com) or [Discord](https://discord.io/SZYMusic). You can also create an Issue in the Issue tab to give me an idea or command that you'd like to see in the future.
+``Please do give me the credit if you decide to self-host the bot or use my code.``
+
+If you're choosing to host the bot on your own, the instructions below will help you. If you'd like to contribute and help me add more commands and ideas, contact me via Email (spshewkani@gmail.com) or [Discord](https://discord.io/SZYMusic). `You can also create an Issue in the Issue tab to give me an idea or command that you'd like to see in the future.`
 
 ### Prerequisites
 What you need to install:
