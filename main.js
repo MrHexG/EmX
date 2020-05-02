@@ -528,6 +528,7 @@ if (message.content.startsWith('_avatar')) {
             .addField('_Cat', 'Sends a randomly generated picture of a cat', true)
             .addField('_help hangman','Gives more information on how to play hangman', true)
             .addField('_help covid', 'Gives more information on how to interact with the COVID-19 API', true)
+            .addField('_udefine <word>', 'Uses Urban Dictionary API to define a word', true)
             .addField('Message Logs', 'The bot logs all edited and deleted messages into a channel, please make a channel called message-logs to access this!', true)
             .setFooter('Bot created by Sattish#2011 & TheKarlos#5992', 'https://i.ibb.co/gMS6gX4/mono.png');
         message.channel.send(helpEmbed)
@@ -2737,7 +2738,7 @@ client.on('message', message => {
     const command = args.shift().toLowerCase();
     const httpUtil = new HttpUtil();
   
-    if(command === "_define") {
+    if(command === "_udefine") {
       if (args.join(" ") < 1){
         message.channel.send('Enter word[s] to define!');
       } else {
