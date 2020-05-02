@@ -13,6 +13,7 @@ The following are some of the commands in this bot.
 * _Cat - Sends a randomly generated picture of a catto!
 * _Hangman - Play hangman with many different types of topics!
 * _covid <country> - Gives the latest stats of COVID-19 via this [COVID-19 API](https://github.com/backtrackbaba/covid-api)
+* _udefine <word> - Uses the Urban Dictionary API to define te word. (chooses the top result only)
 
 ## Invite EmX
 To invite EmX to your server, just click this ---> [Invite](https://discordapp.com/oauth2/authorize?client_id=612536352751353886&permissions=523328&scope=bot)
