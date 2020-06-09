@@ -7,7 +7,24 @@ const moment = require('moment');
 const mongoose = require('mongoose');
 const util = require('./util.json');
 const HttpUtil = require('./http-util');
+// const NewsAPI = require('newsapi');
+// const newsapi = new NewsAPI('');
 
+
+// newsapi.v2.topHeadlines({
+  //  q: 'george floyd',  // Make the q depending on the user
+   // category: 'general', // Mak the category depending on the user
+   // language: 'en', // Language depending on the user
+   // country: 'us' // Country depending on the user
+  // }).then(response => {
+  //  console.log(response);
+    /*
+      {
+        status: "ok",
+        articles: [...]
+      }
+    */
+  // });
 
 // mongoose.connect(process.env.mongo_conn_string, { useNewUrlParser: true });
 // var db = mongoose.connection;
@@ -34,8 +51,8 @@ var solvedList = []
 
 var missList = "Missed Guesses: ";
 var helperTopic = "Topic: ";
-var helperBoard = new Discord.RichEmbed();
-var gameBoard = new Discord.RichEmbed();
+var helperBoard = new Discord.MessageEmbed();
+var gameBoard = new Discord.MessageEmbed();
 var hangASCII = [
 "+---------+\n |                |\n                  |\n                  |\n                  |\n                  |\n                  |\n                  |\n===============\n",
 "+---------+\n |                |\nO               |\n                  |\n                  |\n                  |\n                  |\n                  |\n===============\n",
@@ -51,7 +68,7 @@ var reaction_numbers = ["\u0030\u20E3","\u0031\u20E3","\u0032\u20E3","\u0033\u20
 
 var bm ="";
 var correctAnswer = "";
-var mainMenu = new Discord.RichEmbed()
+var mainMenu = new Discord.MessageEmbed()
     .setTitle("Topic Select")
     .setDescription("Please select a topic by typing in '_topic <number>' ")
     .addField(reaction_numbers[1]+" "+topics[1], "-----------")
@@ -67,7 +84,7 @@ var mainMenu = new Discord.RichEmbed()
     .setThumbnail("https://cdn3.iconfinder.com/data/icons/brain-games/128/Hangman-Game.png")
     .setColor('1BB2F3')
 
-var helpBoard = new Discord.RichEmbed()
+var helpBoard = new Discord.MessageEmbed()
     .setTitle("Help")
     .addField("_topic <number>", "Starts a game with the chosen topic")
     .addField("_topic <category>", "Starts a game with the chosen dynamic topic")
@@ -95,10 +112,7 @@ var Tree = mongoose.model('Tree', treeSchema);
 
 
 client.on("ready", () => {
-    let guild = client.users.size
-    let server = client.guilds.size
-    console.log(server)
-    console.log(guild)
+    console.log(client.guilds.size)
 let statuses = ['try _cat & _dog 😏','_help | _invite'];
     setInterval(function(){
         let status = statuses[Math.floor(Math.random()*statuses.length)];
@@ -110,13 +124,8 @@ let statuses = ['try _cat & _dog 😏','_help | _invite'];
     // Update guild-settings.json to reflect any servers that the bot joined or left while it was offline
     let change = false;
     // If the bot is in any servers that aren't in guild-settings.json, add them
-    (client.guilds).forEach((guild) => {
-        if (guild !== undefined && !db.guildRetrieve(guild)) {
-            db.guildCreate(guild)
-            change = true;
-        }
-    })
 });
+
     client.on('message', function(message) {
 
 
@@ -475,13 +484,13 @@ let statuses = ['try _cat & _dog 😏','_help | _invite'];
         }
     }
 });
-    client.on('message', message => {
+client.on('message', message => {
     if (message.content === '_EmX') {
         message.channel.sendMessage(`Hello, I'm a bot in progress right now but if you wish to add me to your server,  do _invite. You can also learn more about my commands by doing _help`);
     }
 
 
-if (message.content.startsWith('_avatar')) {
+    if (message.content.startsWith('_avatar')) {
         if (!message.mentions.users.size) {
         
         return message.channel.send(`Your avatar: ${message.author.displayAvatarURL}`);
@@ -515,27 +524,27 @@ if (message.content.startsWith('_avatar')) {
         }
     
     if (message.content === '_help') {
-        const helpEmbed = new Discord.RichEmbed()
+        const helpEmbed = new Discord.MessageEmbed()
             .setColor('#800080')
             .setTitle('Help')
             .setDescription('Here are the bot commands! Use ``_help command name`` for help on usage.')
             .setThumbnail('https://i.ibb.co/gMS6gX4/mono.png')
-            .addField('_EmX', 'Simply describes the bot')
-            .addField('_Invite', 'Gives you an invite link to bring the bot to your server', true)
-            .addField('_Support', 'Gives you an invite link to the support server if you have any questions.', true)
-            .addField('_Tree', 'Plants a tree at will, only available every 12 hours!', true)
-            .addField('_Dog', 'Sends a randomly generated picture of a doggo', true)
-            .addField('_Cat', 'Sends a randomly generated picture of a cat', true)
-            .addField('_help hangman','Gives more information on how to play hangman', true)
-            .addField('_help covid', 'Gives more information on how to interact with the COVID-19 API', true)
-            .addField('_udefine <word>', 'Uses Urban Dictionary API to define a word', true)
-            .addField('Message Logs', 'The bot logs all edited and deleted messages into a channel, please make a channel called message-logs to access this!', true)
+            .addField('• _EmX', 'Simply describes the bot')
+            .addField('• _Invite', 'Gives you an invite link to bring the bot to your server', true)
+            .addField('• _Support', 'Gives you an invite link to the support server if you have any questions.', true)
+            .addField('• _Tree', 'Plants a tree at will, only available every 12 hours!', false)
+            .addField('• _Dog', 'Sends a randomly generated picture of a doggo', true)
+            .addField('• _Cat', 'Sends a randomly generated picture of a cat', true)
+            .addField('• _help hangman','Gives more information on how to play hangman', false)
+            .addField('• _help covid', 'Gives more information on how to interact with the COVID-19 API', true)
+            .addField('• _udefine <word>', 'Uses Urban Dictionary API to define a word', true)
+            .addField('• Message Logs', 'The bot logs all edited and deleted messages into a channel, make a channel called message-logs to access this!', false)
             .setFooter('Bot created by Sattish#2011 & TheKarlos#5992', 'https://i.ibb.co/gMS6gX4/mono.png');
         message.channel.send(helpEmbed)
     }
     
     if (message.content === '_help Invite') {
-        const InviteEmbed = new Discord.RichEmbed()
+        const InviteEmbed = new Discord.MessageEmbed()
             .setColor('#800080')
             .setTitle('Help about Invitation')
             .setDescription('Bot sends a link which will allow you to bring the bot to your server!')
@@ -545,7 +554,7 @@ if (message.content.startsWith('_avatar')) {
         message.channel.send(InviteEmbed)
     }
      if (message.content === '_help Support') {
-        const SupportingEmbed = new Discord.RichEmbed()
+        const SupportingEmbed = new Discord.MessageEmbed()
             .setColor('#800080')
             .setTitle('Help about Support Server')
             .setDescription('Bot sends a link which will send you to the support server where you can ask your questions')
@@ -555,7 +564,7 @@ if (message.content.startsWith('_avatar')) {
         message.channel.send(SupportingEmbed)
     }
     if (message.content === '_help Tree') {
-        const TreeEmbed = new Discord.RichEmbed()
+        const TreeEmbed = new Discord.MessageEmbed()
             .setColor('#800080')
             .setTitle('Help on how to water a tree')
             .setDescription('Are you really asking a bot for help on watering a tree? **Amateur**')
@@ -566,7 +575,7 @@ if (message.content.startsWith('_avatar')) {
     }
     if (message.content === '_help Dog') {
 
-        const HelpDogEmbed = new Discord.RichEmbed()
+        const HelpDogEmbed = new Discord.MessageEmbed()
             .setColor('#800080')
             .setTitle('Help about Doggos')
             .setDescription('Bot sends a randomized picture of a doggo from the internet! If a picture shows up again, thats because its a randomized system and the bot could choose any photos at all!')
@@ -577,7 +586,7 @@ if (message.content.startsWith('_avatar')) {
     }
     if (message.content === '_help Cat') {
 
-        const HelpCatEmbed = new Discord.RichEmbed()
+        const HelpCatEmbed = new Discord.MessageEmbed()
             .setColor('#800080')
             .setTitle('Help about Fluff Cats')
             .setDescription('Bot sends a randomized picture of a cattos from the internet! If a picture shows up again, thats because its a randomized system and the bot could choose any photos at all!')
@@ -589,7 +598,7 @@ if (message.content.startsWith('_avatar')) {
 
      if (message.content === '_help Avatar') {
 
-        const AvaEmbed = new Discord.RichEmbed()
+        const AvaEmbed = new Discord.MessageEmbed()
             .setColor('#800080')
             .setTitle('Help about Avatar command')
             .setDescription('If no user mentioned, it will send your avatar and if a user in the server is mentioned, it will send their avatar.')
@@ -599,7 +608,7 @@ if (message.content.startsWith('_avatar')) {
         message.channel.send(AvaEmbed)
     }
     if (message.content.toLowerCase() === '_help covid') {
-        const CovidHelp = new Discord.RichEmbed()
+        const CovidHelp = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle("Help about Covid command")
         .addField('_covid','Gives the latest Worldwide COVID-19 Stats ')
@@ -611,7 +620,7 @@ if (message.content.startsWith('_avatar')) {
     }
     if (message.content.toLowerCase() === '_invite') {
 
-        const InvEmbed = new Discord.RichEmbed()
+        const InvEmbed = new Discord.MessageEmbed()
             .setColor('#800080')
             .setTitle('Heres the link!')
             .setDescription('https://discordapp.com/api/oauth2/authorize?client_id=612536352751353886&permissions=523328&scope=bot')
@@ -619,7 +628,7 @@ if (message.content.startsWith('_avatar')) {
     }
     if (message.content.toLowerCase() === '_support') {
 
-        const SupportEmbed = new Discord.RichEmbed()
+        const SupportEmbed = new Discord.MessageEmbed()
             .setColor('#800080')
             .setTitle('Heres the link!')
             .setDescription('https://discord.gg/8guM3Yx')
@@ -635,7 +644,7 @@ if (message.content.startsWith('_avatar')) {
         
             
 
-           const CGlobal = new Discord.RichEmbed()
+           const CGlobal = new Discord.MessageEmbed()
             .setColor('#800080')
             .setTitle("Covid-19 Latest Stats Globally")
             .addField('Cases', `${confirmed}`, true)
@@ -657,7 +666,7 @@ function CovidIndia() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CIndia = new Discord.RichEmbed()
+        const CIndia = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in India')
         .addField('Cases', `${result.confirmed}`, true)
@@ -682,7 +691,7 @@ function CovidIndonesia() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CIndonesia = new Discord.RichEmbed()
+        const CIndonesia = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Indonesia')
         .addField('Cases', `${result.confirmed}`, true)
@@ -706,7 +715,7 @@ function CovidAmerica() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CAmerica = new Discord.RichEmbed()
+        const CAmerica = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in America')
         .addField('Cases', `${result.confirmed}`, true)
@@ -730,7 +739,7 @@ function CovidAustralia() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CAustralia = new Discord.RichEmbed()
+        const CAustralia = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Australia')
         .addField('Cases', `${result.confirmed}`, true)
@@ -753,7 +762,7 @@ function CovidCanada() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CCanada = new Discord.RichEmbed()
+        const CCanada = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Canada')
         .addField('Cases', `${result.confirmed}`, true)
@@ -776,7 +785,7 @@ function CovidChina() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CChina = new Discord.RichEmbed()
+        const CChina = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in China')
         .addField('Cases', `${result.confirmed}`, true)
@@ -799,7 +808,7 @@ function CovidSingapore() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CSingapore = new Discord.RichEmbed()
+        const CSingapore = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Singapore')
         .addField('Cases', `${result.confirmed}`, true)
@@ -822,7 +831,7 @@ function CovidSpain() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CSpain = new Discord.RichEmbed()
+        const CSpain = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Spain')
         .addField('Cases', `${result.confirmed}`, true)
@@ -846,12 +855,12 @@ function CovidItaly() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CItaly = new Discord.RichEmbed()
+        const CItaly = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Italy')
-        .addField('Cases', `${result.confirmed}`, true)
-        .addField('Recovered', `${result.recovered}`, true)
-        .addField('Deaths', `${result.deaths}`, true)
+        .addField('• Cases', `${result.confirmed}`, true)
+        .addField('• Recovered', `${result.recovered}`, true)
+        .addField('• Deaths', `${result.deaths}`, true)
         .setFooter('Updated daily @ UTC(00:00) - Data from John Hopkins University (JHU)')
         .setAuthor('Advice for the public (Click Me)', 'https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Libraries/Production+Library/31-01-20-coronavirus-digital-image-cdc1.jpg/image770x420cropped.jpg', 'https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public')
         message.channel.send(CItaly)
@@ -869,12 +878,12 @@ function CovidGermany() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CGermany = new Discord.RichEmbed()
+        const CGermany = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Germany')
-        .addField('Cases', `${result.confirmed}`, true)
-        .addField('Recovered', `${result.recovered}`, true)
-        .addField('Deaths', `${result.deaths}`, true)
+        .addField('• Cases', `${result.confirmed}`, true)
+        .addField('• Recovered', `${result.recovered}`, true)
+        .addField('• Deaths', `${result.deaths}`, true)
         .setFooter('Updated daily @ UTC(00:00) - Data from John Hopkins University (JHU)')
         .setAuthor('Advice for the public (Click Me)', 'https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Libraries/Production+Library/31-01-20-coronavirus-digital-image-cdc1.jpg/image770x420cropped.jpg', 'https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public')
         message.channel.send(CGermany)
@@ -892,7 +901,7 @@ function CovidFrance() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CFrance = new Discord.RichEmbed()
+        const CFrance = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in France')
         .addField('Cases', `${result.confirmed}`, true)
@@ -915,7 +924,7 @@ function CovidUK() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CUK = new Discord.RichEmbed()
+        const CUK = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in United Kingdom')
         .addField('Cases', `${result.confirmed}`, true)
@@ -941,7 +950,7 @@ function CovidIran() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CIran = new Discord.RichEmbed()
+        const CIran = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Iran')
         .addField('Cases', `${result.confirmed}`, true)
@@ -964,7 +973,7 @@ function CovidTurkey() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CTurkey = new Discord.RichEmbed()
+        const CTurkey = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Turkey')
         .addField('Cases', `${result.confirmed}`, true)
@@ -987,7 +996,7 @@ function CovidBelgium() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CBelgium = new Discord.RichEmbed()
+        const CBelgium = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Belgium')
         .addField('Cases', `${result.confirmed}`, true)
@@ -1010,7 +1019,7 @@ function CovidNetherlands() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CNetherlands = new Discord.RichEmbed()
+        const CNetherlands = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Netherlands')
         .addField('Cases', `${result.confirmed}`, true)
@@ -1033,7 +1042,7 @@ function CovidSwitzerland() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CSwitzerland = new Discord.RichEmbed()
+        const CSwitzerland = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Switzerland')
         .addField('Cases', `${result.confirmed}`, true)
@@ -1056,7 +1065,7 @@ function CovidBrazil() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CBrazil = new Discord.RichEmbed()
+        const CBrazil = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Brazil')
         .addField('Cases', `${result.confirmed}`, true)
@@ -1079,7 +1088,7 @@ function CovidRussia() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CRussia = new Discord.RichEmbed()
+        const CRussia = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Russia')
         .addField('Cases', `${result.confirmed}`, true)
@@ -1102,7 +1111,7 @@ function CovidPortugal() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CPortugal = new Discord.RichEmbed()
+        const CPortugal = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Portugal')
         .addField('Cases', `${result.confirmed}`, true)
@@ -1125,7 +1134,7 @@ function CovidAfghanistan() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CAfghanistan = new Discord.RichEmbed()
+        const CAfghanistan = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Afghanistan')
         .addField('Cases', `${result.confirmed}`, true)
@@ -1148,7 +1157,7 @@ function CovidAlbania() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CAlbania = new Discord.RichEmbed()
+        const CAlbania = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Albania')
         .addField('Cases', `${result.confirmed}`, true)
@@ -1171,7 +1180,7 @@ function CovidArgentina() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CArgentina = new Discord.RichEmbed()
+        const CArgentina = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Argentina')
         .addField('Cases', `${result.confirmed}`, true)
@@ -1194,7 +1203,7 @@ function CovidAzerbajian() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CAzerbajian = new Discord.RichEmbed()
+        const CAzerbajian = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Azerbajian')
         .addField('Cases', `${result.confirmed}`, true)
@@ -1217,7 +1226,7 @@ function CovidAzerbajian() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CAzerbajian = new Discord.RichEmbed()
+        const CAzerbajian = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Azerbajian')
         .addField('Cases', `${result.confirmed}`, true)
@@ -1240,7 +1249,7 @@ function CovidBahrain() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CBahrain = new Discord.RichEmbed()
+        const CBahrain = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Bahrain')
         .addField('Cases', `${result.confirmed}`, true)
@@ -1263,7 +1272,7 @@ function CovidBangladesh() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CBangladesh = new Discord.RichEmbed()
+        const CBangladesh = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Bangladesh')
         .addField('Cases', `${result.confirmed}`, true)
@@ -1286,7 +1295,7 @@ function CovidBarbados() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CBarbados = new Discord.RichEmbed()
+        const CBarbados = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Barbados')
         .addField('Cases', `${result.confirmed}`, true)
@@ -1309,7 +1318,7 @@ function CovidBelarus() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CBelarus = new Discord.RichEmbed()
+        const CBelarus = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Belarus')
         .addField('Cases', `${result.confirmed}`, true)
@@ -1332,7 +1341,7 @@ function CovidBhutan() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CBhutan = new Discord.RichEmbed()
+        const CBhutan = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Bhutan')
         .addField('Cases', `${result.confirmed}`, true)
@@ -1355,7 +1364,7 @@ function CovidBolivia() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CBolivia = new Discord.RichEmbed()
+        const CBolivia = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Bolivia')
         .addField('Cases', `${result.confirmed}`, true)
@@ -1378,7 +1387,7 @@ function CovidChile() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CCHile = new Discord.RichEmbed()
+        const CCHile = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Chile')
         .addField('Cases', `${result.confirmed}`, true)
@@ -1401,7 +1410,7 @@ function CovidColombia() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CColombia = new Discord.RichEmbed()
+        const CColombia = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Colombia')
         .addField('Cases', `${result.confirmed}`, true)
@@ -1424,7 +1433,7 @@ function CovidCote() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CCote = new Discord.RichEmbed()
+        const CCote = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Cote d\'Ivoire')
         .addField('Cases', `${result.confirmed}`, true)
@@ -1447,7 +1456,7 @@ function CovidCroatia() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CCroatia = new Discord.RichEmbed()
+        const CCroatia = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Croatia')
         .addField('Cases', `${result.confirmed}`, true)
@@ -1470,7 +1479,7 @@ function CovidCuba() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CCuba = new Discord.RichEmbed()
+        const CCuba = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Cuba')
         .addField('Cases', `${result.confirmed}`, true)
@@ -1493,7 +1502,7 @@ function CovidCyprus() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CCyprus = new Discord.RichEmbed()
+        const CCyprus = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Cyprus')
         .addField('Cases', `${result.confirmed}`, true)
@@ -1516,7 +1525,7 @@ function CovidDenmark() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CDenmark = new Discord.RichEmbed()
+        const CDenmark = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Denmark')
         .addField('Cases', `${result.confirmed}`, true)
@@ -1539,7 +1548,7 @@ function CovidEcuador() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CEcuador = new Discord.RichEmbed()
+        const CEcuador = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Ecuador')
         .addField('Cases', `${result.confirmed}`, true)
@@ -1562,7 +1571,7 @@ function CovidEgypt() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CEgypt = new Discord.RichEmbed()
+        const CEgypt = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Egypt')
         .addField('Cases', `${result.confirmed}`, true)
@@ -1585,7 +1594,7 @@ function CovidEthiopia() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CEthiopia = new Discord.RichEmbed()
+        const CEthiopia = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Ethiopia')
         .addField('Cases', `${result.confirmed}`, true)
@@ -1608,7 +1617,7 @@ function CovidFinland() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CFnland = new Discord.RichEmbed()
+        const CFnland = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Finland')
         .addField('Cases', `${result.confirmed}`, true)
@@ -1631,7 +1640,7 @@ function CovidGhana() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CGhana = new Discord.RichEmbed()
+        const CGhana = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Ghana')
         .addField('Cases', `${result.confirmed}`, true)
@@ -1654,7 +1663,7 @@ function CovidHungary() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CHungary = new Discord.RichEmbed()
+        const CHungary = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Hungary')
         .addField('Cases', `${result.confirmed}`, true)
@@ -1677,7 +1686,7 @@ function CovidIceland() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CIceland = new Discord.RichEmbed()
+        const CIceland = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Iceland')
         .addField('Cases', `${result.confirmed}`, true)
@@ -1700,7 +1709,7 @@ function CovidIraq() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CIraq = new Discord.RichEmbed()
+        const CIraq = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Iraq')
         .addField('Cases', `${result.confirmed}`, true)
@@ -1723,7 +1732,7 @@ function CovidIreland() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CIreland = new Discord.RichEmbed()
+        const CIreland = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Ireland')
         .addField('Cases', `${result.confirmed}`, true)
@@ -1746,7 +1755,7 @@ function CovidIsrael() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CIsrael = new Discord.RichEmbed()
+        const CIsrael = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Israel')
         .addField('Cases', `${result.confirmed}`, true)
@@ -1769,7 +1778,7 @@ function CovidJamaica() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CJamaica = new Discord.RichEmbed()
+        const CJamaica = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Jamaica')
         .addField('Cases', `${result.confirmed}`, true)
@@ -1792,7 +1801,7 @@ function CovidJapan() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CJapan = new Discord.RichEmbed()
+        const CJapan = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Japan')
         .addField('Cases', `${result.confirmed}`, true)
@@ -1815,7 +1824,7 @@ function CovidJordan() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CJordan = new Discord.RichEmbed()
+        const CJordan = new Discord.RicMessageEmbedhEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Jordan')
         .addField('Cases', `${result.confirmed}`, true)
@@ -1838,7 +1847,7 @@ function CovidKazakhstan() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CKazakhstan = new Discord.RichEmbed()
+        const CKazakhstan = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Kazakhstan')
         .addField('Cases', `${result.confirmed}`, true)
@@ -1861,7 +1870,7 @@ function CovidKenya() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CKenya = new Discord.RichEmbed()
+        const CKenya = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Kenya')
         .addField('Cases', `${result.confirmed}`, true)
@@ -1884,7 +1893,7 @@ function CovidKorea() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CKorea = new Discord.RichEmbed()
+        const CKorea = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in South Korea')
         .addField('Cases', `${result.confirmed}`, true)
@@ -1910,7 +1919,7 @@ function CovidKuwait() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CKuwait = new Discord.RichEmbed()
+        const CKuwait = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Kuwait')
         .addField('Cases', `${result.confirmed}`, true)
@@ -1933,7 +1942,7 @@ function CovidKyrgyzstan() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CKyrgyzstan = new Discord.RichEmbed()
+        const CKyrgyzstan = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Kyrgyzstan')
         .addField('Cases', `${result.confirmed}`, true)
@@ -1956,7 +1965,7 @@ function CovidLebanon() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CLebanon = new Discord.RichEmbed()
+        const CLebanon = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Lebanon')
         .addField('Cases', `${result.confirmed}`, true)
@@ -1979,7 +1988,7 @@ function CovidLibya() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CLibya = new Discord.RichEmbed()
+        const CLibya = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Libya')
         .addField('Cases', `${result.confirmed}`, true)
@@ -2002,7 +2011,7 @@ function CovidMalaysia() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CMalaysia = new Discord.RichEmbed()
+        const CMalaysia = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Malaysia')
         .addField('Cases', `${result.confirmed}`, true)
@@ -2025,7 +2034,7 @@ function CovidMaldives() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CMaldives = new Discord.RichEmbed()
+        const CMaldives = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Maldives')
         .addField('Cases', `${result.confirmed}`, true)
@@ -2048,7 +2057,7 @@ function CovidMalta() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CMalta = new Discord.RichEmbed()
+        const CMalta = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Malta')
         .addField('Cases', `${result.confirmed}`, true)
@@ -2071,7 +2080,7 @@ function CovidMexico() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CMexico = new Discord.RichEmbed()
+        const CMexico = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Mexico')
         .addField('Cases', `${result.confirmed}`, true)
@@ -2094,7 +2103,7 @@ function CovidMongolia() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CMongolia = new Discord.RichEmbed()
+        const CMongolia = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Mongolia')
         .addField('Cases', `${result.confirmed}`, true)
@@ -2117,7 +2126,7 @@ function CovidMorocco() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CMorocco = new Discord.RichEmbed()
+        const CMorocco = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Morocco')
         .addField('Cases', `${result.confirmed}`, true)
@@ -2140,7 +2149,7 @@ function CovidMozambique() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CKorea = new Discord.RichEmbed()
+        const CKorea = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Mozambique')
         .addField('Cases', `${result.confirmed}`, true)
@@ -2163,7 +2172,7 @@ function CovidMyanmar() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CMyanmar = new Discord.RichEmbed()
+        const CMyanmar = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Myanmar')
         .addField('Cases', `${result.confirmed}`, true)
@@ -2186,7 +2195,7 @@ function CovidNepal() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CNepal = new Discord.RichEmbed()
+        const CNepal = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Nepal')
         .addField('Cases', `${result.confirmed}`, true)
@@ -2209,7 +2218,7 @@ function CovidNewZealand() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CNewZealand = new Discord.RichEmbed()
+        const CNewZealand = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in New Zealand')
         .addField('Cases', `${result.confirmed}`, true)
@@ -2232,7 +2241,7 @@ function CovidNigeria() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CNigeria = new Discord.RichEmbed()
+        const CNigeria = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Nigeria')
         .addField('Cases', `${result.confirmed}`, true)
@@ -2255,7 +2264,7 @@ function CovidNorway() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CNorway = new Discord.RichEmbed()
+        const CNorway = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Norway')
         .addField('Cases', `${result.confirmed}`, true)
@@ -2278,7 +2287,7 @@ function CovidOman() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const COman = new Discord.RichEmbed()
+        const COman = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Oman')
         .addField('Cases', `${result.confirmed}`, true)
@@ -2301,7 +2310,7 @@ function CovidPakistan() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CPakistan = new Discord.RichEmbed()
+        const CPakistan = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Pakistan')
         .addField('Cases', `${result.confirmed}`, true)
@@ -2324,7 +2333,7 @@ function CovidParaguay() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CParaguay = new Discord.RichEmbed()
+        const CParaguay = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Paraguay')
         .addField('Cases', `${result.confirmed}`, true)
@@ -2347,7 +2356,7 @@ function CovidPeru() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CPeru = new Discord.RichEmbed()
+        const CPeru = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Peru')
         .addField('Cases', `${result.confirmed}`, true)
@@ -2370,7 +2379,7 @@ function CovidPhilippines() {
     .then(data => {
         date = Object.keys(data.result)[0]
         result = data.result[date]
-        const CPhilippines = new Discord.RichEmbed()
+        const CPhilippines = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Covid-19 Latest Stats in Philippines')
         .addField('Cases', `${result.confirmed}`, true)
@@ -2388,7 +2397,7 @@ if (message.content.toLowerCase() === '_covid philippines')  {
     CovidPhilippines()
 }
  function CovidList() {
-    const CList = new Discord.RichEmbed()
+    const CList = new Discord.MessageEmbed()
    .setColor('#800080')
     .setTitle('Covid-19 List of Countries Available')
     .addField('\u200b', 'America', true)
@@ -2418,7 +2427,7 @@ if (message.content.toLowerCase() === '_covid philippines')  {
     .addField('\u200b','Egypt', true)
     .setAuthor('Advice for the public (Click Me)', 'https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Libraries/Production+Library/31-01-20-coronavirus-digital-image-cdc1.jpg/image770x420cropped.jpg', 'https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public')
     message.channel.send(CList)
-  const CList2 = new Discord.RichEmbed()
+  const CList2 = new Discord.MessageEmbed()
     .setColor('#800080')
   .addField('\u200b','Ethiopia', true)
     .addField('\u200b','France', true)
@@ -2447,7 +2456,7 @@ if (message.content.toLowerCase() === '_covid philippines')  {
     .addField('\u200b','Libya', true)
     .setAuthor('Advice for the public (Click Me)', 'https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Libraries/Production+Library/31-01-20-coronavirus-digital-image-cdc1.jpg/image770x420cropped.jpg', 'https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public')
     message.channel.send(CList2)
-  const CList3 = new Discord.RichEmbed()
+  const CList3 = new Discord.MessageEmbed()
     .setColor('#800080')
   .addField('\u200b','Malaysia', true)
     .addField('\u200b','Maldives', true)
@@ -2483,15 +2492,13 @@ if (message.content.toLowerCase() === '_covid list') {
    CovidList()
  }
 
- 
- 
     function Cat8ball() {
         fetch('https://api.thecatapi.com/v1/images/search')
             .then(response => response.json())
             .then(data => {
                result = (data[0].url)
                // console.log(result)
-               const CatEmbed = new Discord.RichEmbed()
+               const CatEmbed = new Discord.MessageEmbed()
                .setColor('#800080')
                .setTitle('Take this catto!')
                .setImage(result)
@@ -2507,7 +2514,7 @@ if (message.content.toLowerCase() === '_covid list') {
             .then(data => { 
                result = (data[0].url)
            
-             const DogEmbed = new Discord.RichEmbed()
+             const DogEmbed = new Discord.MessageEmbed()
             .setColor('#800080')
             .setTitle('Take this doggo!')
             .setImage(result)
@@ -2525,7 +2532,7 @@ if (message.content.toLowerCase() === '_covid list') {
     function Josua() {
     var Josua = ['https://i.imgur.com/uqWrcFg.jpg','https://i.imgur.com/0PfxLFn.jpg', 'https://i.imgur.com/lv5rwu3.jpg', 'https://i.imgur.com/fL5ssch.jpg', 'https://i.imgur.com/ydNN86H.jpg', 'https://i.imgur.com/bQmntav.jpg', 'https://i.imgur.com/nx0WQ80.png', 'https://i.imgur.com/XeUA4nc.png', 'https://i.imgur.com/slQpHbY.png', 'https://i.imgur.com/QutTMUS.png', 'https://i.imgur.com/jVQFCom.png', 'https://i.imgur.com/mUEYcT0.png', 'https://i.imgur.com/sOfoEuz.png', 'https://i.imgur.com/6FvtuWZ.png', 'https://i.imgur.com/BK7u8vp.png', 'https://i.imgur.com/D4EtAmW.png', 'https://i.imgur.com/umXHXhT.png', 'https://i.imgur.com/ueYmUxK.png']
     var Josua1 = Josua[Math.floor(Math.random() * Josua.length)];
-        const Josh = new Discord.RichEmbed()
+        const Josh = new Discord.MessageEmbed()
         .setColor("#800080")
         .setTitle("Here it is!")
         .setImage(Josua1)
@@ -2537,7 +2544,7 @@ if (message.content.toLowerCase() === '_covid list') {
     function Daniel() {
         var daniel = ['https://i.imgur.com/2Gr08Pe.jpg','https://i.imgur.com/zjGCgPj.jpg','https://i.imgur.com/gsPwCRV.jpg','https://i.imgur.com/sV2QPi4.jpg','https://i.imgur.com/l5Apozj.jpg','https://i.imgur.com/3MbRKuN.jpg','https://i.imgur.com/j7g7J4T.jpg','https://i.imgur.com/OnuC3dt.jpg','https://i.imgur.com/tHwgRld.jpg','https://i.imgur.com/Ram0h3G.jpg','https://i.imgur.com/86EJF3e.jpg','https://i.imgur.com/AH6njyk.jpg','https://i.imgur.com/gB3zhlR.jpg']
         var dan = daniel[Math.floor(Math.random() * daniel.length)];
-        const Daniel = new Discord.RichEmbed()
+        const Daniel = new Discord.MessageEmbed()
         .setColor("#800080")
         .setTitle("Here it is!")
         .setImage(dan)
@@ -2547,7 +2554,7 @@ if (message.content.toLowerCase() === '_covid list') {
     function Random() {
         var Random = ['http://bit.ly/2jZ2B1c', 'http://bit.ly/2khlyMY', 'http://bit.ly/2lwkfd8', 'http://bit.ly/2ktyorc', 'http://bit.ly/2k3ACO4', 'http://bit.ly/2kirdlV', 'http://bit.ly/2jYvV89', 'http://bit.ly/2ktWjab', 'http://bit.ly/2lXLgX9', 'http://bit.ly/2lwJ3BK', 'Fun Fact: This Cat beat my maker up! http://bit.ly/2ktz9Ay', 'http://bit.ly/2kqGEZb', 'http://bit.ly/2lXLgX9', 'http://bit.ly/2k24CK8'];
         var rand = Random[Math.floor(Math.random() * Random.length)];
-        const random = new Discord.RichEmbed()
+        const random = new Discord.MessageEmbed()
         .setColor("#800080")
         .setTitle("Here it is!")
         .setImage(rand)
@@ -2569,7 +2576,7 @@ if (message.content.toLowerCase() === '_covid list') {
         return rhours + " hour(s) and " + rminutes + " minute(s).";
     }
     async function waterTree(user) {
-        const last_tree = await Tree.find({ user_id: user }).limit(1).sort({ _id: -1 });
+        const last_tree = await Tree.cache.find({ user_id: user }).limit(1).sort({ _id: -1 });
         // console.log(isWateringAllowed(last_tree.planted_time));
         if (isWateringAllowed(last_tree)) {
             console.log("Can water")
@@ -2727,7 +2734,7 @@ client.on('message', (message) => {
     }
 });
 client.on('guildMemberAdd', member => {
-    const channel = member.guild.channels.find(ch => ch.id === '600261959190970374');
+    const channel = member.guild.channels.cache.find(ch => ch.id === '600261959190970374');
     if (!channel) return;
     channel.send(`Welcome to the server, ${member}, Enjoy your stay!`);
 });
@@ -2762,14 +2769,14 @@ client.on('message', message => {
 
 client.on("messageDelete", message => {// message logs
 
-    const logchannel = message.guild.channels.find(channel => channel.name === "message-logs");
+    const logchannel = message.guild.channels.cache.find(channel => channel.name === "message-logs");
     const user = message.author
     if(!logchannel) return
-    let deleteEmbed = new Discord.RichEmbed()
+    let deleteEmbed = new Discord.MessageEmbed()
     .setTitle("⚠️ A message was deleted!")
     .addField("Sent by User", user.tag)
     .addField("Deleted Message", `${message}`) 
-    .addField("Deleted In", `${message.guild.channels.get(message.channel.id).toString()}` + ` (${message.channel.id})`)
+    .addField("Deleted In", `${message.guild.channels.cache.get(message.channel.id).toString()}` + ` (${message.channel.id})`)
     .setFooter(`Author ID: ${user.id}| Message ID: ${message.id}`, client.user.avatarURL)
     .setColor("#FF0000")
     logchannel.send(deleteEmbed)
@@ -2780,16 +2787,16 @@ client.on("messageUpdate", function(oldMessage, newMessage){
   if(oldMessage.content == newMessage.content) return
     const user = newMessage.author;
 
-  let logsChannel = oldMessage.guild.channels.find(channel => channel.name === "message-logs");
+  let logsChannel = oldMessage.guild.channels.cache.find(channel => channel.name === "message-logs");
 
     if(!logsChannel) return
 
-    let messageEditEmbed = new Discord.RichEmbed()
+    let messageEditEmbed = new Discord.MessageEmbed()
     .setTitle("⚠️ A message was edited!")
     .addField("Sent by User", user.tag)
     .addField("Before", oldMessage.content)
     .addField("After", newMessage.content)
-    .addField("Edited In", `${oldMessage.guild.channels.get(oldMessage.channel.id).toString()}` + ` (${oldMessage.channel.id})`)
+    .addField("Edited In", `${oldMessage.guild.channels.cache.get(oldMessage.channel.id).toString()}` + ` (${oldMessage.channel.id})`)
     .setFooter(`Author ID: ${user.id}| Message ID: ${oldMessage.id}`, client.user.avatarURL)
     .setColor("#FFFF00")
     return logsChannel.send(messageEditEmbed)
