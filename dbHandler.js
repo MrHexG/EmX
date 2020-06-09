@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 //init code
-mongoose.connect( process.env.mongo_conn_string , { useNewUrlParser: true });
+mongoose.connect(process.env.mongo_conn_string , { useNewUrlParser: true });
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {
