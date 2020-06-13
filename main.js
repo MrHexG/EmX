@@ -1220,29 +1220,7 @@ function CovidAzerbajian() {
 if (message.content.toLowerCase() === '_covid azerbajian') {
     CovidAzerbajian()
 }
-function CovidAzerbajian() {
-    fetch("https://covidapi.info/api/v1/country/AZE/latest")
-    .then(response => response.json())
-    .then(data => {
-        date = Object.keys(data.result)[0]
-        result = data.result[date]
-        const CAzerbajian = new Discord.MessageEmbed()
-        .setColor('#800080')
-        .setTitle('Covid-19 Latest Stats in Azerbajian')
-        .addField('Cases', `${result.confirmed}`, true)
-        .addField('Recovered', `${result.recovered}`, true)
-        .addField('Deaths', `${result.deaths}`, true)
-        .setFooter('Updated daily @ UTC(00:00) - Data from John Hopkins University (JHU)')
-        .setAuthor('Advice for the public (Click Me)', 'https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Libraries/Production+Library/31-01-20-coronavirus-digital-image-cdc1.jpg/image770x420cropped.jpg', 'https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public')
-        message.channel.send(CAzerbajian)
-    })
-    .catch(err => {
-        console.log('error')
-    })
-}
-if (message.content.toLowerCase() === '_covid azerbajian') {
-    CovidAzerbajian()
-}
+
 function CovidBahrain() {
     fetch("https://covidapi.info/api/v1/country/BHR/latest")
     .then(response => response.json())
@@ -2396,7 +2374,499 @@ function CovidPhilippines() {
 if (message.content.toLowerCase() === '_covid philippines')  {
     CovidPhilippines()
 }
- function CovidList() {
+
+function CovidQatar() {
+    fetch("https://covidapi.info/api/v1/country/QAT/latest")
+    .then(response => response.json())
+    .then(data => {
+        date = Object.keys(data.result)[0]
+        result = data.result[date]
+        const CQatar = new Discord.MessageEmbed()
+        .setColor('#800080')
+        .setTitle('Covid-19 Latest Stats in Qatar')
+        .addField('Cases', `${result.confirmed}`, true)
+        .addField('Recovered', `${result.recovered}`, true)
+        .addField('Deaths', `${result.deaths}`, true)
+        .setFooter('Updated daily @ UTC(00:00) - Data from John Hopkins University (JHU)')
+        .setAuthor('Advice for the public (Click Me)', 'https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Libraries/Production+Library/31-01-20-coronavirus-digital-image-cdc1.jpg/image770x420cropped.jpg', 'https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public')
+        message.channel.send(CQatar)
+    })
+    .catch(err => {
+        console.log('error')
+    })
+}
+if (message.content.toLowerCase() === '_covid qatar')  {
+    CovidQatar()
+}
+function CovidUAE() {
+    fetch("https://covidapi.info/api/v1/country/ARE/latest")
+    .then(response => response.json())
+    .then(data => {
+        date = Object.keys(data.result)[0]
+        result = data.result[date]
+        const CUAE = new Discord.MessageEmbed()
+        .setColor('#800080')
+        .setTitle('Covid-19 Latest Stats in United Arab Emirates')
+        .addField('Cases', `${result.confirmed}`, true)
+        .addField('Recovered', `${result.recovered}`, true)
+        .addField('Deaths', `${result.deaths}`, true)
+        .setFooter('Updated daily @ UTC(00:00) - Data from John Hopkins University (JHU)')
+        .setAuthor('Advice for the public (Click Me)', 'https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Libraries/Production+Library/31-01-20-coronavirus-digital-image-cdc1.jpg/image770x420cropped.jpg', 'https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public')
+        message.channel.send(CUAE)
+    })
+    .catch(err => {
+        console.log('error')
+    })
+}
+if (message.content.toLowerCase() === '_covid united arab emirates')  {
+    CovidUAE()
+}
+
+if (message.content.toLowerCase() === '_covid uae') {
+    CovidUAE
+}
+function CovidAustria() {
+    fetch("https://covidapi.info/api/v1/country/AUT/latest")
+    .then(response => response.json())
+    .then(data => {
+        date = Object.keys(data.result)[0]
+        result = data.result[date]
+        const CAustria = new Discord.MessageEmbed()
+        .setColor('#800080')
+        .setTitle('Covid-19 Latest Stats in Austria')
+        .addField('Cases', `${result.confirmed}`, true)
+        .addField('Recovered', `${result.recovered}`, true)
+        .addField('Deaths', `${result.deaths}`, true)
+        .setFooter('Updated daily @ UTC(00:00) - Data from John Hopkins University (JHU)')
+        .setAuthor('Advice for the public (Click Me)', 'https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Libraries/Production+Library/31-01-20-coronavirus-digital-image-cdc1.jpg/image770x420cropped.jpg', 'https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public')
+        message.channel.send(CAustria)
+    })
+    .catch(err => {
+        console.log('error')
+    })
+}
+if (message.content.toLowerCase() === '_covid austria')  {
+    CovidAustria()
+}
+
+function CovidCambodia() {
+    fetch("https://covidapi.info/api/v1/country/KHM/latest")
+    .then(response => response.json())
+    .then(data => {
+        date = Object.keys(data.result)[0]
+        result = data.result[date]
+        const CCambodia = new Discord.MessageEmbed()
+        .setColor('#800080')
+        .setTitle('Covid-19 Latest Stats in Cambodia')
+        .addField('Cases', `${result.confirmed}`, true)
+        .addField('Recovered', `${result.recovered}`, true)
+        .addField('Deaths', `${result.deaths}`, true)
+        .setFooter('Updated daily @ UTC(00:00) - Data from John Hopkins University (JHU)')
+        .setAuthor('Advice for the public (Click Me)', 'https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Libraries/Production+Library/31-01-20-coronavirus-digital-image-cdc1.jpg/image770x420cropped.jpg', 'https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public')
+        message.channel.send(CCambodia)
+    })
+    .catch(err => {
+        console.log('error')
+    })
+}
+if (message.content.toLowerCase() === '_covid cambodia')  {
+    CovidCambodia()
+}
+function CovidSriLanka() {
+    fetch("https://covidapi.info/api/v1/country/LKA/latest")
+    .then(response => response.json())
+    .then(data => {
+        date = Object.keys(data.result)[0]
+        result = data.result[date]
+        const CSriLanka = new Discord.MessageEmbed()
+        .setColor('#800080')
+        .setTitle('Covid-19 Latest Stats in Sri Lanka')
+        .addField('Cases', `${result.confirmed}`, true)
+        .addField('Recovered', `${result.recovered}`, true)
+        .addField('Deaths', `${result.deaths}`, true)
+        .setFooter('Updated daily @ UTC(00:00) - Data from John Hopkins University (JHU)')
+        .setAuthor('Advice for the public (Click Me)', 'https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Libraries/Production+Library/31-01-20-coronavirus-digital-image-cdc1.jpg/image770x420cropped.jpg', 'https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public')
+        message.channel.send(CSriLanka)
+    })
+    .catch(err => {
+        console.log('error')
+    })
+}
+if (message.content.toLowerCase() === '_covid sri lanka')  {
+    CovidSriLanka()
+}
+function CovidLuxembourg() {
+    fetch("https://covidapi.info/api/v1/country/LUX/latest")
+    .then(response => response.json())
+    .then(data => {
+        date = Object.keys(data.result)[0]
+        result = data.result[date]
+        const CLuxembourg = new Discord.MessageEmbed()
+        .setColor('#800080')
+        .setTitle('Covid-19 Latest Stats in Luxembourg')
+        .addField('Cases', `${result.confirmed}`, true)
+        .addField('Recovered', `${result.recovered}`, true)
+        .addField('Deaths', `${result.deaths}`, true)
+        .setFooter('Updated daily @ UTC(00:00) - Data from John Hopkins University (JHU)')
+        .setAuthor('Advice for the public (Click Me)', 'https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Libraries/Production+Library/31-01-20-coronavirus-digital-image-cdc1.jpg/image770x420cropped.jpg', 'https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public')
+        message.channel.send(CLuxembourg)
+    })
+    .catch(err => {
+        console.log('error')
+    })
+}
+if (message.content.toLowerCase() === '_covid luxembourg')  {
+    CovidLuxembourg()
+}
+function CovidMonaco() {
+    fetch("https://covidapi.info/api/v1/country/MCO/latest")
+    .then(response => response.json())
+    .then(data => {
+        date = Object.keys(data.result)[0]
+        result = data.result[date]
+        const CMonaco = new Discord.MessageEmbed()
+        .setColor('#800080')
+        .setTitle('Covid-19 Latest Stats in Monaco')
+        .addField('Cases', `${result.confirmed}`, true)
+        .addField('Recovered', `${result.recovered}`, true)
+        .addField('Deaths', `${result.deaths}`, true)
+        .setFooter('Updated daily @ UTC(00:00) - Data from John Hopkins University (JHU)')
+        .setAuthor('Advice for the public (Click Me)', 'https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Libraries/Production+Library/31-01-20-coronavirus-digital-image-cdc1.jpg/image770x420cropped.jpg', 'https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public')
+        message.channel.send(CMonaco)
+    })
+    .catch(err => {
+        console.log('error')
+    })
+}
+if (message.content.toLowerCase() === '_covid monaco')  {
+    CovidMonaco()
+}
+function CovidMorocco() {
+    fetch("https://covidapi.info/api/v1/country/MAR/latest")
+    .then(response => response.json())
+    .then(data => {
+        date = Object.keys(data.result)[0]
+        result = data.result[date]
+        const CMorocco = new Discord.MessageEmbed()
+        .setColor('#800080')
+        .setTitle('Covid-19 Latest Stats in Morocco')
+        .addField('Cases', `${result.confirmed}`, true)
+        .addField('Recovered', `${result.recovered}`, true)
+        .addField('Deaths', `${result.deaths}`, true)
+        .setFooter('Updated daily @ UTC(00:00) - Data from John Hopkins University (JHU)')
+        .setAuthor('Advice for the public (Click Me)', 'https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Libraries/Production+Library/31-01-20-coronavirus-digital-image-cdc1.jpg/image770x420cropped.jpg', 'https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public')
+        message.channel.send(CMorocco)
+    })
+    .catch(err => {
+        console.log('error')
+    })
+}
+if (message.content.toLowerCase() === '_covid morocco')  {
+    CovidMorocco()
+}
+function CovidSriLanka() {
+    fetch("https://covidapi.info/api/v1/country/LKA/latest")
+    .then(response => response.json())
+    .then(data => {
+        date = Object.keys(data.result)[0]
+        result = data.result[date]
+        const CSriLanka = new Discord.MessageEmbed()
+        .setColor('#800080')
+        .setTitle('Covid-19 Latest Stats in Sri Lanka')
+        .addField('Cases', `${result.confirmed}`, true)
+        .addField('Recovered', `${result.recovered}`, true)
+        .addField('Deaths', `${result.deaths}`, true)
+        .setFooter('Updated daily @ UTC(00:00) - Data from John Hopkins University (JHU)')
+        .setAuthor('Advice for the public (Click Me)', 'https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Libraries/Production+Library/31-01-20-coronavirus-digital-image-cdc1.jpg/image770x420cropped.jpg', 'https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public')
+        message.channel.send(CSriLanka)
+    })
+    .catch(err => {
+        console.log('error')
+    })
+}
+if (message.content.toLowerCase() === '_covid sri lanka')  {
+    CovidSriLanka()
+}
+function CovidPoland() {
+    fetch("https://covidapi.info/api/v1/country/POL/latest")
+    .then(response => response.json())
+    .then(data => {
+        date = Object.keys(data.result)[0]
+        result = data.result[date]
+        const CPoland = new Discord.MessageEmbed()
+        .setColor('#800080')
+        .setTitle('Covid-19 Latest Stats in Poland')
+        .addField('Cases', `${result.confirmed}`, true)
+        .addField('Recovered', `${result.recovered}`, true)
+        .addField('Deaths', `${result.deaths}`, true)
+        .setFooter('Updated daily @ UTC(00:00) - Data from John Hopkins University (JHU)')
+        .setAuthor('Advice for the public (Click Me)', 'https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Libraries/Production+Library/31-01-20-coronavirus-digital-image-cdc1.jpg/image770x420cropped.jpg', 'https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public')
+        message.channel.send(CPoland)
+    })
+    .catch(err => {
+        console.log('error')
+    })
+}
+if (message.content.toLowerCase() === '_covid poland')  {
+    CovidPoland()
+}
+function CovidSaudiArabia() {
+    fetch("https://covidapi.info/api/v1/country/SAU/latest")
+    .then(response => response.json())
+    .then(data => {
+        date = Object.keys(data.result)[0]
+        result = data.result[date]
+        const CSaudi = new Discord.MessageEmbed()
+        .setColor('#800080')
+        .setTitle('Covid-19 Latest Stats in Saudi Arabia')
+        .addField('Cases', `${result.confirmed}`, true)
+        .addField('Recovered', `${result.recovered}`, true)
+        .addField('Deaths', `${result.deaths}`, true)
+        .setFooter('Updated daily @ UTC(00:00) - Data from John Hopkins University (JHU)')
+        .setAuthor('Advice for the public (Click Me)', 'https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Libraries/Production+Library/31-01-20-coronavirus-digital-image-cdc1.jpg/image770x420cropped.jpg', 'https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public')
+        message.channel.send(CSaudi)
+    })
+    .catch(err => {
+        console.log('error')
+    })
+}
+if (message.content.toLowerCase() === '_covid saudi arabia')  {
+    CovidSaudiArabia()
+}
+if (message.content.toLowerCase() === '_covid ksa')  {
+    CovidSaudiArabia()
+}
+function CovidSudan() {
+    fetch("https://covidapi.info/api/v1/country/SDN/latest")
+    .then(response => response.json())
+    .then(data => {
+        date = Object.keys(data.result)[0]
+        result = data.result[date]
+        const CSudan = new Discord.MessageEmbed()
+        .setColor('#800080')
+        .setTitle('Covid-19 Latest Stats in Sudan')
+        .addField('Cases', `${result.confirmed}`, true)
+        .addField('Recovered', `${result.recovered}`, true)
+        .addField('Deaths', `${result.deaths}`, true)
+        .setFooter('Updated daily @ UTC(00:00) - Data from John Hopkins University (JHU)')
+        .setAuthor('Advice for the public (Click Me)', 'https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Libraries/Production+Library/31-01-20-coronavirus-digital-image-cdc1.jpg/image770x420cropped.jpg', 'https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public')
+        message.channel.send(CSudan)
+    })
+    .catch(err => {
+        console.log('error')
+    })
+}
+if (message.content.toLowerCase() === '_covid sudan')  {
+    CovidSudan()
+}
+function CovidSlovakia() {
+    fetch("https://covidapi.info/api/v1/country/SVK/latest")
+    .then(response => response.json())
+    .then(data => {
+        date = Object.keys(data.result)[0]
+        result = data.result[date]
+        const CSlovakia = new Discord.MessageEmbed()
+        .setColor('#800080')
+        .setTitle('Covid-19 Latest Stats in Slovakia')
+        .addField('Cases', `${result.confirmed}`, true)
+        .addField('Recovered', `${result.recovered}`, true)
+        .addField('Deaths', `${result.deaths}`, true)
+        .setFooter('Updated daily @ UTC(00:00) - Data from John Hopkins University (JHU)')
+        .setAuthor('Advice for the public (Click Me)', 'https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Libraries/Production+Library/31-01-20-coronavirus-digital-image-cdc1.jpg/image770x420cropped.jpg', 'https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public')
+        message.channel.send(CSlovakia)
+    })
+    .catch(err => {
+        console.log('error')
+    })
+}
+if (message.content.toLowerCase() === '_covid slovakia')  {
+    CovidSlovakia()
+}
+function CovidSweden() {
+    fetch("https://covidapi.info/api/v1/country/SWE/latest")
+    .then(response => response.json())
+    .then(data => {
+        date = Object.keys(data.result)[0]
+        result = data.result[date]
+        const CSweden = new Discord.MessageEmbed()
+        .setColor('#800080')
+        .setTitle('Covid-19 Latest Stats in Sweden')
+        .addField('Cases', `${result.confirmed}`, true)
+        .addField('Recovered', `${result.recovered}`, true)
+        .addField('Deaths', `${result.deaths}`, true)
+        .setFooter('Updated daily @ UTC(00:00) - Data from John Hopkins University (JHU)')
+        .setAuthor('Advice for the public (Click Me)', 'https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Libraries/Production+Library/31-01-20-coronavirus-digital-image-cdc1.jpg/image770x420cropped.jpg', 'https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public')
+        message.channel.send(CSweden)
+    })
+    .catch(err => {
+        console.log('error')
+    })
+}
+if (message.content.toLowerCase() === '_covid sweden')  {
+    CovidSweden()
+}
+function CovidThailand() {
+    fetch("https://covidapi.info/api/v1/country/THA/latest")
+    .then(response => response.json())
+    .then(data => {
+        date = Object.keys(data.result)[0]
+        result = data.result[date]
+        const CThailand = new Discord.MessageEmbed()
+        .setColor('#800080')
+        .setTitle('Covid-19 Latest Stats in Thailand')
+        .addField('Cases', `${result.confirmed}`, true)
+        .addField('Recovered', `${result.recovered}`, true)
+        .addField('Deaths', `${result.deaths}`, true)
+        .setFooter('Updated daily @ UTC(00:00) - Data from John Hopkins University (JHU)')
+        .setAuthor('Advice for the public (Click Me)', 'https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Libraries/Production+Library/31-01-20-coronavirus-digital-image-cdc1.jpg/image770x420cropped.jpg', 'https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public')
+        message.channel.send(CThailand)
+    })
+    .catch(err => {
+        console.log('error')
+    })
+}
+if (message.content.toLowerCase() === '_covid thailand')  {
+    CovidThailand()
+}
+function CovidUkraine() {
+    fetch("https://covidapi.info/api/v1/country/UKR/latest")
+    .then(response => response.json())
+    .then(data => {
+        date = Object.keys(data.result)[0]
+        result = data.result[date]
+        const CUkraine = new Discord.MessageEmbed()
+        .setColor('#800080')
+        .setTitle('Covid-19 Latest Stats in Ukraine')
+        .addField('Cases', `${result.confirmed}`, true)
+        .addField('Recovered', `${result.recovered}`, true)
+        .addField('Deaths', `${result.deaths}`, true)
+        .setFooter('Updated daily @ UTC(00:00) - Data from John Hopkins University (JHU)')
+        .setAuthor('Advice for the public (Click Me)', 'https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Libraries/Production+Library/31-01-20-coronavirus-digital-image-cdc1.jpg/image770x420cropped.jpg', 'https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public')
+        message.channel.send(CUkraine)
+    })
+    .catch(err => {
+        console.log('error')
+    })
+}
+if (message.content.toLowerCase() === '_covid ukraine')  {
+    CovidUkraine()
+}
+function CovidTaiwan() {
+    fetch("https://covidapi.info/api/v1/country/TWN/latest")
+    .then(response => response.json())
+    .then(data => {
+        date = Object.keys(data.result)[0]
+        result = data.result[date]
+        const CTaiwan = new Discord.MessageEmbed()
+        .setColor('#800080')
+        .setTitle('Covid-19 Latest Stats in Taiwan')
+        .addField('Cases', `${result.confirmed}`, true)
+        .addField('Recovered', `${result.recovered}`, true)
+        .addField('Deaths', `${result.deaths}`, true)
+        .setFooter('Updated daily @ UTC(00:00) - Data from John Hopkins University (JHU)')
+        .setAuthor('Advice for the public (Click Me)', 'https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Libraries/Production+Library/31-01-20-coronavirus-digital-image-cdc1.jpg/image770x420cropped.jpg', 'https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public')
+        message.channel.send(CTaiwan)
+    })
+    .catch(err => {
+        console.log('error')
+    })
+}
+if (message.content.toLowerCase() === '_covid taiwan')  {
+    CovidTaiwan()
+}
+function CovidUzbekistan() {
+    fetch("https://covidapi.info/api/v1/country/UZB/latest")
+    .then(response => response.json())
+    .then(data => {
+        date = Object.keys(data.result)[0]
+        result = data.result[date]
+        const CUzbekistan = new Discord.MessageEmbed()
+        .setColor('#800080')
+        .setTitle('Covid-19 Latest Stats in Uzbekistan')
+        .addField('Cases', `${result.confirmed}`, true)
+        .addField('Recovered', `${result.recovered}`, true)
+        .addField('Deaths', `${result.deaths}`, true)
+        .setFooter('Updated daily @ UTC(00:00) - Data from John Hopkins University (JHU)')
+        .setAuthor('Advice for the public (Click Me)', 'https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Libraries/Production+Library/31-01-20-coronavirus-digital-image-cdc1.jpg/image770x420cropped.jpg', 'https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public')
+        message.channel.send(CUzbekistan)
+    })
+    .catch(err => {
+        console.log('error')
+    })
+}
+if (message.content.toLowerCase() === '_covid uzbekistan')  {
+    CovidUzbekistan()
+}
+function CovidYemen() {
+    fetch("https://covidapi.info/api/v1/country/YEM/latest")
+    .then(response => response.json())
+    .then(data => {
+        date = Object.keys(data.result)[0]
+        result = data.result[date]
+        const CYemen = new Discord.MessageEmbed()
+        .setColor('#800080')
+        .setTitle('Covid-19 Latest Stats in Yemen')
+        .addField('Cases', `${result.confirmed}`, true)
+        .addField('Recovered', `${result.recovered}`, true)
+        .addField('Deaths', `${result.deaths}`, true)
+        .setFooter('Updated daily @ UTC(00:00) - Data from John Hopkins University (JHU)')
+        .setAuthor('Advice for the public (Click Me)', 'https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Libraries/Production+Library/31-01-20-coronavirus-digital-image-cdc1.jpg/image770x420cropped.jpg', 'https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public')
+        message.channel.send(CYemen)
+    })
+    .catch(err => {
+        console.log('error')
+    })
+}
+if (message.content.toLowerCase() === '_covid yemen')  {
+    CovidYemen()
+}
+function CovidSouthAfrica() {
+    fetch("https://covidapi.info/api/v1/country/ZAF/latest")
+    .then(response => response.json())
+    .then(data => {
+        date = Object.keys(data.result)[0]
+        result = data.result[date]
+        const CSouthAfrica = new Discord.MessageEmbed()
+        .setColor('#800080')
+        .setTitle('Covid-19 Latest Stats in South Africa')
+        .addField('Cases', `${result.confirmed}`, true)
+        .addField('Recovered', `${result.recovered}`, true)
+        .addField('Deaths', `${result.deaths}`, true)
+        .setFooter('Updated daily @ UTC(00:00) - Data from John Hopkins University (JHU)')
+        .setAuthor('Advice for the public (Click Me)', 'https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Libraries/Production+Library/31-01-20-coronavirus-digital-image-cdc1.jpg/image770x420cropped.jpg', 'https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public')
+        message.channel.send(CSouthAfrica)
+    })
+    .catch(err => {
+        console.log('error')
+    })
+}
+if (message.content.toLowerCase() === '_covid south africa')  {
+    CovidSOuthAfrica()
+}
+function CovidZimbabwe() {
+    fetch("https://covidapi.info/api/v1/country/ZWE/latest")
+    .then(response => response.json())
+    .then(data => {
+        date = Object.keys(data.result)[0]
+        result = data.result[date]
+        const CZimbabwe = new Discord.MessageEmbed()
+        .setColor('#800080')
+        .setTitle('Covid-19 Latest Stats in ZImbabwe')
+        .addField('Cases', `${result.confirmed}`, true)
+        .addField('Recovered', `${result.recovered}`, true)
+        .addField('Deaths', `${result.deaths}`, true)
+        .setFooter('Updated daily @ UTC(00:00) - Data from John Hopkins University (JHU)')
+        .setAuthor('Advice for the public (Click Me)', 'https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Libraries/Production+Library/31-01-20-coronavirus-digital-image-cdc1.jpg/image770x420cropped.jpg', 'https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public')
+        message.channel.send(CZimbabwe)
+    })
+    .catch(err => {
+        console.log('error')
+    })
+}
+if (message.content.toLowerCase() === '_covid zimbabwe')  {
+    CovidZimbabwe()
+}
+function CovidList() {
     const CList = new Discord.MessageEmbed()
    .setColor('#800080')
     .setTitle('Covid-19 List of Countries Available')
