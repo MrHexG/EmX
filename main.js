@@ -37,8 +37,8 @@ let statuses = ['try _cat & _dog 😏','_help | _invite'];
     setInterval(function(){
         let status = statuses[Math.floor(Math.random()*statuses.length)];
         // using setPresence()
-        client.user.setPresence({ game: { name:status},status: 'dnd' });
-        // client.user.setPresence({ activity: { name: status }, status:'online' });
+        bot.user.setPresence({ game: { name:status},status: 'dnd' });
+        // bot.user.setPresence({ activity: { name: status }, status:'online' });
 
     }, 5000) // Runs interval every 5 seconds
     // Update guild-settings.json to reflect any servers that the bot joined or left while it was offline
