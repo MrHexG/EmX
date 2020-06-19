@@ -32,6 +32,7 @@ _udefine - Searches a word in Urban Dictionary
 _hangman - Play hangman with many different topics!
 _tree - Plants a tree every 24 Hours!
 _covid <country> - Gives COVID-19 info about the selected country.
+_youtube <query> - Search youtube for a query and receive a link in return.
 
 ## Invite EmX
 To invite EmX to your server, just click this ---> [Invite](https://discordapp.com/oauth2/authorize?client_id=612536352751353886&permissions=523328&scope=bot)
