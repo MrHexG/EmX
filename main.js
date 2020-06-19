@@ -6,8 +6,8 @@ const db = require('./dbHandler.js')
 const fetch = require('node-fetch');
 const moment = require('moment');
 const mongoose = require('mongoose');
-const util = require('./util.json');
-const botsettings = require('./botsettings.js');
+const util = require('./data/util.json');
+const botsettings = require('./data/botsettings.js');
 var request = require('request');
 var cheerio = require('cheerio')
 

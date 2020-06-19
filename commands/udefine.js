@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
-const botconfig = require("../botsettings.js");
-const HttpUtil = require('../http-util');
+const botconfig = require("../data/botsettings.js");
+const HttpUtil = require('../data/http-util');
 
 module.exports.run = async (bot, message, args) => {
     const args1 = message.content.trim().split(/ +/g);
