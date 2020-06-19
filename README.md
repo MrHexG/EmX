@@ -8,7 +8,7 @@ EmX is an open source discord bot made by discord.js language. It's a language i
 
 ## Commands
 The following are some of the commands in this bot.
-* _EmX - Simply describes the bot.
+* Moderation - Consists of Mute / Unmute, Kick, Ban, Clear a certain number of messages.
 * _Invite - Gives you an invite link to bring the bot to your server.
 * _Support - Gives you an invite link to the support server to answer your questions.
 * _Tree - Plants a tree at will, only available every 12 hours. (Uses MongoDB)
