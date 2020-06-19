@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
+const botsettings = require('./botsettings.js');
 
 //init code
-mongoose.connect(process.env.mongo_conn_string , { useNewUrlParser: true });
+mongoose.connect(botsettings.mongodb , { useNewUrlParser: true });
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {
