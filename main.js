@@ -31,6 +31,21 @@ fs.readdir("./commands/", (err, files) => {
         });
     });
 });
+bot.on("ready", () => {
+    console.log(client.guilds.size)
+let statuses = ['try _cat & _dog 😏','_help | _invite'];
+    setInterval(function(){
+        let status = statuses[Math.floor(Math.random()*statuses.length)];
+        // using setPresence()
+        client.user.setPresence({ game: { name:status},status: 'dnd' });
+        // client.user.setPresence({ activity: { name: status }, status:'online' });
+
+    }, 5000) // Runs interval every 5 seconds
+    // Update guild-settings.json to reflect any servers that the bot joined or left while it was offline
+    let change = false;
+    // If the bot is in any servers that aren't in guild-settings.json, add them
+});
+
 
 bot.on("message", async message => {
     if(message.author.bot || message.channel.type === "dm") return;
@@ -45,21 +60,6 @@ bot.on("message", async message => {
     if(commandfile) commandfile.run(bot,message,args)
 
 })
-
-client.on("ready", () => {
-    console.log(client.guilds.size)
-let statuses = ['try _cat & _dog 😏','_help | _invite'];
-    setInterval(function(){
-        let status = statuses[Math.floor(Math.random()*statuses.length)];
-        // using setPresence()
-        client.user.setPresence({ game: { name:status},status: 'dnd' });
-        // client.user.setPresence({ activity: { name: status }, status:'online' });
-
-    }, 5000) // Runs interval every 5 seconds
-    // Update guild-settings.json to reflect any servers that the bot joined or left while it was offline
-    let change = false;
-    // If the bot is in any servers that aren't in guild-settings.json, add them
-});
 
 // //DB setup
 var treeSchema = new mongoose.Schema({
