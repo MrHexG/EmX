@@ -2,9 +2,11 @@ const Discord = require("discord.js");
 const botconfig = require("../files/botsettings.js");
 
 module.exports.run = async (bot, message, args) => {
-
-    message.channel.sendMessage(message.author.displayAvatarURL());
-
+  let avatar = message.mentions.users.size ? message.mentions.users.first().avatarURL({ format: 'png', dynamic: true, size: 2048 }) : message.author.avatarURL({ format: 'png', dynamic: true, size: 2048 });
+  const AvatarEmbed = new Discord.MessageEmbed()
+  .setColor('#800080')
+  .setImage(avatar)
+  message.channel.send(AvatarEmbed)
 }
 
 

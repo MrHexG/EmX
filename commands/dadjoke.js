@@ -4,7 +4,12 @@ const botconfig = require("../files/botsettings.js");
 
 module.exports.run = async (bot, message, args) => {
     args = args.join(" ");
-    message.channel.send(`${dadjoke[Math.floor(Math.random() * dadjoke.length)]}`);
+    Dadjoke = dadjoke[Math.floor(Math.random() * dadjoke.length)]
+    const dadjokeEmbed = new Discord.MessageEmbed()
+    .setColor('#800080')
+    .setTitle(Dadjoke)
+    .setFooter('Dad Joke')
+    message.channel.send(dadjokeEmbed)
 }
 
 
