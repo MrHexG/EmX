@@ -7,16 +7,31 @@ EmX is an open source discord bot made by discord.js language. It's a language i
 ``PLEASE STAR THIS REPOSITORY TO SUPPORT ME & MY CODING. THANKS!``
 
 ## Commands
-The following are some of the commands in this bot.
-* _EmX - Simply describes the bot.
-* _Invite - Gives you an invite link to bring the bot to your server.
-* _Support - Gives you an invite link to the support server to answer your questions.
-* _Tree - Plants a tree at will, only available every 12 hours. (Uses MongoDB)
-* _Dog - Sends a randomly generated picture of a doggo!
-* _Cat - Sends a randomly generated picture of a catto!
-* _Hangman - Play hangman with many different types of topics!
-* _covid <country> - Gives the latest stats of COVID-19 via this [COVID-19 API](https://github.com/backtrackbaba/covid-api)
-* _udefine <word> - Uses the Urban Dictionary API to define the word. (chooses the top result only)
+EmX commands:
+
+_EmX - gives a brief description of the bot.
+_help - gievs some of the commands and their info
+_invite - Sends an invite link to add the bot into yur server
+_support - Sends a link to the support Discord server 
+
+Moderation :
+_ban - Bans the tagged user (ADMINISTRATOR perm needed)
+_kick - Kicks the tagged user
+_clear - Clears a certain number of messages (max 100)
+_cooldown - Cooldown on the bot if a command is used over and over again in the span of 2 seconds
+_memberinfo / _userinfo - Gives info about the tagged user
+_mute / _unmute - Mutes / Unmutes the tagged user.
+_addrole / _removerole - Gives tagged user role (DM Me to add your server role into this!)
+
+Fun :
+_cat - Sends the picture of a random Cat from the internet!
+_dog - Sends the picture of a random Dog from the internet!
+_meme - Sends meme from r/meme, r/me_irl, r/dankmeme 
+(Let me know if you want any other subreddits!)
+_udefine - Searches a word in Urban Dictionary
+_hangman - Play hangman with many different topics!
+_tree - Plants a tree every 24 Hours!
+_covid <country> - Gives COVID-19 info about the selected country.
 
 ## Invite EmX
 To invite EmX to your server, just click this ---> [Invite](https://discordapp.com/oauth2/authorize?client_id=612536352751353886&permissions=523328&scope=bot)
