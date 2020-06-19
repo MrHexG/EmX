@@ -9,29 +9,35 @@ EmX is an open source discord bot made by discord.js language. It's a language i
 ## Commands
 EmX commands:
 
+_bug - Send the bug you're experiencing here, it will send it to the developer!
 _EmX - gives a brief description of the bot.
 _help - gievs some of the commands and their info
 _invite - Sends an invite link to add the bot into yur server
 _support - Sends a link to the support Discord server 
 
 Moderation :
+_addrole / _removerole - Gives tagged user role (DM Me to add your server role into this!)
 _ban - Bans the tagged user (ADMINISTRATOR perm needed)
-_kick - Kicks the tagged user
 _clear - Clears a certain number of messages (max 100)
 _cooldown - Cooldown on the bot if a command is used over and over again in the span of 2 seconds
+_kick - Kicks the tagged user
 _memberinfo / _userinfo - Gives info about the tagged user
 _mute / _unmute - Mutes / Unmutes the tagged user.
-_addrole / _removerole - Gives tagged user role (DM Me to add your server role into this!)
+_tempmute - Temporarily mute a user for a selected amount of time.
+_warn / _clearwarn / _warnlevel - Warn a user for their behaviour (temporarily not working)
+
 
 Fun :
+_8ball - Gives an answer for your mystery question
+_amiajoke - Uses an amazing API to put your face on the AM I A JOKE? meme.
 _cat - Sends the picture of a random Cat from the internet!
+_covid <country> - Gives COVID-19 info about the selected country.
 _dog - Sends the picture of a random Dog from the internet!
 _meme - Sends meme from r/meme, r/me_irl, r/dankmeme 
 (Let me know if you want any other subreddits!)
 _udefine - Searches a word in Urban Dictionary
 _hangman - Play hangman with many different topics!
 _tree - Plants a tree every 24 Hours!
-_covid <country> - Gives COVID-19 info about the selected country.
 _youtube <query> - Search youtube for a query and receive a link in return.
 
 ## Invite EmX
