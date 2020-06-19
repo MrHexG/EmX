@@ -32,7 +32,7 @@ fs.readdir("./commands/", (err, files) => {
     });
 });
 bot.on("ready", () => {
-    console.log(client.guilds.size)
+    console.log(bot.guilds.cache.size)
 let statuses = ['try _cat & _dog 😏','_help | _invite'];
     setInterval(function(){
         let status = statuses[Math.floor(Math.random()*statuses.length)];
