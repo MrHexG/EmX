@@ -2996,7 +2996,7 @@ bot.on("messageDelete", message => {// message logs
     .addField("Sent by User", user.tag)
     .addField("Deleted Message", `${message}`) 
     .addField("Deleted In", `${message.guild.channels.cache.get(message.channel.id).toString()}` + ` (${message.channel.id})`)
-    .setFooter(`Author ID: ${user.id}| Message ID: ${message.id}`, client.user.avatarURL)
+    .setFooter(`Author ID: ${user.id}| Message ID: ${message.id}`, bot.user.avatarURL)
     .setColor("#FF0000")
     logchannel.send(deleteEmbed)
 });
@@ -3016,7 +3016,7 @@ bot.on("messageUpdate", function(oldMessage, newMessage){
     .addField("Before", oldMessage.content)
     .addField("After", newMessage.content)
     .addField("Edited In", `${oldMessage.guild.channels.cache.get(oldMessage.channel.id).toString()}` + ` (${oldMessage.channel.id})`)
-    .setFooter(`Author ID: ${user.id}| Message ID: ${oldMessage.id}`, client.user.avatarURL)
+    .setFooter(`Author ID: ${user.id}| Message ID: ${oldMessage.id}`, bot.user.avatarURL)
     .setColor("#FFFF00")
     return logsChannel.send(messageEditEmbed)
 });
