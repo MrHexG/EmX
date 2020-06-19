@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const botsettings = require('../data/botsettings.js');
+const botsettings = require('./data/botsettings.js');
 
 //init code
 mongoose.connect(botsettings.mongodb , { useNewUrlParser: true });
