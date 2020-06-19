@@ -31,14 +31,15 @@ fs.readdir("./commands/", (err, files) => {
         });
     });
 });
+
 bot.on("ready", () => {
-    console.log(client.guilds.size)
+    console.log(bot.guilds.cache.size)
 let statuses = ['try _cat & _dog 😏','_help | _invite'];
     setInterval(function(){
         let status = statuses[Math.floor(Math.random()*statuses.length)];
         // using setPresence()
-        client.user.setPresence({ game: { name:status},status: 'dnd' });
-        // client.user.setPresence({ activity: { name: status }, status:'online' });
+        bot.user.setPresence({ game: { name:status},status: 'dnd' });
+        // bot.user.setPresence({ activity: { name: status }, status:'online' });
 
     }, 5000) // Runs interval every 5 seconds
     // Update guild-settings.json to reflect any servers that the bot joined or left while it was offline
@@ -2581,7 +2582,7 @@ var helpBoard = new Discord.MessageEmbed()
     .setColor('0022FF')
 
     
-    client.on('message', function(message) {
+    bot.on('message', function(message) {
 
 
         var msg = message.content;
@@ -2996,7 +2997,7 @@ bot.on("messageDelete", message => {// message logs
     .addField("Sent by User", user.tag)
     .addField("Deleted Message", `${message}`) 
     .addField("Deleted In", `${message.guild.channels.cache.get(message.channel.id).toString()}` + ` (${message.channel.id})`)
-    .setFooter(`Author ID: ${user.id}| Message ID: ${message.id}`, client.user.avatarURL)
+    .setFooter(`Author ID: ${user.id}| Message ID: ${message.id}`, bot.user.avatarURL)
     .setColor("#FF0000")
     logchannel.send(deleteEmbed)
 });
@@ -3016,7 +3017,7 @@ bot.on("messageUpdate", function(oldMessage, newMessage){
     .addField("Before", oldMessage.content)
     .addField("After", newMessage.content)
     .addField("Edited In", `${oldMessage.guild.channels.cache.get(oldMessage.channel.id).toString()}` + ` (${oldMessage.channel.id})`)
-    .setFooter(`Author ID: ${user.id}| Message ID: ${oldMessage.id}`, client.user.avatarURL)
+    .setFooter(`Author ID: ${user.id}| Message ID: ${oldMessage.id}`, bot.user.avatarURL)
     .setColor("#FFFF00")
     return logsChannel.send(messageEditEmbed)
 });

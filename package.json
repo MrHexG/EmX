@@ -25,7 +25,10 @@
     "mongoose": "^5.9.18",
     "newsapi": "^2.4.0",
     "node-fetch": "^2.6.0",
+    "path": "^0.12.7",
     "random-puppy": "^1.1.0",
-    "request": "^2.88.0"
+    "request": "^2.88.0",
+    "ytdl-core": "^2.1.7",
+    "ytsearcher": "^1.2.2"
   }
 }
