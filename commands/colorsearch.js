@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const superagent = require('superagent');
 const sf = require("snekfetch");
-const botconfig = require("../data/botsettings.js");
+const botconfig = require("../files/botsettings.js");
 
 module.exports.run = async (bot, message, args) => {
     if(!args[0] || args[0] === 'help') return message.reply("Please provide a valid hex code without the #")

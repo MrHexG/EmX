@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const ms = require("ms");
-const botconfig = require("../data/botsettings.js");
+const botconfig = require("../files/botsettings.js");
 
 module.exports.run = async (bot, message, args) => {
     let tomute = message.mentions.users.first() || message.guild.members.cache.get(args[0]);

@@ -1,13 +1,13 @@
   
 const Discord = require('discord.js');
-const botconfig = require("../data/botsettings.js");
+const botconfig = require("../files/botsettings.js");
 const fs = require("fs");
 const ms = require("ms");
 
 module.exports.run = async (bot, message, args) => {
     let reason = args.slice(1).join(' ');
     let user = message.mentions.users.first();
-    let warns = JSON.parse(fs.readFileSync("../data/warnings.json", "utf8"));
+    let warns = JSON.parse(fs.readFileSync("../files/warnings.json", "utf8"));
     //let logchannel = message.guild.channels.find('name', 'logs');
     if (!message.member.hasPermission("KICK_MEMBERS")) return message.reply("❌**Error:** You don't have the **Kick Members** permission!");
     if (message.mentions.users.size < 1) return message.reply('You must mention someone to warn them.').catch(console.error);
@@ -22,7 +22,7 @@ module.exports.run = async (bot, message, args) => {
   
     warns[`${user.id}, ${message.guild.id}`].warns++;
   
-    fs.writeFile("../data/warnings.json", JSON.stringify(warns), err => {
+    fs.writeFile("../files/warnings.json", JSON.stringify(warns), err => {
       if(err) throw err;
     });
   

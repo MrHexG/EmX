@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const botconfig = require("../data/botsettings.js");
+const botconfig = require("../files/botsettings.js");
 
 module.exports.run = async (client, message, args) => {
     message.channel.sendMessage(`Hey! My name is EmX, I'm a multi-purpose bot made for users to have fun and spend their free time with! I hope I can keep you occupied & smiling :)`)

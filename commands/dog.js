@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const botconfig = require("../data/botsettings.js");
+const botconfig = require("../files/botsettings.js");
 const fetch = require('node-fetch');
 
 module.exports.run = async (client, message, args) => {

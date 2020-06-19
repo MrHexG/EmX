@@ -1,10 +1,10 @@
 const Discord = require('discord.js');
-const botconfig = require("../data/botsettings.js");
+const botconfig = require("../files/botsettings.js");
 const fs = require("fs");
 const ms = require("ms");
 
 module.exports.run = async (bot, message, args) => {
-    let warns = JSON.parse(fs.readFileSync("../data/warnings.json", "utf8"));
+    let warns = JSON.parse(fs.readFileSync("../files/warnings.json", "utf8"));
     let user = message.mentions.users.first();
     if(message.mentions.users.size < 1) return message.reply('You must mention someone to check their warns.').catch(console.error);
     if(!user) return message.reply("Couldn't find that user...");

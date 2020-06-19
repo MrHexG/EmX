@@ -1,6 +1,6 @@
-const dadjoke = require('../data/dadjoke.json');
+const dadjoke = require('../files/dadjoke.json');
 const Discord = require("discord.js");
-const botconfig = require("../data/botsettings.js");
+const botconfig = require("../files/botsettings.js");
 
 module.exports.run = async (bot, message, args) => {
     args = args.join(" ");

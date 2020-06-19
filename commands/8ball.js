@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const botconfig = require("../data/botsettings.js");
+const botconfig = require("../files/botsettings.js");
 
 module.exports.run = async (bot, message, args) => {
     if(!args[0]) return message.reply("Please ask a full question");

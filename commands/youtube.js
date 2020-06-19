@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const { YTSearcher } = require('ytsearcher');
-const botconfig = require("../data/botsettings.js");
+const botconfig = require("../files/botsettings.js");
 const searcher = new YTSearcher(botconfig.GoogleApikey);
 
 module.exports.run = async (bot, message, args) => {
